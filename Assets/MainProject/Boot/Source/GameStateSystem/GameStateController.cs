@@ -1,4 +1,5 @@
 using System;
+using GlobalSource;
 
 namespace Boot
 {
@@ -26,6 +27,7 @@ namespace Boot
             
             _stateMachine = new StateMachine();
             _stateMachine.AddState((byte)GameState.MainMenu, new MainMenu(_stateMachine, (byte)GameState.MainMenu, sceneManager, Scenes.MainMenu));
+            _stateMachine.AddState((byte)GameState.Cutscene, new Cutscene(_stateMachine, (byte)GameState.Cutscene, sceneManager, Scenes.Cutscene));
             _stateMachine.AddState((byte)GameState.Gameplay, new Gameplay(_stateMachine, (byte)GameState.Gameplay, sceneManager, Scenes.Gameplay));
             _stateMachine.AddState((byte)GameState.Paused, new Pause(_stateMachine, (byte)GameState.Paused, sceneManager, Scenes.Gameplay));
         }

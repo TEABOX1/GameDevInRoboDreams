@@ -1,3 +1,5 @@
+using GlobalSource;
+
 namespace Boot
 {
     public class MainMenu : GameStateBase
