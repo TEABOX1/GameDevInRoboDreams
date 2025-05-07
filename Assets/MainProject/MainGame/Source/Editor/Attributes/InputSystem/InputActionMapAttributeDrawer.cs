@@ -1,9 +1,8 @@
-using MainProject.MainGame.Source.Attributes.InputAction;
 using MainProject.MainGame.Source.Editor.EditorSetting.InputAction;
 using UnityEditor;
 using UnityEngine;
 
-namespace MainProject.MainGame.Source.Editor.Attributes.InputSystem
+namespace MainGame
 {
     [CustomPropertyDrawer(typeof(ActionMapDropdownAttribute))]
     public class InputActionMapAttributeDrawer : PropertyDrawer

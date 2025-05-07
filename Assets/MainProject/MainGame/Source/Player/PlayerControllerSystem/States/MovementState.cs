@@ -1,10 +1,9 @@
 using System.Collections.Generic;
 using GlobalSource;
-using MainProject.MainGame.Source.InputSystem;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace MainProject.MainGame.Source.Player.PlayerController.States
+namespace MainGame
 {
     public class MovementState : StateBase
     {
@@ -12,8 +11,6 @@ namespace MainProject.MainGame.Source.Player.PlayerController.States
         private readonly Transform _transform;
         private PlayerController _playerController;
         
-        private bool _grounded;
-
         private Vector3 _localDirection;
         
         private InputController _inputController;
@@ -32,6 +29,7 @@ namespace MainProject.MainGame.Source.Player.PlayerController.States
             conditions = new List<IStateCondition>
             {
                 new BaseCondition((byte)PlayerControllerState.Idle, IsIdle),
+                new BaseCondition((byte)PlayerControllerState.Fall, IsFalling)
             };
             
             _inputController = ServiceLocator.Instance.GetService<InputController>();

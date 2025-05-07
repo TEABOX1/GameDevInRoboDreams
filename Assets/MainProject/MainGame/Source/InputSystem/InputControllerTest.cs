@@ -2,7 +2,7 @@ using GlobalSource;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace MainProject.MainGame.Source.InputSystem
+namespace MainGame
 {
     public class InputControllerTest : MonoBehaviour
     {

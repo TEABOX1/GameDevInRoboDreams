@@ -1,10 +1,9 @@
 using System;
 using GlobalSource;
-using MainProject.MainGame.Source.Attributes.InputAction;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace MainProject.MainGame.Source.InputSystem
+namespace MainGame
 {
     public class InputController : MonoServiceBase
     {

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace MainProject.MainGame.Source.Attributes.InputAction
+namespace MainGame
 {
     public class ActionMapDropdownAttribute : PropertyAttribute
     {

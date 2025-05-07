@@ -1,4 +1,4 @@
-namespace MainProject.MainGame.Source.Player.PlayerController.States
+namespace MainGame
 {
     public enum PlayerControllerState : byte
     {

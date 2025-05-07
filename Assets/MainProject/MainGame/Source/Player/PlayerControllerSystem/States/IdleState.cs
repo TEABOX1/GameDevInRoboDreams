@@ -1,17 +1,14 @@
 using System.Collections.Generic;
 using GlobalSource;
-using MainProject.MainGame.Source.InputSystem;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace MainProject.MainGame.Source.Player.PlayerController.States
+namespace MainGame
 {
     public class IdleState : StateBase
     {
         private readonly CharacterController _characterController;
         private Vector3 _localDirection;
-        
-        private bool _grounded;
         
         private InputController _inputController;
         
@@ -24,6 +21,7 @@ namespace MainProject.MainGame.Source.Player.PlayerController.States
             conditions = new List<IStateCondition>
             {
                 new BaseCondition((byte)PlayerControllerState.Movement, IsMoving),
+                new BaseCondition((byte)PlayerControllerState.Fall, IsFalling),
             };
             
             _inputController = ServiceLocator.Instance.GetService<InputController>();

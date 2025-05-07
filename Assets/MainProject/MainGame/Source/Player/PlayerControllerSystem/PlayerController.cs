@@ -1,9 +1,8 @@
 using System;
 using GlobalSource;
-using MainProject.MainGame.Source.Player.PlayerController.States;
 using UnityEngine;
 
-namespace MainProject.MainGame.Source.Player.PlayerController
+namespace MainGame
 {
     public class PlayerController : MonoBehaviour
     {
@@ -11,18 +10,19 @@ namespace MainProject.MainGame.Source.Player.PlayerController
         
         [SerializeField] private CharacterController _characterController;
         
-        [Header("PlayerSettings"), Space]
+        [Header("PlayerSettings")]
         [SerializeField] private float _speed;
         [SerializeField] private float _drag;
         [SerializeField] private Vector2 _jumpSpeed;
+        [SerializeField] private float _rollSpeed;
 
         private StateMachine _stateMachine;
 
+        public StateMachine StateMachine => _stateMachine;
         public CharacterController CharacterController => _characterController;
         public float Speed => _speed;
-        public StateMachine StateMachine => _stateMachine;
-        public string CurrentState => _stateMachine == null ? "[NULL]" : _stateMachine.CurrentState.GetType().Name;
-        public PlayerControllerState PlayerControllerState => (PlayerControllerState)_stateMachine.CurrentState.StateId;
+        // public string CurrentState => _stateMachine == null ? "[NULL]" : _stateMachine.CurrentState.GetType().Name;
+        // public PlayerControllerState PlayerControllerState => (PlayerControllerState)_stateMachine.CurrentState.StateId;
         
         private void Start()
         {
@@ -34,16 +34,17 @@ namespace MainProject.MainGame.Source.Player.PlayerController
             _stateMachine.AddState((byte)PlayerControllerState.Movement,
                 new MovementState(_stateMachine, (byte)PlayerControllerState.Movement, _characterController,
                     _characterController.transform, this));
-            //
-            // _stateMachine.AddState((byte)PlayerControllerState.Fall,
-            //     new FallState(_stateMachine, (byte)PlayerControllerState.Fall, _characterController, _drag));
-            //
-            // _stateMachine.AddState((byte)PlayerControllerState.Jump,
-            //     new JumpState(_stateMachine, (byte)PlayerControllerState.Jump, _characterController,
-            //         _drag, _jumpSpeed.y, _jumpSpeed.x));
-            //
-            // _stateMachine.AddState((byte)PlayerControllerState.Roll,
-            //     new RollState(_stateMachine, (byte)PlayerControllerState.Roll, _characterController));
+            
+            _stateMachine.AddState((byte)PlayerControllerState.Fall,
+                new FallState(_stateMachine, (byte)PlayerControllerState.Fall, _characterController, _drag));
+            
+            _stateMachine.AddState((byte)PlayerControllerState.Jump,
+                new JumpState(_stateMachine, (byte)PlayerControllerState.Jump, _characterController,
+                    _drag, _jumpSpeed.y, _jumpSpeed.x));
+            
+            _stateMachine.AddState((byte)PlayerControllerState.Roll,
+                new RollState(_stateMachine, (byte)PlayerControllerState.Roll, _characterController,
+                    _rollSpeed, _drag));
             
             _stateMachine.InitState((byte)PlayerControllerState.Idle);
             
