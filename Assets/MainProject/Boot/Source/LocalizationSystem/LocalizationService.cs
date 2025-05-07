@@ -25,11 +25,11 @@ namespace Boot
             base.Awake();
             
             _saveService = ServiceLocator.Instance.GetService<ISaveService>();
-            string savedLanguage = _saveService.SaveData.localizationData.language;
+            string savedLanguage = _saveService.SaveData.settingsData.localizationData.language;
             if (!_data.Languages.Contains(savedLanguage))
             {
                 savedLanguage = _data.Languages[0];
-                _saveService.SaveData.localizationData.language = savedLanguage;
+                _saveService.SaveData.settingsData.localizationData.language = savedLanguage;
             }
 
             for (int i = 0; i < _data.LanguageEntries.Length; ++i)
@@ -57,7 +57,7 @@ namespace Boot
         {
             _currentLanguage = language;
             _currentTermsLookup = _localizationLookup[language];
-            _saveService.SaveData.localizationData.language = _currentLanguage;
+            _saveService.SaveData.settingsData.localizationData.language = _currentLanguage;
             OnLanguageChanged?.Invoke();
         }
 

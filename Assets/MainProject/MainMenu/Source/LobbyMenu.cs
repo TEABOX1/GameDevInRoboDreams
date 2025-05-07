@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using GlobalSource;
 using Boot;
+using UnityEngine.EventSystems;
 
 namespace MainMenu
 {
@@ -41,27 +42,31 @@ namespace MainMenu
 
             _canvas.enabled = true;
             _soundMenu.Enabled = false;
+
+            _saveService = ServiceLocator.Instance.GetService<ISaveService>();
         }
 
         private void NewGameButtonHandler()
         {
             ServiceLocator.Instance.GetService<ISceneManager>().onSceneLoad += SceneLoadHandler;
             ServiceLocator.Instance.GetService<IGameStateProvider>().SetGameState(GameState.Cutscene);
-            _saveService = ServiceLocator.Instance.GetService<ISaveService>();
+
+            _saveService.SaveData.playerInfoData.DebugSaveInfo = 0;
         }
 
         private void LoadGameButtonHandler()
         {
             ServiceLocator.Instance.GetService<ISceneManager>().onSceneLoad += SceneLoadHandler;
             ServiceLocator.Instance.GetService<IGameStateProvider>().SetGameState(GameState.Gameplay);
-            _saveService = ServiceLocator.Instance.GetService<ISaveService>();
         }
 
         private void QuitButtonHandler()
         {
 #if UNITY_EDITOR
+            _saveService.SaveAll();
             EditorApplication.isPlaying = false;
 #else
+            _saveService.SaveAll();
             Application.Quit();
 #endif
         }
@@ -81,6 +86,8 @@ namespace MainMenu
         {
             _canvas.enabled = true;
             _soundMenu.Enabled = false;
+
+            _saveService.SaveAll();
         }
     }
 }
