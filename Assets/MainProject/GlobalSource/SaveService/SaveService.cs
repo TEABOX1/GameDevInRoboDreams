@@ -56,7 +56,7 @@ namespace GlobalSource
             string filePath = Path.Combine(path, _saveFile);
             if (!File.Exists(filePath))
             {
-                _saveData.soundData = SoundSaveData.Default;
+                _saveData.settingsData.soundData = SoundSaveData.Default;
                 return;
             }
             

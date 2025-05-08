@@ -44,7 +44,7 @@ namespace GlobalSource
         {
             _saveService = ServiceLocator.Instance.GetService<ISaveService>();
 
-            SoundSaveData saveData = _saveService.SaveData.soundData;
+            SoundSaveData saveData = _saveService.SaveData.settingsData.soundData;
 
             SetVolume(SoundType.Master, saveData.masterVolume);
             SetVolume(SoundType.Sfx, saveData.sfxVolume);
@@ -57,13 +57,13 @@ namespace GlobalSource
             switch (type)
             {
                 case SoundType.Master:
-                    _saveService.SaveData.soundData.masterVolume = volume;
+                    _saveService.SaveData.settingsData.soundData.masterVolume = volume;
                     break;
                 case SoundType.Sfx:
-                    _saveService.SaveData.soundData.sfxVolume = volume;
+                    _saveService.SaveData.settingsData.soundData.sfxVolume = volume;
                     break;
                 case SoundType.Ambience:
-                    _saveService.SaveData.soundData.ambienceVolume = volume;
+                    _saveService.SaveData.settingsData.soundData.ambienceVolume = volume;
                     break;
             }
         }

@@ -13,7 +13,7 @@ namespace GlobalSource
             State = state;
             _condition = condition;
         }
-        
+
         public bool Invoke()
         {
             return _condition();
