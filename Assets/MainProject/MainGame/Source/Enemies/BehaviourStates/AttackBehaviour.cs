@@ -1,4 +1,5 @@
 using GlobalSource;
+using System;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -8,12 +9,23 @@ namespace MainGame
     {
         public enum AttackState
         {
-            Approach,
-            Attack
+            Approach = 0,
+            Attack =1,
+
+            NullState = 255
         }
 
-        /*private enum AttackMode { Melee, Ranged }
+        /*private enum AttackMode
+        {
+            Melee = 0,
+            Ranged = 1,
+
+            NullState = 255
+        }
         private AttackMode _currentMode;*/
+
+        public event Action<AttackState> OnAttackStateChange;
+        //public event Action<AttackMode> OnAttackModeChange;
 
         private readonly NavMeshAgent _agent;
         private readonly CharacterController _characterController;

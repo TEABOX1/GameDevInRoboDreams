@@ -10,12 +10,14 @@ namespace MainGame
     {
         public enum EnemyBehaviour
         {
-            Deciding,
-            Idle,
-            Patrol,
-            Attack,
-            Search,
-            Death
+            Deciding = 0,
+            Idle = 1,
+            Patrol = 2,
+            Attack = 3,
+            Search = 4,
+            Death = 5,
+
+            NullState = 255
         }
 
         public event Action<EnemyBehaviour> OnBehaviourChanged;

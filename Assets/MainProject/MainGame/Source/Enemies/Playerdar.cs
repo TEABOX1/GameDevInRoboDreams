@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using static MainGame.AttackBehaviour;
 
 namespace MainGame
 {
@@ -6,10 +8,14 @@ namespace MainGame
     {
         public enum State
         {
-            Scanning,
-            Chasing,
-            Searching
+            Scanning = 0,
+            Chasing = 1,
+            Searching = 2,
+
+            NullState = 255
         }
+
+        public event Action<State> OnPlayerdarStateChange;
 
         [SerializeField] private EnemyController _enemyController;
         [SerializeField] private float _range;
