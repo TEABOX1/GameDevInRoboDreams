@@ -47,7 +47,7 @@ namespace MainGame
             Debug.Log($"Primary Input");
         }
 
-        private void SecondaryHandler()
+        private void SecondaryHandler(bool performed)
         {
             Debug.Log($"Secondary Input");
         }

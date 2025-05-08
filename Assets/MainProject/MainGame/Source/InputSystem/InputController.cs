@@ -14,7 +14,7 @@ namespace MainGame
         public event Action OnJumpInput;
         public event Action OnRollInput;
         public event Action OnPrimaryInput;
-        public event Action OnSecondaryInput;
+        public event Action<bool> OnSecondaryInput;
         public event Action OnInteractInput;
         
         public event Action OnEscapeInput;
@@ -83,6 +83,7 @@ namespace MainGame
                 _primaryAction.performed += PrimaryPerformedHandler;
                 
                 _secondaryAction.performed += SecondaryPerformedHandler;
+                _secondaryAction.canceled += SecondaryCanceledHandler;
                 
                 _interactAction.performed += InteractPerformedHandler;
                 
@@ -106,12 +107,21 @@ namespace MainGame
             base.OnDestroy();
             
             _movementAction.performed -= MovementPerformedHandler;
+            _movementAction.canceled -= MovementCanceledHandler;
+            
             _lookAroundAction.performed -= LookAroundPerformedHandler;
+            
             _jumpAction.performed -= JumpPerformedHandler;
+            
             _rollAction.performed -= RollPerformedHandler;
+            
             _primaryAction.performed -= PrimaryPerformedHandler;
+            
             _secondaryAction.performed -= SecondaryPerformedHandler;
+            _secondaryAction.canceled -= SecondaryCanceledHandler;
+            
             _interactAction.performed -= InteractPerformedHandler;
+            
             _escapeAction.performed -= EscapePerformedHandler;
             
             OnMovementInput = null;
@@ -162,7 +172,6 @@ namespace MainGame
         {
             OnMovementInput?.Invoke(context.ReadValue<Vector2>(), context.control.device);
         }
-
         private void MovementCanceledHandler(InputAction.CallbackContext context)
         {
             OnMovementInput?.Invoke(context.ReadValue<Vector2>(), context.control.device);
@@ -190,7 +199,11 @@ namespace MainGame
 
         private void SecondaryPerformedHandler(InputAction.CallbackContext context)
         {
-            OnSecondaryInput?.Invoke();
+            OnSecondaryInput?.Invoke(true);
+        }
+        private void SecondaryCanceledHandler(InputAction.CallbackContext context)
+        {
+            OnSecondaryInput?.Invoke(false);
         }
 
         private void InteractPerformedHandler(InputAction.CallbackContext context)
