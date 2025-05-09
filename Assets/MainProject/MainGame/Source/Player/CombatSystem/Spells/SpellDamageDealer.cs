@@ -16,7 +16,6 @@ namespace MainGame
         
         public void DealSpellDamage(Vector3 center)
         {
-            //TODO: Change to health
             _hasDealtDamage.Clear();
             
             // Collider[] hits = new Collider[10];
@@ -29,12 +28,15 @@ namespace MainGame
             for (int i = 0; i < hits.Length ; i++)
             {
                 Collider hit = hits[i];
+                Debug.Log(hit.name);
+                if(!_healthService.GetHealth(hit, out IHealth health)) continue;
+                if (_hasDealtDamage.Contains(health)) continue;
                 
-                if (!_hasDealtDamage.Contains(hit))
-                {
-                    Debug.Log($"Spell dealt damage to {hit.name}");
-                    _hasDealtDamage.Add(hit);
-                }
+                Debug.Log($"Spell dealt damage to {hit.name}");
+                
+                health.TakeDamage(_spellData.Damage);
+                
+                _hasDealtDamage.Add(health);
             }
         }
     }

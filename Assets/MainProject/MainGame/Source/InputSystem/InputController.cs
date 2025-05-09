@@ -93,6 +93,8 @@ namespace MainGame
             {
                 Debug.LogError("Input action asset is missing.");
             }
+            
+            CursorDisable();
         }
         
         private void OnDisable()

@@ -61,13 +61,14 @@ namespace MainGame
             }
             else
             {
-                _targetAimValue = 0f;
-                _crosshair.SetActive(false);
                 if (_isOnCooldown)
                 {
                     Debug.Log("Spell was on cooldown during press, so skip release.");
                     return;
                 }
+                
+                _targetAimValue = 0f;
+                _crosshair.SetActive(false);
                 
                 if (_spellData.SpellPrefab == null)
                 {

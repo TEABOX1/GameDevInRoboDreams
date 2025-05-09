@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 namespace MainGame
@@ -20,7 +19,7 @@ namespace MainGame
         protected override void Start()
         {
             base.Start();
-
+            
             _damage = _weaponData.Damage;
             _criticalDamage = _weaponData.CriticalDamage;
 
@@ -37,7 +36,6 @@ namespace MainGame
         //     if (!Physics.Raycast(_weapon.position, _weapon.up,
         //             out var hit, _weaponData.WeaponLenght, _layerMask)) return;
         //     
-        //     //TODO: Change to health
         //     if (_hasDealtDamage.Contains(hit.collider)) return;
         //
         //     Debug.Log(_meleeAttack.NumberOfAttacks < 3
@@ -66,25 +64,30 @@ namespace MainGame
             // _weaponTrigger.WeaponCollider.enabled = false;
         }
 
-        private void OnDrawGizmos()
-        {
-            Gizmos.color = Color.blue;
-            Gizmos.DrawLine(_weapon.position, _weapon.position + _weapon.up * _weaponData.WeaponLenght);
-        }
+        // private void OnDrawGizmos()
+        // {
+        //     Gizmos.color = Color.blue;
+        //     Gizmos.DrawLine(_weapon.position, _weapon.position + _weapon.up * _weaponData.WeaponLenght);
+        // }
 
-        private void HitHandler(Collider weaponCollider)
+        private void HitHandler(Collider enemyCollider)
         {
             //TODO: Uncomment after adding animation event?
             // if (!_canDealDamage) return;
-            
-            //TODO: Change to health
-            if (_hasDealtDamage.Contains(weaponCollider)) return;
+
+            if (!_healthService.GetHealth(enemyCollider, out IHealth health)) return;
+            if (_hasDealtDamage.Contains(health)) return;
 
             Debug.Log(_meleeAttack.NumberOfAttacks < 3
-                ?$"{_damage} dealt to {weaponCollider.gameObject.name}"
-                : $"{_criticalDamage} dealt to {weaponCollider.gameObject.name}");
+                ? $"{_damage} dealt to {enemyCollider.gameObject.name}"
+                : $"{_criticalDamage} dealt to {enemyCollider.gameObject.name}");
 
-            _hasDealtDamage.Add(weaponCollider);
+            if (_meleeAttack.NumberOfAttacks >= 3)
+                health.TakeDamage((int)_criticalDamage);
+            else
+                health.TakeDamage(_damage);
+                
+            _hasDealtDamage.Add(health);
         }
     }
 }
