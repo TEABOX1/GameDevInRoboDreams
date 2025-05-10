@@ -1,32 +1,32 @@
-//using TMPro;
-//using UnityEngine;
-//using GlobalSource;
+using TMPro;
+using UnityEngine;
+using GlobalSource;
 
-//namespace Boot
-//{
-//    public class LocalizedTextMeshProUGUI : MonoBehaviour
-//    {
-//        [SerializeField] private TextMeshProUGUI _textMeshProUGUI;
-//        [SerializeField, LocalizationTerm] private string _term;
+namespace Boot
+{
+    public class LocalizedTextMeshProUGUI : MonoBehaviour
+    {
+        [SerializeField] private TextMeshProUGUI _textMeshProUGUI;
+        [SerializeField, LocalizationTerm] private string _term;
 
-//        private ILocalizationService _localizationService;
+        private ILocalizationService _localizationService;
 
-//        private void Start()
-//        {
-//            _localizationService = ServiceLocator.Instance.GetService<ILocalizationService>();
-//            _textMeshProUGUI.text = _localizationService.GetTermValue(_term);
+        private void Start()
+        {
+            _localizationService = ServiceLocator.Instance.GetService<ILocalizationService>();
+            _textMeshProUGUI.text = _localizationService.GetTermValue(_term);
 
-//            _localizationService.OnLanguageChanged += LanguageHandler;
-//        }
+            _localizationService.OnLanguageChanged += LanguageHandler;
+        }
 
-//        private void LanguageHandler()
-//        {
-//            _textMeshProUGUI.text = _localizationService.GetTermValue(_term);
-//        }
+        private void LanguageHandler()
+        {
+            _textMeshProUGUI.text = _localizationService.GetTermValue(_term);
+        }
 
-//        private void OnDestroy()
-//        {
-//            _localizationService.OnLanguageChanged -= LanguageHandler;
-//        }
-//    }
-//}
+        private void OnDestroy()
+        {
+            _localizationService.OnLanguageChanged -= LanguageHandler;
+        }
+    }
+}

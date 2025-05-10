@@ -68,8 +68,6 @@ namespace Cutscene
 
             if (fadeIn)
             {
-                _nextButton.interactable = false;
-
                 canvasGroup.interactable = true;
                 canvasGroup.blocksRaycasts = true;
             }
@@ -83,11 +81,7 @@ namespace Cutscene
 
             canvasGroup.alpha = end;
 
-            if (fadeIn)
-            {
-                _nextButton.interactable = true;
-            }
-            else
+            if (!fadeIn)
             {
                 canvasGroup.interactable = false;
                 canvasGroup.blocksRaycasts = false;
