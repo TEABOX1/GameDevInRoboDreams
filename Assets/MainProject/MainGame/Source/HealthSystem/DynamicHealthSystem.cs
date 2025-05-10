@@ -33,9 +33,16 @@ namespace MainGame
             _charactersHealth.Remove(character.Collider);
         }
 
-        public bool GetHealth(Collider characterCollider, out IHealth health) =>
-            _charactersHealth.TryGetValue(characterCollider, out health);
-
+        public bool GetHealth(Collider characterCollider, out Health health)
+        {
+            IHealth dynamicHealth;
+            _charactersHealth.TryGetValue(characterCollider, out dynamicHealth);
+            bool exists = dynamicHealth != null;
+            // Important, Liskov principle broken here
+            health = exists ? (Health)dynamicHealth : null;
+            return exists;
+        }
+            
         private void CharacterDeathHandler(IHealth health)
         {
             OnCharacterDeath?.Invoke(health);

@@ -9,6 +9,6 @@ namespace MainGame
 
         void AddCharacter(IHealth character);
         void RemoveCharacter(IHealth character);
-        bool GetHealth(Collider collider, out IHealth health);
+        bool GetHealth(Collider collider, out Health health);
     }
 }

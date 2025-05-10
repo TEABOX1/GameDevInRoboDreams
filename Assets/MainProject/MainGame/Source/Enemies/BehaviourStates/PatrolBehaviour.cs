@@ -2,7 +2,6 @@ using GlobalSource;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using static MainGame.EnemyController;
 
 namespace MainGame
 {
@@ -22,7 +21,7 @@ namespace MainGame
             _characterTransform = enemyController.CharacterTransform;
             _navPointProvider = enemyController.NavPointProvider;
 
-            _patrolSpeed = enemyController.PatrolSpeed;
+            _patrolSpeed = enemyController.Data.PatrolSpeed;
         }
 
         public override void Enter()
