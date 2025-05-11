@@ -21,6 +21,8 @@ namespace MainGame
 
         private void OnDrawGizmosSelected()
         {
+            if (_attackPoint == null || _attackData == null)
+                return;
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(_attackPoint.position, _attackData.Distance);
         }

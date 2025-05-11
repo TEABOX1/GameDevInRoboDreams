@@ -182,7 +182,7 @@ namespace MainGame
             }
             else
             {
-                if (_spellTimer < _enemySpellCaster.SpellData.CooldownTime && _spawnTimer < _spiderSpawnSpell.SpawnSpellCooldown)
+                if (_spellTimer < _enemySpellCaster.EnemySpellData.CooldownTime && _spawnTimer < _spiderSpawnSpell.SpawnSpellCooldown)
                     return;
 
                 if (_spawnTimer >= _spiderSpawnSpell.SpawnSpellCooldown)
@@ -192,7 +192,7 @@ namespace MainGame
                     _spawnTimer = 0f;
                     //return;
                 }
-                else if (_spellTimer >= _enemySpellCaster.SpellData.CooldownTime)
+                else if (_spellTimer >= _enemySpellCaster.EnemySpellData.CooldownTime)
                 {
                     //to-do: викликати анімацію касту фаерболу
                     _enemySpellCaster.CastSpell(_targetTransform);

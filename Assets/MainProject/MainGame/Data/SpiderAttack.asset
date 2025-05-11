@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ae268363adc80d42837aceb92ced633, type: 3}
   m_Name: SpiderAttack
   m_EditorClassIdentifier: 
-  _attackInterval: 1.5
-  _attackDistance: 1
+  _interval: 1.5
+  _distance: 1
   _damage: 5

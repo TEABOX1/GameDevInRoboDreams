@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ae268363adc80d42837aceb92ced633, type: 3}
   m_Name: NecroAttack
   m_EditorClassIdentifier: 
-  _attackInterval: 2
-  _attackDistance: 2
+  _interval: 2
+  _distance: 2
   _damage: 10

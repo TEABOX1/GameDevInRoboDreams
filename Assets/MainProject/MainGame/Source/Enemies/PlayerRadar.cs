@@ -21,7 +21,7 @@ namespace MainGame
         [SerializeField] private EnemyController _enemyController;
         [SerializeField] private float _range;
         [SerializeField] private float _angle;
-        //[SerializeField] private LayerMask _layerMask;
+        [SerializeField] private LayerMask _layerMask;
 
         private float _cosine;
 
@@ -168,7 +168,7 @@ namespace MainGame
                 if (Vector3.Dot(playerDirection, forward) < _cosine)
                     return false;
             }
-            if (!Physics.Raycast(position, (playerPosition - position).normalized, out RaycastHit hit, _range/*, _layerMask*/))
+            if (!Physics.Raycast(position, (playerPosition - position).normalized, out RaycastHit hit, _range, _layerMask))
                 return false;
             if (hit.collider != _playerService.Player.CharacterController)
                 return false;
@@ -187,7 +187,7 @@ namespace MainGame
             Vector3 leftBoundary = Quaternion.Euler(0, -_angle / 2f, 0) * forward;
             Vector3 rightBoundary = Quaternion.Euler(0, _angle / 2f, 0) * forward;
 
-            Gizmos.color = Color.red;
+            Gizmos.color = Color.yellow;
             Gizmos.DrawLine(_transform.position, _transform.position + leftBoundary * _range);
             Gizmos.DrawLine(_transform.position, _transform.position + rightBoundary * _range);
         }

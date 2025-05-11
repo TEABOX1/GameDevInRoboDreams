@@ -16,7 +16,7 @@ namespace MainGame
         [SerializeField] protected CharacterController _characterController;
         [SerializeField] protected Transform _characterTransform;
         [SerializeField] protected Health _health;
-        [SerializeField] protected PlayerRadar _playerdar;
+        [SerializeField] protected PlayerRadar _playerRadar;
 
         protected INavPointProvider _navPointProvider;
 
@@ -38,7 +38,7 @@ namespace MainGame
         public CharacterController CharacterController => _characterController;
         public Transform CharacterTransform => _characterTransform;
         public IHealth Health => _health;
-        public IPlayerRadar PlayerRadar => _playerdar;
+        public IPlayerRadar PlayerRadar => _playerRadar;
         public INavPointProvider NavPointProvider => _navPointProvider;
 
         private void Awake()
@@ -129,12 +129,12 @@ namespace MainGame
 
         protected bool HasTargetCondition()
         {
-            return _playerdar.HasTarget;
+            return _playerRadar.HasTarget;
         }
 
         protected bool SeesTargetCondition()
         {
-            return _playerdar.SeesTarget;
+            return _playerRadar.SeesTarget;
         }
 
         protected virtual void HealthDeathHandler()
