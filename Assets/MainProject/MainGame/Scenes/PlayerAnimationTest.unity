@@ -336,6 +336,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1835885862194036, guid: c647a6e9ba715004ebbf4dc6d7bd1e7a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1159109260}
+    - targetCorrespondingSourceObject: {fileID: 1835885862194036, guid: c647a6e9ba715004ebbf4dc6d7bd1e7a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1159109261}
+    - targetCorrespondingSourceObject: {fileID: 1835885862194036, guid: c647a6e9ba715004ebbf4dc6d7bd1e7a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1159109262}
   m_SourcePrefab: {fileID: 100100000, guid: c647a6e9ba715004ebbf4dc6d7bd1e7a, type: 3}
 --- !u!4 &525195988 stripped
 Transform:
@@ -567,6 +573,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1132585883 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1759537257034320, guid: c647a6e9ba715004ebbf4dc6d7bd1e7a, type: 3}
+  m_PrefabInstance: {fileID: 525195987}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1147820783
 GameObject:
   m_ObjectHideFlags: 0
@@ -731,6 +742,52 @@ MonoBehaviour:
   _verticalName: Vertical
   _landedName: Landed
   _aimName: AimValue
+--- !u!114 &1159109261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1159109258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 864ed5ef5c3edec4c8eb91e6df547bbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _plaeyrController: {fileID: 999834136720323921}
+  _attack: {fileID: 1780038783728549231}
+  _animator: {fileID: 1159109259}
+  _meeleAttack1Name: MeeleAttack1
+  _meeleAttack2Name: MeeleAttack2
+  _meeleAttack3Name: MeeleAttack3
+  _idleName: Idle
+  _crossFadeTime: 0.125
+  _dampTime: 0.125
+  _firstLockDuration: 0.5
+  _secondLockDuration: 0.7
+  _thirdLockDuration: 1
+--- !u!114 &1159109262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1159109258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dc4264dbdf05f246bb3adfbbf1d523f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _plaeyrController: {fileID: 999834136720323921}
+  _attack: {fileID: 825773337459618629}
+  _animator: {fileID: 1159109259}
+  _sword: {fileID: 1132585883}
+  _magicAttackCastingName: MagicAttackCasting
+  _magicAttackStopCastingName: MagicAttackStopCasting
+  _idleName: Idle
+  _crossFadeTime: 0.125
+  _dampTime: 0.125
+  _firstLockDuration: 0.5
 --- !u!1 &1163013130
 GameObject:
   m_ObjectHideFlags: 0
@@ -1225,6 +1282,7 @@ GameObject:
   - component: {fileID: 269220637181052702}
   - component: {fileID: 1780038783728549231}
   - component: {fileID: 825773337459618629}
+  - component: {fileID: 9045652159723782415}
   m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
@@ -1246,7 +1304,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _characterController: {fileID: 9045652159723782414}
   _speed: 5
-  _drag: 2
+  _drag: 4.5
   _jumpSpeed: {x: 1.5, y: 5}
   _rollSpeed: 7
 --- !u!212 &1193530993922664800
@@ -2166,6 +2224,23 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &9045652159723782415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 953151474750522032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbffc2c57fbeef44f89998a1558e8abb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animator: {fileID: 1159109259}
+  _deathName: Death
+  _crossFadeTime: 0.125
+  _healthBarDelayTime: 0.125
+  _logicalPlayer: {fileID: 953151474750522032}
 --- !u!1 &9105290718446478000
 GameObject:
   m_ObjectHideFlags: 0

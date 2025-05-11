@@ -87,7 +87,7 @@ namespace MainGame
             _animator.SetFloat(_horizontalId, _inputValue.x, _dampTime, Time.deltaTime);
             _animator.SetFloat(_verticalId, _inputValue.y, _dampTime, Time.deltaTime);
 
-            _animator.SetLayerWeight(1, _gunAimer.AimValue);
+            //_animator.SetLayerWeight(1, _gunAimer.AimValue);
             _animator.SetFloat(_aimId, _gunAimer.AimValue);
         }
 
