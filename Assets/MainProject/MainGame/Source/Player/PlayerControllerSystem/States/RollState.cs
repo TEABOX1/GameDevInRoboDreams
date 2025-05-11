@@ -1,21 +1,20 @@
 using System.Collections.Generic;
 using GlobalSource;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 namespace MainGame
 {
     public class RollState : StateBase
     {
-        private CharacterController _characterController;
-        private InputController _inputController;
+        private readonly CharacterController _characterController;
         
-        private Vector3 _rollDirection ;
         private Vector3 _velocity;
         
-        private float _rollSpeed;
-        private float _drag;
+        private readonly float _rollSpeed;
+        private readonly float _drag;
         private float _stopThreshold = 0.1f;
+        
+        private InputController _inputController;
         
         public RollState(
             StateMachine stateMachine,
@@ -34,18 +33,21 @@ namespace MainGame
             };
             
             _inputController = ServiceLocator.Instance.GetService<InputController>();
-            _inputController.OnMovementInput += MovementHandler;
         }
         
         public override void Enter()
         {
-            Vector3 inputDirection = _rollDirection.normalized;
-            if (inputDirection == Vector3.zero)
+            //TODO: Add cooldown or lock default input action map after testing with animations
+            Vector3 direction = _characterController.velocity.normalized;
+            
+            if (direction == Vector3.zero)
             {
-                inputDirection = _characterController.transform.forward;
+                direction = _characterController.transform.forward;
             }
 
-            _velocity = inputDirection * _rollSpeed;
+            _velocity = direction * _rollSpeed;
+            
+            // _inputController.DefaulMapLock();
         }
         
         protected override void OnUpdate(float deltaTime)
@@ -57,14 +59,13 @@ namespace MainGame
         
         public override void Dispose()
         {
-            _inputController.OnMovementInput -= MovementHandler;
-        }
-        
-        private void MovementHandler(Vector2 input, InputDevice inputDevice)
-        {
-            _rollDirection  = new Vector3(input.x, 0, input.y);
         }
 
+        public override void Exit()
+        {
+            // _inputController.DefaultMapUnlock();
+        }
+        
         private bool RollComplete()
         {
             return _velocity.magnitude <= _stopThreshold;

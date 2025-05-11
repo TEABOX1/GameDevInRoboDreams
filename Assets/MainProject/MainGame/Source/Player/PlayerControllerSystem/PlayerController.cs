@@ -9,6 +9,7 @@ namespace MainGame
         public event Action<PlayerControllerState> OnStateChanged;
         
         [SerializeField] private CharacterController _characterController;
+        [SerializeField] private Health _health;
         
         [Header("PlayerSettings")]
         [SerializeField] private float _speed;
@@ -22,10 +23,12 @@ namespace MainGame
         public CharacterController CharacterController => _characterController;
         public float Speed => _speed;
         // public string CurrentState => _stateMachine == null ? "[NULL]" : _stateMachine.CurrentState.GetType().Name;
-        public PlayerControllerState PlayerControllerState => (PlayerControllerState)_stateMachine.CurrentState.StateId; //added for animation
-
+        public PlayerControllerState PlayerControllerState => (PlayerControllerState)_stateMachine.CurrentState.StateId;
+        
         private void Start()
         {
+            ServiceLocator.Instance.GetService<IHealthService>().AddCharacter(_health);
+                
             _stateMachine = new StateMachine();
             
             _stateMachine.AddState((byte)PlayerControllerState.Idle,

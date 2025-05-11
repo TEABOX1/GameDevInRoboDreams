@@ -6,7 +6,8 @@ namespace MainGame
 {
     public class MeleeAttack : MonoBehaviour
     {
-        public event Action<int> OnAttack; //added for animation
+        public event Action<int> OnAttack; 
+        
         [SerializeField] private CharacterController _characterController;
         [SerializeField] private float _maxComboDelay = 1f;
         
@@ -53,7 +54,6 @@ namespace MainGame
                     Debug.Log("Third attack");
                     break;
             }
-
             OnAttack?.Invoke(_numberOfAttacks);
         }
         
