@@ -27,6 +27,7 @@ namespace MainGame
         private float _targetAimValue;
         
         public SpellData SpellData => _spellData;
+        public float AimValue => _aimValue;
         
         public void Start()
         {
