@@ -7,6 +7,7 @@ namespace MainGame
 {
     public class SpellCaster : MonoServiceBase
     {
+        public event Action<bool> OnSpellCast; //added for animation
         public override Type Type { get; } = typeof(SpellCaster);
 
         [SerializeField] private SpellDamageDealer _spellDamageDealer;
@@ -27,7 +28,8 @@ namespace MainGame
         private float _targetAimValue;
         
         public SpellData SpellData => _spellData;
-        
+        public float AimValue => _aimValue; //added for animation
+
         public void Start()
         {
             _inputController = ServiceLocator.Instance.GetService<InputController>();
@@ -58,6 +60,7 @@ namespace MainGame
                 
                 _targetAimValue = 1f;
                 _crosshair.SetActive(true);
+                OnSpellCast?.Invoke(true);
             }
             else
             {
@@ -88,6 +91,7 @@ namespace MainGame
 
                 _lastCastTime = Time.time;
                 _isOnCooldown = true;
+                OnSpellCast?.Invoke(false);
             }
         }
     }
