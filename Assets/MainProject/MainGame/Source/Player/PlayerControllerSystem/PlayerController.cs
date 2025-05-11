@@ -9,6 +9,7 @@ namespace MainGame
         public event Action<PlayerControllerState> OnStateChanged;
         
         [SerializeField] private CharacterController _characterController;
+        [SerializeField] private Health _health;
         
         [Header("PlayerSettings")]
         [SerializeField] private float _speed;
@@ -26,6 +27,8 @@ namespace MainGame
         
         private void Start()
         {
+            ServiceLocator.Instance.GetService<IHealthService>().AddCharacter(_health);
+                
             _stateMachine = new StateMachine();
             
             _stateMachine.AddState((byte)PlayerControllerState.Idle,

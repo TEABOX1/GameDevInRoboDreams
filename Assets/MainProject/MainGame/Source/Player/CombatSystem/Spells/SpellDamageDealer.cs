@@ -6,12 +6,14 @@ namespace MainGame
     public class SpellDamageDealer : DamageDealer
     {
         private SpellData _spellData;
+        EnemyService _enemyService;
         
         protected override void Start()
         {
             base.Start();
 
             _spellData = ServiceLocator.Instance.GetService<SpellCaster>().SpellData;
+            _enemyService = ServiceLocator.Instance.GetService<EnemyService>();
         }
         
         public void DealSpellDamage(Vector3 center)
@@ -28,13 +30,25 @@ namespace MainGame
             for (int i = 0; i < hits.Length ; i++)
             {
                 Collider hit = hits[i];
-                Debug.Log(hit.name);
                 if(!_healthService.GetHealth(hit, out IHealth health)) continue;
                 if (_hasDealtDamage.Contains(health)) continue;
                 
-                Debug.Log($"Spell dealt damage to {hit.name}");
+                var damage = _spellData.Damage;
                 
-                health.TakeDamage(_spellData.Damage);
+                // if (_enemyService.TryGetEnemy(hit, out var enemy))
+                // {
+                //     if (enemy.EnemyType == EnemyTypes.Spider)
+                //     {
+                //         damage *= 2;
+                //     }
+                // }
+
+                if (_enemyService.GetEnemyType(hit) == EnemyTypes.Spider)
+                {
+                    damage *= 2;
+                }
+                
+                health.TakeDamage(damage);
                 
                 _hasDealtDamage.Add(health);
             }
