@@ -23,7 +23,7 @@ namespace MainGame
         public CharacterController CharacterController => _characterController;
         public float Speed => _speed;
         // public string CurrentState => _stateMachine == null ? "[NULL]" : _stateMachine.CurrentState.GetType().Name;
-        // public PlayerControllerState PlayerControllerState => (PlayerControllerState)_stateMachine.CurrentState.StateId;
+        public PlayerControllerState PlayerControllerState => (PlayerControllerState)_stateMachine.CurrentState.StateId;
         
         private void Start()
         {

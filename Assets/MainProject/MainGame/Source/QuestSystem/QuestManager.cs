@@ -30,18 +30,18 @@ namespace MainGame
             _questEvents.OnAdvanceQuest -= AdvanceQuestHandler;
             _questEvents.OnFinishQuest -= FinishQuestHandler;
         }
-        
-        private void Start()
-        {
-            foreach (Quest quest in _quests.Values)
-            {
-                if (quest.QuestState == QuestState.InProgress)
-                {
-                    quest.InstantiateCurrentQuestStep(transform);
-                }
-                _questEvents.QuestStateChange(quest);
-            }
-        }
+        //TODO: Add save quests using this for load questSteps
+        // private void Start()
+        // {
+        //     foreach (Quest quest in _quests.Values)
+        //     {
+        //         if (quest.QuestState == QuestState.InProgress)
+        //         {
+        //             quest.InstantiateCurrentQuestStep(transform);
+        //         }
+        //         _questEvents.QuestStateChange(quest);
+        //     }
+        // }
 
         private void Update()
         {
@@ -104,6 +104,12 @@ namespace MainGame
         private void ClaimRewards(Quest quest)
         {
             Debug.Log($"Claiming Rewards: {quest.QuestInfo.AbilityUnlockReward}");
+            
+            SpellData spellReward = quest.QuestInfo.AbilityUnlockReward;
+            
+            if (spellReward == null) return;
+            SpellInventory spellInventory = ServiceLocator.Instance.GetService<SpellInventory>();
+            spellInventory.UnlockSpell(spellReward);
         }
         
         private Dictionary<string, Quest> CreateQuestMap()

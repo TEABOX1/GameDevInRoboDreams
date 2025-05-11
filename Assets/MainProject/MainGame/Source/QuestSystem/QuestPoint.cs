@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace MainGame
 {
-    public class QuestPoint : MonoBehaviour
+    public class QuestPoint : InteractableBase
     {
         // [SerializeField] private QuestInfo _questInfo;
         [SerializeField] private List<QuestInfo> _questInfo;
@@ -22,8 +22,9 @@ namespace MainGame
         private QuestEvents _questEvents;
         private InputController _inputController;
         
-        private void Awake()
+        protected override void Awake()
         {
+            base.Awake();
             // _questId = _questInfo.QuestId;
             foreach (var info in _questInfo)
             {
@@ -35,16 +36,11 @@ namespace MainGame
         {
             _questEvents = ServiceLocator.Instance.GetService<QuestEvents>();
             _questEvents.OnQuestStateChange += QuestStateChangeHandler;
-            //TODO: Remove
-            _inputController = ServiceLocator.Instance.GetService<InputController>();
-            _inputController.OnInteractInput += InteractInputHandler;
         }
 
         private void OnDisable()
         {
             _questEvents.OnQuestStateChange -= QuestStateChangeHandler;
-            //TODO: Remove
-            _inputController.OnInteractInput -= InteractInputHandler;
         }
         
         private void QuestStateChangeHandler(Quest quest)
@@ -63,11 +59,9 @@ namespace MainGame
                 _questIcon.SetState(quest.QuestState, _startPoint, _finishPoint);
             }
         }
-        //TODO: Remove all and change for interactable system
-        private bool _isPlayerNear = false;
-        private void InteractInputHandler()
+        public override void Interact()
         {
-            if(!_isPlayerNear) return;
+            // if(!_isPlayerNear) return;
             
             // switch (_currentQuestState)
             // {
@@ -79,11 +73,8 @@ namespace MainGame
             //         break;
             // }
             
-            foreach (var kvp in _questStates)
+            foreach (var (questId, state) in _questStates)
             {
-                string questId = kvp.Key;
-                QuestState state = kvp.Value;
-
                 switch (state)
                 {
                     case QuestState.CanStart when _startPoint:
@@ -94,19 +85,6 @@ namespace MainGame
                         return;
                 }
             }
-
-        }
-
-        private void OnTriggerEnter(Collider other)
-        {
-            if(other.gameObject.CompareTag("Player"))
-                _isPlayerNear = true;
-        }
-
-        private void OnTriggerExit(Collider other)
-        {
-            if(other.gameObject.CompareTag("Player"))
-                _isPlayerNear = false;
         }
     }
 }

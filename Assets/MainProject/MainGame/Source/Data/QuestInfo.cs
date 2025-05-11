@@ -16,7 +16,7 @@ namespace MainGame
         [Header("Quest steps")]
         [SerializeField] private GameObject[] _questSteps;
         [Header("Quest rewards")]
-        [SerializeField] private SpellBase _abilityUnlockReward;
+        [SerializeField] private SpellData _abilityUnlockReward;
         // [SerializeField] private int _experienceReward;
         // [SerializeField] private int _goldReward;
         
@@ -25,7 +25,7 @@ namespace MainGame
         // public string QuestDescription => _questDescription;
         public QuestInfo[] QuestPrerequisites => _questPrerequisites;
         public GameObject[] QuestSteps => _questSteps;
-        public SpellBase AbilityUnlockReward => _abilityUnlockReward;
+        public SpellData AbilityUnlockReward => _abilityUnlockReward;
         // public int ExperienceReward => _experienceReward;
         // public int GoldReward => _goldReward;
 

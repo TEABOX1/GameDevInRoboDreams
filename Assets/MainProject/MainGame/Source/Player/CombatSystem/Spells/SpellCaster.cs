@@ -8,17 +8,19 @@ namespace MainGame
     public class SpellCaster : MonoServiceBase
     {
         public override Type Type { get; } = typeof(SpellCaster);
-
+        [Header("Spell Info")]
         [SerializeField] private SpellDamageDealer _spellDamageDealer;
         [SerializeField] private SpellData _spellData;
         [SerializeField] private Transform _spawnPoint;
-        [SerializeField] private float _aimSpeed;
-        
+        [SerializeField] private LayerMask _layerMask;
+        [Header("Camera Settings")]
         [SerializeField] private CinemachineMixingCamera _mixingCamera;
         [SerializeField] private GameObject _crosshair;
         [SerializeField] private Camera _camera;
+        [SerializeField] private float _aimSpeed;
 
         private InputController _inputController;
+        private SpellInventory _spellInventory;
         private float _lastCastTime = -Mathf.Infinity;
         
         private bool _isOnCooldown = false;
@@ -32,6 +34,9 @@ namespace MainGame
         {
             _inputController = ServiceLocator.Instance.GetService<InputController>();
             _inputController.OnSecondaryInput += CastSpell;
+
+            _spellInventory = ServiceLocator.Instance.GetService<SpellInventory>();
+            _spellInventory.OnSpellUnlocked += SpellSetHandler;
             
             _crosshair.SetActive(false);
         }
@@ -46,6 +51,8 @@ namespace MainGame
 
         private void CastSpell(bool performed)
         {
+            if(!_spellData) return;
+            
             if (performed)
             {
                 if (Time.time < _lastCastTime + _spellData.CooldownTime)
@@ -79,7 +86,7 @@ namespace MainGame
                 Vector3 direction = _camera.transform.forward;
                 
                 if (Physics.Raycast(_camera.transform.position, _camera.transform.forward, 
-                        out RaycastHit hit, 100f))
+                        out RaycastHit hit, 100f, _layerMask, QueryTriggerInteraction.Ignore))
                 {
                     direction = (hit.point - _spawnPoint.position).normalized;
                 }
@@ -90,6 +97,17 @@ namespace MainGame
                 _lastCastTime = Time.time;
                 _isOnCooldown = true;
             }
+        }
+
+        private void SpellSetHandler(SpellData spellData)
+        {
+            if(_spellInventory.HasSpell(spellData))
+                SetSpell(spellData);
+        }
+        
+        public void SetSpell(SpellData newSpell)
+        {
+            _spellData = newSpell;
         }
     }
 }

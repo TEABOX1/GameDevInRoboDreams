@@ -17,4 +17,4 @@ MonoBehaviour:
   _questPrerequisites: []
   _questSteps:
   - {fileID: 3439359978997416817, guid: 1639c568275c9d34f87d26e48a726eac, type: 3}
-  _abilityUnlockReward: {fileID: 3493161079590357793, guid: 23b3ffbf83fcfe74583909b7502eb7f1, type: 3}
+  _abilityUnlockReward: {fileID: 11400000, guid: 9f35f6398c779f84680f5354df6afbf9, type: 2}

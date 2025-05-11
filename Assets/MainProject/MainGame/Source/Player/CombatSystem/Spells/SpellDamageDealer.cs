@@ -14,6 +14,12 @@ namespace MainGame
 
             _spellData = ServiceLocator.Instance.GetService<SpellCaster>().SpellData;
             _enemyService = ServiceLocator.Instance.GetService<EnemyService>();
+            ServiceLocator.Instance.GetService<SpellInventory>().OnSpellUnlocked += SpellSetHandler;
+        }
+
+        private void SpellSetHandler(SpellData spellData)
+        {
+            _spellData = spellData;
         }
         
         public void DealSpellDamage(Vector3 center)
