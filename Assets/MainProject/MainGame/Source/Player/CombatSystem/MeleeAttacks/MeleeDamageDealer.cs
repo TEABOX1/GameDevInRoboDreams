@@ -1,3 +1,4 @@
+using GlobalSource;
 using UnityEngine;
 
 namespace MainGame
@@ -16,6 +17,8 @@ namespace MainGame
         private int _damage;
         private float _criticalDamage;
         
+        private AnimationEventsController _animationEventsController;
+        
         protected override void Start()
         {
             base.Start();
@@ -26,6 +29,10 @@ namespace MainGame
             _weaponTrigger.OnHit += HitHandler;
             
             _weaponTrigger.WeaponCollider.enabled = false;
+
+            _animationEventsController = ServiceLocator.Instance.GetService<AnimationEventsController>();
+            _animationEventsController.OnStartDealDamage += StartDealDamageHandler;
+            _animationEventsController.OnStopDealDamage += StopDealDamageHandler;
         }
 
         // private void Update()
@@ -45,23 +52,19 @@ namespace MainGame
         //     _hasDealtDamage.Add(hit.collider);
         // }
         
-        //TODO: Add animation events
-        public void StartDealDamage()
+        private void StartDealDamageHandler()
         {
             _canDealDamage = true;
             _hasDealtDamage.Clear();
             
-            //TODO: Uncomment after adding animation event
-            // _weaponTrigger.WeaponCollider.enabled = true;
+            _weaponTrigger.WeaponCollider.enabled = true;
         }
         
-        //TODO: Add animation events
-        public void StopDealDamage()
+        private void StopDealDamageHandler()
         {
             _canDealDamage = false;
             
-            //TODO: Uncomment after adding animation event
-            // _weaponTrigger.WeaponCollider.enabled = false;
+             _weaponTrigger.WeaponCollider.enabled = false;
         }
 
         // private void OnDrawGizmos()
@@ -73,7 +76,7 @@ namespace MainGame
         private void HitHandler(Collider enemyCollider)
         {
             //TODO: Uncomment after adding animation event?
-            // if (!_canDealDamage) return;
+            if (!_canDealDamage) return;
 
             if (!_healthService.GetHealth(enemyCollider, out IHealth health)) return;
             if (_hasDealtDamage.Contains(health)) return;

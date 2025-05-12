@@ -11,8 +11,13 @@ namespace MainGame
         private Vector3 _velocity;
         
         private readonly float _rollSpeed;
-        private readonly float _drag;
-        private float _stopThreshold = 0.1f;
+        // private readonly float _drag;
+        private readonly AnimationCurve _rollCurve;
+        
+        private Vector3 _startVelocity;
+        private float _elapsedTime;
+        private float _rollDuration;
+        // private float _stopThreshold = 0.1f;
         
         private InputController _inputController;
         
@@ -21,23 +26,33 @@ namespace MainGame
             byte stateId,
             CharacterController characterController,
             float rollSpeed,
-            float drag) : base(stateMachine, stateId)
+            /*float drag,*/
+            AnimationCurve rollCurve) : base(stateMachine, stateId)
         {
             _characterController = characterController;
             _rollSpeed = rollSpeed;
-            _drag = drag;
+            // _drag = drag;
+            _rollCurve = rollCurve;
 
             conditions = new List<IStateCondition>
             {
                 new BaseCondition((byte)PlayerControllerState.Idle, RollComplete)
             };
             
-            _inputController = ServiceLocator.Instance.GetService<InputController>();
+            if (_rollCurve.length > 0)
+            {
+                _rollDuration = _rollCurve[_rollCurve.length - 1].time;
+            }
+            else
+            {
+                _rollDuration = 1f;
+            }
         }
         
         public override void Enter()
         {
-            //TODO: Add cooldown or lock default input action map after testing with animations
+            _elapsedTime = 0f;
+            
             Vector3 direction = _characterController.velocity.normalized;
             
             if (direction == Vector3.zero)
@@ -45,14 +60,19 @@ namespace MainGame
                 direction = _characterController.transform.forward;
             }
 
-            _velocity = direction * _rollSpeed;
+            _startVelocity = direction * _rollSpeed;
             
-            // _inputController.DefaulMapLock();
+            // _velocity = direction * _rollSpeed;
+            _inputController = ServiceLocator.Instance.GetService<InputController>();
+            _inputController.DefaulMapLock();
         }
         
         protected override void OnUpdate(float deltaTime)
         {
-            _velocity = Vector3.Lerp(_velocity, Vector3.zero, _drag * deltaTime);
+            _elapsedTime += deltaTime;
+            float curveValue = _rollCurve.Evaluate(_elapsedTime);
+            _velocity = _startVelocity * curveValue;
+            // _velocity = Vector3.Lerp(_velocity, Vector3.zero, _drag * deltaTime);
             
             _ = _characterController.Move(_velocity * deltaTime);
         }
@@ -63,12 +83,13 @@ namespace MainGame
 
         public override void Exit()
         {
-            // _inputController.DefaultMapUnlock();
+            _inputController.DefaultMapUnlock();
         }
         
         private bool RollComplete()
         {
-            return _velocity.magnitude <= _stopThreshold;
+            // return _velocity.magnitude <= _stopThreshold;
+            return _elapsedTime >= _rollDuration;
         }
     }
 }
