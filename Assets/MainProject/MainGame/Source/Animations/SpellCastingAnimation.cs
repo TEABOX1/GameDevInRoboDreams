@@ -59,7 +59,6 @@ namespace MainGame
             {
                 _sword.SetActive(false);
                 _animator.CrossFadeInFixedTime(_magicAttackCastingId, _crossFadeTime, 1);
-                _animator.SetLayerWeight(1, 1f);
             }
             else
                 StartCoroutine(LockRoutine());
@@ -81,7 +80,6 @@ namespace MainGame
             _inputController.DefaultMapUnlock();
             _animator.CrossFadeInFixedTime(_idleId, _crossFadeTime);
             _sword.SetActive(true);
-            _animator.SetLayerWeight(1, 0f);
         }
 
         private void LocomotionStateHandler(PlayerControllerState state)
