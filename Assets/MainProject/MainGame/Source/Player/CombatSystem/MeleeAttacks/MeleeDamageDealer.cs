@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 namespace MainGame
@@ -20,7 +19,7 @@ namespace MainGame
         protected override void Start()
         {
             base.Start();
-
+            
             _damage = _weaponData.Damage;
             _criticalDamage = _weaponData.CriticalDamage;
 
@@ -37,7 +36,6 @@ namespace MainGame
         //     if (!Physics.Raycast(_weapon.position, _weapon.up,
         //             out var hit, _weaponData.WeaponLenght, _layerMask)) return;
         //     
-        //     //TODO: Change to health
         //     if (_hasDealtDamage.Contains(hit.collider)) return;
         //
         //     Debug.Log(_meleeAttack.NumberOfAttacks < 3
@@ -66,11 +64,11 @@ namespace MainGame
             // _weaponTrigger.WeaponCollider.enabled = false;
         }
 
-        private void OnDrawGizmos()
-        {
-            Gizmos.color = Color.blue;
-            Gizmos.DrawLine(_weapon.position, _weapon.position + _weapon.up * _weaponData.WeaponLenght);
-        }
+        // private void OnDrawGizmos()
+        // {
+        //     Gizmos.color = Color.blue;
+        //     Gizmos.DrawLine(_weapon.position, _weapon.position + _weapon.up * _weaponData.WeaponLenght);
+        // }
 
         private void HitHandler(Collider enemyCollider)
         {
@@ -88,7 +86,7 @@ namespace MainGame
                 health.TakeDamage((int)_criticalDamage);
             else
                 health.TakeDamage(_damage);
-
+                
             _hasDealtDamage.Add(health);
         }
     }
