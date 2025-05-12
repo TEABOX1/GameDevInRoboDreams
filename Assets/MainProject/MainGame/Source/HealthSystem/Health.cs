@@ -53,7 +53,9 @@ namespace MainGame
         public void TakeDamage(int damage)
         {
             if (!IsAlive) return;
+            Debug.Log($"Take damage ({damage})");
             SetHealth(HealthValue - damage);
+            Debug.Log($"Remaining health = {HealthValue}");
         }
 
         public void Heal(int heal)

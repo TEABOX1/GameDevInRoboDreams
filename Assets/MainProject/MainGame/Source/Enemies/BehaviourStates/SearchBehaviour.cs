@@ -2,7 +2,6 @@ using GlobalSource;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using static MainGame.EnemyController;
 
 namespace MainGame
 {
@@ -21,8 +20,8 @@ namespace MainGame
             _characterController = enemyController.CharacterController;
             _characterTransform = enemyController.CharacterTransform;
 
-            _chaseSpeed = enemyController.ChaseSpeed;
-            _lookAroundDistance = enemyController.LookAroundDistance;
+            _chaseSpeed = enemyController.Data.ChaseSpeed;
+            _lookAroundDistance = enemyController.Data.LookAroundDistance;
         }
 
         public override void Enter()
@@ -34,7 +33,7 @@ namespace MainGame
             _agent.stoppingDistance = 0f;
 
             enemyController.NavMeshAgent.speed = _chaseSpeed;
-            enemyController.NavMeshAgent.SetDestination(enemyController.Playerdar.LastTargetPosition);
+            enemyController.NavMeshAgent.SetDestination(enemyController.PlayerRadar.LastTargetPosition);
 
             conditions = new List<IStateCondition>
                 { new BaseCondition((byte)EnemyBehaviour.Deciding, ArrivedCondition) };
@@ -62,7 +61,7 @@ namespace MainGame
 
             if (_agent.remainingDistance <= _lookAroundDistance)
             {
-                enemyController.Playerdar.LookAround();
+                enemyController.PlayerRadar.LookAround();
             }
         }
 

@@ -2,9 +2,10 @@ using UnityEngine;
 
 namespace MainGame
 {
-    public interface IPlayerdar
+    public interface IPlayerRadar
     {
-        //TargetableBase CurrentTarget { get; } // Потрібно створити скрипт TargetableBase
+        Transform CurrentTarget { get; }
+        IPlayerService PlayerService { get; }
         bool HasTarget { get; }
         bool SeesTarget { get; }
         Vector3 LastTargetPosition { get; }

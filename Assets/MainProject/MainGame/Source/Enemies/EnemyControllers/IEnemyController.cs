@@ -6,19 +6,19 @@ namespace MainGame
     public interface IEnemyController
     {
         float PatrolStamina { get; set; }
+        EnemyData Data { get; }
+        EnemyAttack EnemyAttack { get; }
         NavMeshAgent NavMeshAgent { get; }
         CharacterController CharacterController { get; }
         Transform CharacterTransform { get; }
         IHealth Health { get; }
-        IPlayerdar Playerdar { get; }
+        IPlayerRadar PlayerRadar { get; }
         INavPointProvider NavPointProvider { get; }
-
-        Vector2 IdleDuration { get; }
-        float PatrolSpeed { get; }
-        float ChaseSpeed { get; }
-        float LookAroundDistance { get; }
 
         void ComputeBehaviour();
         void RestorePatrolStamina();
+
+        //void Initialize(INavPointProvider navPointProvider);
+        //void ResetEnemy();
     }
 }

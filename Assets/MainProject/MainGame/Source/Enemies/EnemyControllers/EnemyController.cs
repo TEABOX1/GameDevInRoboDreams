@@ -8,59 +8,38 @@ namespace MainGame
 {
     public class EnemyController : MonoBehaviour, IEnemyController
     {
-        public enum EnemyBehaviour
-        {
-            Deciding = 0,
-            Idle = 1,
-            Patrol = 2,
-            Attack = 3,
-            Search = 4,
-            Death = 5,
-
-            NullState = 255
-        }
-
         public event Action<EnemyBehaviour> OnBehaviourChanged;
 
+        [SerializeField] protected EnemyData _data;
+        [SerializeField] protected EnemyAttack _attackController;
         [SerializeField] protected NavMeshAgent _navMeshAgent;
-        [SerializeField] private CharacterController _characterController;
-        [SerializeField] private Transform _characterTransform;
-        [SerializeField] private Health _health;
-        [SerializeField] private Playerdar _playerdar;
+        [SerializeField] protected CharacterController _characterController;
+        [SerializeField] protected Transform _characterTransform;
+        [SerializeField] protected Health _health;
+        [SerializeField] protected PlayerRadar _playerRadar;
 
-        [Header("Enemy Data")]
-        [SerializeField] private Vector2 _idleDuration;
-        [SerializeField] private float _maxPatrolStamina;
-        [SerializeField] private float _patrolSpeed;
-        [SerializeField] private float _chaseSpeed;
-        [SerializeField] private float _lookAroundDistance;
-
-
-        private INavPointProvider _navPointProvider;
+        protected INavPointProvider _navPointProvider;
 
         protected BehaviourTree _behaviourTree;
         protected StateMachine _behaviourMachine;
 
-        private EnemyBehaviour _currentBehaviour;
-        private float _patrolStamina;
+        protected EnemyBehaviour _currentBehaviour;
+        protected float _patrolStamina;
 
         public float PatrolStamina
         {
             get => _patrolStamina;
-            set { _patrolStamina = Mathf.Clamp(value, 0, _maxPatrolStamina); }
+            set { _patrolStamina = Mathf.Clamp(value, 0, _data.MaxPatrolStamina); }
         }
 
+        public EnemyData Data => _data;
+        public EnemyAttack EnemyAttack => _attackController;
         public NavMeshAgent NavMeshAgent => _navMeshAgent;
         public CharacterController CharacterController => _characterController;
         public Transform CharacterTransform => _characterTransform;
         public IHealth Health => _health;
-        public IPlayerdar Playerdar => _playerdar;
+        public IPlayerRadar PlayerRadar => _playerRadar;
         public INavPointProvider NavPointProvider => _navPointProvider;
-
-        public Vector2 IdleDuration => _idleDuration;
-        public float PatrolSpeed => _patrolSpeed;
-        public float ChaseSpeed => _chaseSpeed;
-        public float LookAroundDistance => _lookAroundDistance;
 
         private void Awake()
         {
@@ -115,7 +94,7 @@ namespace MainGame
             ComputeBehaviour();
         }
 
-        private void FixedUpdate()
+        protected void FixedUpdate()
         {
             _behaviourMachine.Update(Time.fixedDeltaTime);
         }
@@ -123,8 +102,38 @@ namespace MainGame
         protected void StateChangeHandler(byte stateId)
         {
             _currentBehaviour = (EnemyBehaviour)stateId;
+            Debug.Log($"State Change! Current State = {_currentBehaviour}");
+            if (_navPointProvider != null)
+                Debug.Log($"Current NavPoinProvider: {_navPointProvider}");
+
             OnBehaviourChanged?.Invoke(_currentBehaviour);
         }
+
+        public void Initialize(INavPointProvider navPointProvider)
+        {
+            Debug.Log($"Enemy Initialize: {navPointProvider}");
+            _navPointProvider = navPointProvider;
+           
+            if (navPointProvider != null )
+                Debug.Log($"Initialize: {_navPointProvider}");
+            else Debug.Log($"Initialize: _navPointProvider == null");
+        }
+
+        /*public void ResetEnemy()
+        {
+            InitStateMachine();
+            _behaviourMachine.OnStateChange += StateChangeHandler;
+            InitBehaviourTree();
+            _behaviourMachine.ForceState((byte)EnemyBehaviour.Deciding);
+
+            _health.SetHealth(_health.MaxHealthValue);
+
+            _navMeshAgent.enabled = true;
+            _navMeshAgent.ResetPath();
+            _navMeshAgent.isStopped = false;
+
+            PatrolStamina = _data.MaxPatrolStamina;
+        }*/
 
         public void ComputeBehaviour()
         {
@@ -135,7 +144,7 @@ namespace MainGame
 
         public void RestorePatrolStamina()
         {
-            _patrolStamina = _maxPatrolStamina;
+            _patrolStamina = _data.MaxPatrolStamina;
         }
 
         protected bool PatrolStaminaCondition()
@@ -145,15 +154,15 @@ namespace MainGame
 
         protected bool HasTargetCondition()
         {
-            return _playerdar.HasTarget;
+            return _playerRadar.HasTarget;
         }
 
         protected bool SeesTargetCondition()
         {
-            return _playerdar.SeesTarget;
+            return _playerRadar.SeesTarget;
         }
 
-        protected void HealthDeathHandler()
+        protected virtual void HealthDeathHandler()
         {
             _behaviourTree = null;
             _behaviourMachine.ForceState((byte)EnemyBehaviour.Death);

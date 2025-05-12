@@ -1,7 +1,6 @@
 using GlobalSource;
 using System.Collections.Generic;
 using UnityEngine;
-using static MainGame.EnemyController;
 
 namespace MainGame
 {
@@ -14,7 +13,7 @@ namespace MainGame
 
         public IdleBehaviour(StateMachine stateMachine, byte stateId, IEnemyController enemyController) : base(stateMachine, stateId, enemyController)
         {
-            _durationBounds = enemyController.IdleDuration;
+            _durationBounds = enemyController.Data.IdleDuration;
         }
 
         public override void Enter()
