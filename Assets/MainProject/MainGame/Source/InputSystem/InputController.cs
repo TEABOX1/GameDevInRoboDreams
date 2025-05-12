@@ -139,7 +139,7 @@ namespace MainGame
         public void CursorEnable()
         {
             Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.None;
+            Cursor.lockState = CursorLockMode.Confined;
         }
 
         public void CursorDisable()
@@ -156,12 +156,12 @@ namespace MainGame
         public void UIMapLock()
         {
             _uiActionMap.Disable();
-            CursorEnable();
         }
 
         public void DefaultMapUnlock()
         {
             _defaultActionMap.Enable();
+            CursorDisable();
         }
 
         public void UIMapUnlock()

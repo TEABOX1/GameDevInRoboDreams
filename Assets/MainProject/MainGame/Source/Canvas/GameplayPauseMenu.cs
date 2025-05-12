@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using GlobalSource;
 using MainMenu;
 using Boot;
+using UnityEngine.InputSystem.XInput;
 
 namespace MainGame
 {
@@ -49,6 +50,16 @@ namespace MainGame
                     return;
                 _mainCanvas.enabled = value;
                 ServiceLocator.Instance.GetService<IGameStateProvider>()?.SetGameState(value ? GameState.Paused : GameState.Gameplay);
+                if (_mainCanvas.enabled)
+                {
+                    _inputController.DefaulMapLock();
+                    _inputController.CursorEnable();
+                }
+                else
+                {
+                    _inputController.DefaultMapUnlock();
+                    _inputController.CursorDisable();
+                }
             }
         }
         

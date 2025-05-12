@@ -21,6 +21,10 @@ namespace MainGame
         [SerializeField] private float _crossFadeTime;
         [SerializeField] private float _dampTime;
 
+        [SerializeField] private AnimationClip _clip1;
+        [SerializeField] private AnimationClip _clip2;
+        [SerializeField] private AnimationClip _clip3;
+
 
         [SerializeField] private float _firstLockDuration;
         [SerializeField] private float _secondLockDuration;
@@ -50,6 +54,10 @@ namespace MainGame
             //_compositeHealth.OnDeath += PlayerDeathHandler;
             
             _lockDelay = new WaitForSeconds(_firstLockDuration);
+
+            //_firstLockDuration = _clip1.length;
+            //_secondLockDuration = _clip2.length;
+            //_thirdLockDuration = _clip3.length;
 
             _meeleAttack1Id = Animator.StringToHash(_meeleAttack1Name);
             _meeleAttack2Id = Animator.StringToHash(_meeleAttack2Name);

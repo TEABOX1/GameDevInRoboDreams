@@ -5,6 +5,7 @@ namespace MainGame.Fireball
     public class Fireball : SpellBase
     {
         [SerializeField] Rigidbody _rigidbody;
+        [SerializeField] ParticleSystem particleSystem;
         
         private Vector3 _direction;
         private float _speed;
@@ -20,6 +21,7 @@ namespace MainGame.Fireball
             // _speed = speed;
             _rigidbody.velocity = direction.normalized * speed;
             _damageDealer = damageDealer;
+            particleSystem.Play();
 
             Destroy(gameObject, _lifeTime);
         }
