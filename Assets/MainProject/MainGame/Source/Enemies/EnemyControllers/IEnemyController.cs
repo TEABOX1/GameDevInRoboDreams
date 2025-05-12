@@ -17,5 +17,8 @@ namespace MainGame
 
         void ComputeBehaviour();
         void RestorePatrolStamina();
+
+        //void Initialize(INavPointProvider navPointProvider);
+        //void ResetEnemy();
     }
 }

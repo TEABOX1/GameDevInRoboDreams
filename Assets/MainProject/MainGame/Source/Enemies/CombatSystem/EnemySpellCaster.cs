@@ -10,9 +10,10 @@ namespace MainGame
 
         public EnemySpellData EnemySpellData => _spellData;
 
-        public void CastSpell(Transform targetTransform)
+        public void CastSpell(Vector3 targetTransform)
         {
-            Vector3 direction = (targetTransform.position - _castPoint.position).normalized;
+            Debug.Log("Necro Cast Spell");
+            Vector3 direction = (targetTransform - _castPoint.position).normalized;
             EnemySpellBase spell = Instantiate(_spellData.SpellPrefab, _castPoint.position, _castPoint.rotation);
             spell.Initialize(direction, _spellData.Speed, _spellDamageDealer);
         }

@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 201603519176364419}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.2, y: 0, z: 0}
+  m_LocalPosition: {x: 2.5, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -163,7 +163,7 @@ Transform:
   m_GameObject: {fileID: 1775940703286022773}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 1.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -299,7 +299,7 @@ Transform:
   m_GameObject: {fileID: 3654010844589530524}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.2, y: 0, z: 0}
+  m_LocalPosition: {x: -2.5, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -331,7 +331,7 @@ Transform:
   m_GameObject: {fileID: 3705693114517887056}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1.8}
+  m_LocalPosition: {x: 0, y: 0, z: 2.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -356,9 +356,9 @@ MonoBehaviour:
   - {fileID: 7740203915653671919}
   - {fileID: 2269338043430215294}
   - {fileID: 3515950057228190331}
-  _spawnCooldown: 30
+  _spawnCooldown: 15
   _fightArea: {fileID: 0}
-  _enemyPool: {fileID: 0}
+  _enemyController: {fileID: 2308772289528369156, guid: e553ec1c3a186494bb188bda2c26f7fd, type: 3}
 --- !u!1 &3965452640081501044
 GameObject:
   m_ObjectHideFlags: 0
@@ -511,7 +511,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemyController: {fileID: 3890585197881672342}
   _range: 30
-  _angle: 60
+  _angle: 180
   _layerMask:
     serializedVersion: 2
     m_Bits: 9
@@ -540,7 +540,7 @@ Transform:
   m_GameObject: {fileID: 5044110388388769437}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 1.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -795,5 +795,5 @@ MonoBehaviour:
   _playerRadar: {fileID: 1064297525599271456}
   _spiderSpawnSpell: {fileID: 4292784506337875168}
   _enemySpellCaster: {fileID: 5307108508754322712}
-  _switchToMeleeDistance: 2
-  _switchToRangedDistance: 4
+  _switchToMeleeDistance: 2.2
+  _switchToRangedDistance: 5

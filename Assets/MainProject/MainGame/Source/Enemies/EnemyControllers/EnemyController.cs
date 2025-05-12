@@ -102,13 +102,38 @@ namespace MainGame
         protected void StateChangeHandler(byte stateId)
         {
             _currentBehaviour = (EnemyBehaviour)stateId;
+            Debug.Log($"State Change! Current State = {_currentBehaviour}");
+            if (_navPointProvider != null)
+                Debug.Log($"Current NavPoinProvider: {_navPointProvider}");
+
             OnBehaviourChanged?.Invoke(_currentBehaviour);
         }
 
         public void Initialize(INavPointProvider navPointProvider)
         {
+            Debug.Log($"Enemy Initialize: {navPointProvider}");
             _navPointProvider = navPointProvider;
+           
+            if (navPointProvider != null )
+                Debug.Log($"Initialize: {_navPointProvider}");
+            else Debug.Log($"Initialize: _navPointProvider == null");
         }
+
+        /*public void ResetEnemy()
+        {
+            InitStateMachine();
+            _behaviourMachine.OnStateChange += StateChangeHandler;
+            InitBehaviourTree();
+            _behaviourMachine.ForceState((byte)EnemyBehaviour.Deciding);
+
+            _health.SetHealth(_health.MaxHealthValue);
+
+            _navMeshAgent.enabled = true;
+            _navMeshAgent.ResetPath();
+            _navMeshAgent.isStopped = false;
+
+            PatrolStamina = _data.MaxPatrolStamina;
+        }*/
 
         public void ComputeBehaviour()
         {

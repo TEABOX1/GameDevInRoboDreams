@@ -1,4 +1,6 @@
 using GlobalSource;
+using UnityEditor;
+using UnityEngine;
 
 namespace MainGame
 {
@@ -6,6 +8,13 @@ namespace MainGame
     {
         public DeathBehaviour(StateMachine stateMachine, byte stateId, IEnemyController enemyController) : base(stateMachine, stateId, enemyController)
         {
+        }
+
+        public override void Enter()
+        {
+            base.Enter();
+            Debug.Log("Enemy dead");
+            // Object.Destroy(enemyController.RootObject);
         }
 
         public override void Dispose()

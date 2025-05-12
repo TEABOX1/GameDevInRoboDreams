@@ -28,8 +28,15 @@ namespace MainGame
         {
             base.Enter();
 
+            Debug.Log("Enter Patrol State");
+
             enemyController.NavMeshAgent.speed = _patrolSpeed;
-            enemyController.NavMeshAgent.SetDestination(_navPointProvider.GetPoint());
+
+            if (enemyController.NavPointProvider == null)
+                Debug.Log("In Patrol: navPointProvider = null");
+            else Debug.Log($"In Patrol:_navPointProvider = {enemyController.NavPointProvider}");
+
+            enemyController.NavMeshAgent.SetDestination(enemyController.NavPointProvider.GetPoint()); // місце ключової проблеми
 
             conditions = new List<IStateCondition>
                 { new BaseCondition((byte)EnemyBehaviour.Deciding, ArrivedCondition) };

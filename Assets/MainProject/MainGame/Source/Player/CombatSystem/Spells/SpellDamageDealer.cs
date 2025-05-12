@@ -30,11 +30,11 @@ namespace MainGame
             {
                 Collider hit = hits[i];
                 
-                if (!_hasDealtDamage.Contains(hit))
+                /*if (!_hasDealtDamage.Contains(hit))
                 {
                     Debug.Log($"Spell dealt damage to {hit.name}");
                     _hasDealtDamage.Add(hit);
-                }
+                }*/
             }
         }
     }

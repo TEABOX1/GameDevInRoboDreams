@@ -25,7 +25,6 @@ namespace MainGame
 
         public event Action<AttackState> OnAttackStateChange;
         public event Action<AttackMode> OnAttackModeChange;
-        public event Action<Collider> OnHit;
 
         private AttackState _currentState;
         public AttackState CurrentState
@@ -87,7 +86,7 @@ namespace MainGame
             base.Enter();
             _attackTimer = 0f;
             _spellTimer = 0f;
-            _spawnTimer = 0f;
+            _spawnTimer = 18f;
 
             _currentMode = AttackMode.Ranged;
             _currentState = AttackState.Attack;
@@ -97,7 +96,7 @@ namespace MainGame
         {
             base.OnUpdate(deltaTime);
 
-            _distance = Vector3.Distance(_targetTransform.position, _characterTransform.position);
+            _distance = Vector3.Distance(enemyController.PlayerRadar.CurrentTarget.position, _characterTransform.position);
             if (_currentMode == AttackMode.Ranged && _distance <= _switchToMeleeDistance)
             {
                 SetAttackMode(AttackMode.Melee);
@@ -126,7 +125,7 @@ namespace MainGame
         {
             UpdateTimers(deltaTime);
 
-            _distance = Vector3.Distance(_targetTransform.position, _characterTransform.position);
+            _distance = Vector3.Distance(enemyController.PlayerRadar.CurrentTarget.position, _characterTransform.position);
 
             if (_distance <= _attackController.AttackData.Distance)
             {
@@ -139,7 +138,7 @@ namespace MainGame
             _agent.isStopped = false;
 
             _agent.stoppingDistance = _attackController.AttackData.Distance;
-            _agent.SetDestination(_targetTransform.position);
+            _agent.SetDestination(enemyController.PlayerRadar.CurrentTarget.position);
 
             Vector3 velocity = _agent.desiredVelocity;
             velocity.y = 0f;
@@ -171,7 +170,7 @@ namespace MainGame
                 //to-do: викликати анімацію атаки
                 _attackController.Attack();
 
-                _distance = Vector3.Distance(_targetTransform.position, _characterTransform.position);
+                _distance = Vector3.Distance(enemyController.PlayerRadar.CurrentTarget.position, _characterTransform.position);
                 _attackTimer = 0f;
 
                 if (_distance > _attackController.AttackData.Distance)
@@ -185,17 +184,18 @@ namespace MainGame
                 if (_spellTimer < _enemySpellCaster.EnemySpellData.CooldownTime && _spawnTimer < _spiderSpawnSpell.SpawnSpellCooldown)
                     return;
 
-                if (_spawnTimer >= _spiderSpawnSpell.SpawnSpellCooldown)
+                if (_spawnTimer >= _spiderSpawnSpell.SpawnSpellCooldown && _spiderSpawnSpell.SpawnSpidersCount == 0) // поки що не працює друга умова - треба змінити на подію
                 {
                     //to-do: викликати анімацію спавну павуків
                     _spiderSpawnSpell.SpawnSpiders();
                     _spawnTimer = 0f;
-                    //return;
                 }
-                else if (_spellTimer >= _enemySpellCaster.EnemySpellData.CooldownTime)
+                
+                if (_spellTimer >= _enemySpellCaster.EnemySpellData.CooldownTime)
                 {
                     //to-do: викликати анімацію касту фаерболу
-                    _enemySpellCaster.CastSpell(_targetTransform);
+                    Vector3 point = enemyController.PlayerRadar.CurrentTarget.position + new Vector3(0f, 0.5f, 0f);
+                    _enemySpellCaster.CastSpell(point);
                     _spellTimer = 0f;
                 }
             }
@@ -218,12 +218,14 @@ namespace MainGame
         protected void ChangeState(AttackState state)
         {
             CurrentState = state;
+            Debug.Log($"Necro Attack State Change! Current State = {CurrentState}");
             OnAttackStateChange?.Invoke(CurrentState);
         }
 
         private void SetAttackMode(AttackMode mode)
         {
             CurrentMode = mode;
+            Debug.Log($"Necro Attack Mode Change! Current State = {CurrentMode}");
             OnAttackModeChange?.Invoke(CurrentMode);
         }
 
@@ -241,8 +243,8 @@ namespace MainGame
         private void UpdateTimers(float deltaTime)
         {
             _attackTimer += deltaTime;
-            _spellTimer += deltaTime;
             _spawnTimer += deltaTime;
+            _spellTimer += deltaTime;
         }
     }
 }

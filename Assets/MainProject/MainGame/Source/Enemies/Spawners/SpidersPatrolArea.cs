@@ -7,7 +7,8 @@ namespace MainGame
     {
         public event Action<int> OnEnemyDeath;
 
-        [SerializeField] private SpidersPool _enemyPool;
+        //[SerializeField] private SpidersPool _enemyPool;
+        [SerializeField] private SpiderEnemyController _enemyController;
 
         protected override void Awake()
         {
@@ -20,7 +21,8 @@ namespace MainGame
         {
             base.SpawnEnemy();
 
-            var spider = _enemyPool.GetEnemy(_hit.position, Quaternion.identity);
+            var spider = Instantiate(_enemyController, _hit.position, Quaternion.identity);
+            //var spider = _enemyPool.GetEnemy(_hit.position, Quaternion.identity);
             spider.Initialize(this);
 
             _healthService.AddCharacter(spider.Health);
@@ -32,9 +34,9 @@ namespace MainGame
         private void EnemyDeathHandler(SpiderEnemyController spider)
         {
             _healthService.RemoveCharacter(spider.Health);
-            _enemyPool.ReturnEnemy(spider);
+            //_enemyPool.ReturnEnemy(spider);
             _enemies.Remove(spider);
-            OnEnemyDeath?.Invoke(_enemyPool.ActiveCount);
+            OnEnemyDeath?.Invoke(EnemyCount);
         }
     }
 }

@@ -63,7 +63,7 @@ namespace MainGame
         {
             enemy.transform.SetPositionAndRotation(position, rotation);
             enemy.gameObject.SetActive(true);
-            enemy.ResetEnemy();
+            //enemy.ResetEnemy();
         }
 
         public void ReturnEnemy(SpiderEnemyController enemy)

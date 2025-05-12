@@ -56,6 +56,12 @@ namespace MainGame
         {
             _transform = transform;
             _playerService = ServiceLocator.Instance.GetService<IPlayerService>();
+
+            if (_playerService == null)
+                Debug.Log("PlayerRadar _playerService = null");
+            if (_playerService.Player.TargetPivot == null)
+                Debug.Log("PlayerRadar _playerService.Player.TargetPivot = null");
+
             _cosine = Mathf.Cos(_angle * Mathf.Deg2Rad);
 
             _enemyController.Health.OnHealthChanged += HealthChangedHandler;
@@ -195,6 +201,7 @@ namespace MainGame
         protected void ChangeState(byte stateId)
         {
             CurrentState = (PlayerdarState)stateId;
+            Debug.Log($"PlayerRadar State Change! Current State = {CurrentState}");
             OnPlayerdarStateChange?.Invoke(CurrentState);
         }
 

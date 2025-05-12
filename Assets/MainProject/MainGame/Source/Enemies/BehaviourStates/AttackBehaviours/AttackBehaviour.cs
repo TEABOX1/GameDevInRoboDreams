@@ -40,6 +40,8 @@ namespace MainGame
 
         public AttackBehaviour(StateMachine stateMachine, byte stateId, IEnemyController enemyController) : base(stateMachine, stateId, enemyController)
         {
+            Debug.Log("Initialize Attack State");
+
             _agent = enemyController.NavMeshAgent;
             _characterController = enemyController.CharacterController;
             _characterTransform = enemyController.CharacterTransform;
@@ -142,6 +144,7 @@ namespace MainGame
         protected void ChangeState(AttackState state)
         {
             CurrentState = state;
+            Debug.Log($"Attack State Change! Current State = {CurrentState}");
             OnAttackStateChange?.Invoke(CurrentState);
         }
 

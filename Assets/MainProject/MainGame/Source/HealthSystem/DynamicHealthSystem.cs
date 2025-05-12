@@ -22,6 +22,7 @@ namespace MainGame
         public void AddCharacter(IHealth character)
         {
             if (character == null || _charactersHealth.ContainsKey(character.Collider)) return;
+            Debug.Log($"1 add health {character.Collider.gameObject.name}");
 
             _charactersHealth.Add(character.Collider, character);
             character.OnDeath += () => CharacterDeathHandler(character);
@@ -33,14 +34,16 @@ namespace MainGame
             _charactersHealth.Remove(character.Collider);
         }
 
-        public bool GetHealth(Collider characterCollider, out Health health)
+        public bool GetHealth(Collider characterCollider, out IHealth health)
         {
-            IHealth dynamicHealth;
+            return _charactersHealth.TryGetValue(characterCollider, out health);
+
+            /*IHealth dynamicHealth;
             _charactersHealth.TryGetValue(characterCollider, out dynamicHealth);
             bool exists = dynamicHealth != null;
             // Important, Liskov principle broken here
             health = exists ? (Health)dynamicHealth : null;
-            return exists;
+            return exists;*/
         }
             
         private void CharacterDeathHandler(IHealth health)

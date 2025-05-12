@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: SpiderAttack
   m_EditorClassIdentifier: 
   _interval: 1.5
-  _distance: 1
+  _distance: 2
   _damage: 5

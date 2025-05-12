@@ -1,5 +1,6 @@
 using GlobalSource;
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
@@ -13,19 +14,25 @@ namespace MainGame
         public event Action OnQuestCompleted;
         public event Action OnBossDeath;
 
-        [SerializeField] protected Transform _spawnPoint;
-        [SerializeField] protected float _spawnRadius;
-        [SerializeField] protected Vector3 _offset;
+        [SerializeField] private Transform _spawnPoint;
+        [SerializeField] private float _spawnRadius;
+        [SerializeField] private Vector3 _offset;
 
-        [SerializeField] protected int _spawnCount = 3;
+        [SerializeField] private int _spawnCount = 3;
 
         [SerializeField] private NecroEnemyController _boss;
-        [SerializeField] private SpidersPool _enemyPool;
+        //[SerializeField] private SpidersPool _enemyPool;
+        [SerializeField] private SpiderEnemyController _enemy;
 
-        protected Vector3 _point;
-        protected NavMeshHit _hit;
+        private List<EnemyController> _enemies = new();
 
-        protected IHealthService _healthService;
+
+        private Vector3 _point;
+        private NavMeshHit _hit;
+
+        private IHealthService _healthService;
+
+        public int EnemyCount => _enemies.Count;
 
         private void Awake()
         {
@@ -38,25 +45,25 @@ namespace MainGame
         private void OnEnable()
         {
             _healthService = ServiceLocator.Instance.GetService<IHealthService>();
-            SpawnSpiders(_spawnCount);
+            SpawnEnemies(_spawnCount);
         }
 
         private void Update()
         {
-            if (_enemyPool.ActiveCount == 0)
+            if (EnemyCount == 0)
             {
                 OnQuestCompleted?.Invoke();
                 SpawnBoss();
             }
         }
 
-        private void SpawnSpiders(int count)
+        private void SpawnEnemies(int count)
         {
             for (int i = 0; i < count; ++i)
-                SpawnSpider();
+                SpawnEnemy();
         }
 
-        private void SpawnSpider()
+        private void SpawnEnemy()
         {
             GetPointInternal();
 
@@ -72,11 +79,14 @@ namespace MainGame
                 }
             }
 
-            var enemy = _enemyPool.GetEnemy(_hit.position, Quaternion.identity);
+            var enemy = Instantiate(_enemy, _hit.position, Quaternion.identity);
+            //var enemy = _enemyPool.GetEnemy(_hit.position, Quaternion.identity);
             enemy.Initialize(this);
 
             _healthService.AddCharacter(enemy.Health);
             enemy.Health.OnDeath += () => EnemyDeathHandler(enemy);
+
+            _enemies.Add(enemy);
         }
 
         private void SpawnBoss()
@@ -131,8 +141,9 @@ namespace MainGame
         private void EnemyDeathHandler(SpiderEnemyController enemy)
         {
             _healthService.RemoveCharacter(enemy.Health);
-            _enemyPool.ReturnEnemy(enemy);
-            OnEnemyDeath?.Invoke(_enemyPool.ActiveCount);
+            //_enemyPool.ReturnEnemy(enemy);
+            _enemies.Remove(enemy);
+            OnEnemyDeath?.Invoke(EnemyCount);
         }
 
         private void BossDeathHandler()

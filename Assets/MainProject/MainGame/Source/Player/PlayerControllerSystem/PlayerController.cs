@@ -15,6 +15,7 @@ namespace MainGame
         [SerializeField] private float _drag;
         [SerializeField] private Vector2 _jumpSpeed;
         [SerializeField] private float _rollSpeed;
+        [SerializeField] private Health _health;
 
         private StateMachine _stateMachine;
 
@@ -26,6 +27,7 @@ namespace MainGame
         
         private void Start()
         {
+            ServiceLocator.Instance.GetService<IHealthService>().AddCharacter(_health);
             _stateMachine = new StateMachine();
             
             _stateMachine.AddState((byte)PlayerControllerState.Idle,

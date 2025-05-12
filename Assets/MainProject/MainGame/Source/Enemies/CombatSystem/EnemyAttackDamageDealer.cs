@@ -6,7 +6,7 @@ namespace MainGame
 {
     public class EnemyAttackDamageDealer : MonoBehaviour
     {
-        public event Action<int> OnHit;
+        //public event Action OnHit;
 
         [SerializeField] private EnemyAttack _enemyAttack;
 
@@ -20,9 +20,9 @@ namespace MainGame
 
         private void HitHandler(Collider collider)
         {
-            if (_healthService.GetHealth(collider, out Health health))
+            if (_healthService.GetHealth(collider, out IHealth health))
                 health.TakeDamage(_enemyAttack.AttackData.Damage);
-            OnHit?.Invoke(health ? 1 : 0);
+            //OnHit?.Invoke();
         }
     }
 }

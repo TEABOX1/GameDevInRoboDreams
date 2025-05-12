@@ -13,6 +13,7 @@ namespace MainGame
         public EnemyAttackData AttackData => _attackData;
         public void Attack()
         {
+            Debug.Log("Enemy Attack");
             if (Physics.Raycast(_attackPoint.position, _attackPoint.forward, out RaycastHit hitInfo, _attackData.Distance))
             {
                 OnHit?.Invoke(hitInfo.collider);

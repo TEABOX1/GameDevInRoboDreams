@@ -74,7 +74,7 @@ namespace MainGame
         private void ApproachUpdate(float deltaTime)
         {
             _time += deltaTime;
-            _distance = Vector3.Distance(_targetTransform.position, _characterTransform.position);
+            _distance = Vector3.Distance(enemyController.PlayerRadar.CurrentTarget.position, _characterTransform.position);
 
             if (_distance <= _attackController.AttackData.Distance)
             {
@@ -86,8 +86,8 @@ namespace MainGame
 
             _agent.isStopped = false;
 
-            _agent.stoppingDistance = _attackController.AttackData.Distance;
-            _agent.SetDestination(_targetTransform.position);
+            _agent.stoppingDistance = _attackController.AttackData.Distance; // change
+            _agent.SetDestination(enemyController.PlayerRadar.CurrentTarget.position);
 
             Vector3 velocity = _agent.desiredVelocity;
             velocity.y = 0f;
@@ -109,6 +109,9 @@ namespace MainGame
 
         private void AttackUpdate(float deltaTime)
         {
+            Vector3 movement = _agent.nextPosition - _characterTransform.position; // рекомендація Олександра
+            //_characterController.Move(movement + (Physics.gravity * deltaTime));
+
             _time += deltaTime;
             if (_time < _attackController.AttackData.Interval)
                 return;
@@ -116,7 +119,7 @@ namespace MainGame
             //to-do: викликати анімацію атаки
             _attackController.Attack();
 
-            _distance = Vector3.Distance(_targetTransform.position, _characterTransform.position);
+            _distance = Vector3.Distance(enemyController.PlayerRadar.CurrentTarget.position, _characterTransform.position);
             _time = 0f;
 
             if (_distance > _attackController.AttackData.Distance)
@@ -142,6 +145,7 @@ namespace MainGame
         protected void ChangeState(AttackState state)
         {
             CurrentState = state;
+            Debug.Log($"Spider Attack State Change! Current State = {CurrentState}");
             OnAttackStateChange?.Invoke(CurrentState);
         }
 

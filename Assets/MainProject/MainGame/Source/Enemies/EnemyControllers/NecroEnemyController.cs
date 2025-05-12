@@ -35,10 +35,42 @@ namespace MainGame
                 new DeathBehaviour(_behaviourMachine, (byte)EnemyBehaviour.Death, this));
         }
 
+        protected override void InitBehaviourTree()
+        {
+            BehaviourLeaf idleLeaf = new BehaviourLeaf((byte)EnemyBehaviour.Idle);
+            BehaviourLeaf patrolLeaf = new BehaviourLeaf((byte)EnemyBehaviour.Patrol);
+
+            BehaviourBranch patrolBranch = new BehaviourBranch(patrolLeaf, idleLeaf, PatrolStaminaCondition);
+
+            BehaviourLeaf attackLeaf = new BehaviourLeaf((byte)EnemyBehaviour.Attack);
+            BehaviourLeaf searchLeaf = new BehaviourLeaf((byte)EnemyBehaviour.Search);
+
+            BehaviourBranch failedSearch = new BehaviourBranch(searchLeaf, idleLeaf, HasTargetCondition);
+
+            BehaviourBranch seesTarget = new BehaviourBranch(attackLeaf, searchLeaf, SeesTargetCondition);
+
+            BehaviourBranch hasTarget = new BehaviourBranch(seesTarget, patrolBranch, HasTargetCondition);
+
+            _behaviourTree = new BehaviourTree(hasTarget);
+
+            ComputeBehaviour();
+        }
+
         protected override void HealthDeathHandler()
         {
             base.HealthDeathHandler();
             ServiceLocator.Instance.GetService<IHealthService>().RemoveCharacter(_health);
+        }
+
+        private void OnDrawGizmosSelected()
+        {
+            Gizmos.color = Color.green;
+            Gizmos.DrawWireSphere(transform.position, _switchToMeleeDistance);
+
+            Color rangedColor = Color.green;
+            rangedColor.a = 0.5f;
+            Gizmos.color = rangedColor;
+            Gizmos.DrawWireSphere(transform.position, _switchToRangedDistance);
         }
     }
 }

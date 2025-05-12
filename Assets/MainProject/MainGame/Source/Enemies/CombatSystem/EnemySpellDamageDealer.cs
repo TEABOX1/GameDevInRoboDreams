@@ -22,12 +22,12 @@ namespace MainGame
         {
             Collider[] colliders = Physics.OverlapSphere(center, _spellData.DamageRange, _layerMask);
             
-            HashSet<Health> damagedHealths = new HashSet<Health>();
+            HashSet<IHealth> damagedHealths = new HashSet<IHealth>();
 
             for (int i = 0; i < colliders.Length; i++)
             {
                 Collider collider = colliders[i];
-                if (_healthService.GetHealth(collider, out Health health))
+                if (_healthService.GetHealth(collider, out IHealth health))
                 {
                     if (damagedHealths.Contains(health)) continue;
                     damagedHealths.Add(health);

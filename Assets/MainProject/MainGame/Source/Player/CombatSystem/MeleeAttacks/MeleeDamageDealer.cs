@@ -72,19 +72,24 @@ namespace MainGame
             Gizmos.DrawLine(_weapon.position, _weapon.position + _weapon.up * _weaponData.WeaponLenght);
         }
 
-        private void HitHandler(Collider weaponCollider)
+        private void HitHandler(Collider enemyCollider)
         {
             //TODO: Uncomment after adding animation event?
             // if (!_canDealDamage) return;
-            
-            //TODO: Change to health
-            if (_hasDealtDamage.Contains(weaponCollider)) return;
+
+            if (!_healthService.GetHealth(enemyCollider, out IHealth health)) return;
+            if (_hasDealtDamage.Contains(health)) return;
 
             Debug.Log(_meleeAttack.NumberOfAttacks < 3
-                ?$"{_damage} dealt to {weaponCollider.gameObject.name}"
-                : $"{_criticalDamage} dealt to {weaponCollider.gameObject.name}");
+                ? $"{_damage} dealt to {enemyCollider.gameObject.name}"
+                : $"{_criticalDamage} dealt to {enemyCollider.gameObject.name}");
 
-            _hasDealtDamage.Add(weaponCollider);
+            if (_meleeAttack.NumberOfAttacks >= 3)
+                health.TakeDamage((int)_criticalDamage);
+            else
+                health.TakeDamage(_damage);
+
+            _hasDealtDamage.Add(health);
         }
     }
 }
