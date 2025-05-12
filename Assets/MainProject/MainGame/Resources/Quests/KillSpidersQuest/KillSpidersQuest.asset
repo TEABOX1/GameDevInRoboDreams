@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7fb9366729f4a2f864f9345bb1a896b, type: 3}
+  m_Name: KillSpidersQuest
+  m_EditorClassIdentifier: 
+  _questId: KillSpidersQuest
+  _questName: Kill spiders!
+  _questPrerequisites: []
+  _questSteps:
+  - {fileID: 3439359978997416817, guid: 1639c568275c9d34f87d26e48a726eac, type: 3}
+  _abilityUnlockReward: {fileID: 11400000, guid: 9f35f6398c779f84680f5354df6afbf9, type: 2}

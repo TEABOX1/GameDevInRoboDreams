@@ -7,7 +7,7 @@ namespace Boot
     {
         private const float FIXED_TIMESTEP = 0.02f;
         private const float REGULAR_TIMESCALE = 1f;
-        private const float PAUSE_TIMESCALE = 0.0625f;
+        private const float PAUSE_TIMESCALE = 0f;
         
         public Pause(StateMachine stateMachine, byte stateId, ISceneManager sceneManager, Scenes scene) : base(stateMachine, stateId, sceneManager, scene)
         {
