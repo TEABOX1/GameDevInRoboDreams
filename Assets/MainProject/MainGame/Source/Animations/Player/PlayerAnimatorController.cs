@@ -24,23 +24,29 @@ namespace MainGame
         [SerializeField] private string _landedName;
         [SerializeField] private string _aimName;
 
+        [SerializeField] private string _rollHorizontalName;
+        [SerializeField] private string _rollVerticalName;
+
         private int _idleId;
         private int _movementId;
         private int _jumpId;
         private int _fallId;
         private int _rollId;
-        
+
         private int _horizontalId;
         private int _verticalId;
         private int _landedId;
         private int _aimId;
 
+        private int _rollHorizontalId;
+        private int _rollVerticalId;
+
         private Vector2 _inputValue;
-        
+
         private InputController _inputController;
 
         private bool _isGrounded;
-        
+
         private void Awake()
         {
             _idleId = Animator.StringToHash(_idleName);
@@ -54,10 +60,14 @@ namespace MainGame
             _landedId = Animator.StringToHash(_landedName);
             _aimId = Animator.StringToHash(_aimName);
 
+            _rollHorizontalId = Animator.StringToHash(_rollHorizontalName);
+            _rollVerticalId = Animator.StringToHash(_rollVerticalName);
+
             _playerController.OnStateChanged += LocomotionStateHandler;
-            
+
             _inputController = ServiceLocator.Instance.GetService<InputController>();
             _inputController.OnMovementInput += MoveHandler;
+            _inputController.OnRollInput += RollHandler;
         }
 
         private void LocomotionStateHandler(PlayerControllerState state)
@@ -87,22 +97,28 @@ namespace MainGame
             _animator.SetFloat(_horizontalId, _inputValue.x, _dampTime, Time.deltaTime);
             _animator.SetFloat(_verticalId, _inputValue.y, _dampTime, Time.deltaTime);
 
-            _animator.SetLayerWeight(1, _gunAimer.AimValue);
+            //_animator.SetLayerWeight(1, _gunAimer.AimValue);
             _animator.SetFloat(_aimId, _gunAimer.AimValue);
         }
 
         private void FixedUpdate()
         {
-            /*bool isGrounded = _locomotion.CharacterController.isGrounded;
+            bool isGrounded = _playerController.CharacterController.isGrounded;
 
             if (isGrounded && !_isGrounded)
                 _animator.SetTrigger(_landedId);
-            _isGrounded = isGrounded;*/
+            _isGrounded = isGrounded;
         }
 
         private void MoveHandler(Vector2 moveInput, InputDevice device)
         {
             _inputValue = moveInput;
+        }
+
+        private void RollHandler()
+        {
+            _animator.SetFloat(_rollHorizontalId, _inputValue.x);
+            _animator.SetFloat(_rollVerticalId, _inputValue.y);
         }
     }
 }
