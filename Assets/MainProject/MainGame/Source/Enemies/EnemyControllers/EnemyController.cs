@@ -2,6 +2,7 @@ using GlobalSource;
 using System;
 using UnityEngine;
 using UnityEngine.AI;
+using static UnityEngine.Rendering.DebugUI;
 using Random = UnityEngine.Random;
 
 namespace MainGame
@@ -17,6 +18,16 @@ namespace MainGame
         [SerializeField] protected Transform _characterTransform;
         [SerializeField] protected Health _health;
         [SerializeField] protected PlayerRadar _playerRadar;
+
+        //added for animation test
+        [SerializeField] protected EnemyBehaviour _state;
+
+        [ContextMenu("Force State")]
+        private void ForceState()
+        {
+            _behaviourMachine.SetState((byte)_state);
+        }
+        //End animation test
 
         protected INavPointProvider _navPointProvider;
 

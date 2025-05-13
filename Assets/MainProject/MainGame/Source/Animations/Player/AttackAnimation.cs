@@ -21,11 +21,6 @@ namespace MainGame
         [SerializeField] private float _crossFadeTime;
         [SerializeField] private float _dampTime;
 
-        [SerializeField] private AnimationClip _clip1;
-        [SerializeField] private AnimationClip _clip2;
-        [SerializeField] private AnimationClip _clip3;
-
-
         [SerializeField] private float _firstLockDuration;
         [SerializeField] private float _secondLockDuration;
         [SerializeField] private float _thirdLockDuration;
@@ -39,25 +34,20 @@ namespace MainGame
         float _attackNumber;
 
         private YieldInstruction _lockDelay;
-        //private IInteractable _interactable;
 
         private InputController _inputController;
-        private IHealth _compositeHealth;
+        private IHealth _Health;
         
         private void Start()
         {
             _inputController = ServiceLocator.Instance.GetService<InputController>();
 
-            //_compositeHealth = ServiceLocator.Instance.GetService<IPlayerService>().Player
-            //    .GetComponent<IHealth>();
+            _Health = ServiceLocator.Instance.GetService<IPlayerService>().Player
+                .GetComponent<IHealth>();
 
-            //_compositeHealth.OnDeath += PlayerDeathHandler;
-            
+            _Health.OnDeath += PlayerDeathHandler;
+
             _lockDelay = new WaitForSeconds(_firstLockDuration);
-
-            //_firstLockDuration = _clip1.length;
-            //_secondLockDuration = _clip2.length;
-            //_thirdLockDuration = _clip3.length;
 
             _meeleAttack1Id = Animator.StringToHash(_meeleAttack1Name);
             _meeleAttack2Id = Animator.StringToHash(_meeleAttack2Name);
@@ -99,7 +89,6 @@ namespace MainGame
             
             yield return _lockDelay;
             _inputController.DefaultMapUnlock();
-            //_handsIK.EnableIK();
             _animator.CrossFadeInFixedTime(_idleId, _crossFadeTime);
         }
 
