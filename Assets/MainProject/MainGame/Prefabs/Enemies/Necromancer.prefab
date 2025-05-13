@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2269338043430215294}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Point2
   m_TagString: Untagged
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 1589888476475709710}
   - component: {fileID: 549989172120726536}
   - component: {fileID: 7479696387103594466}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -147,7 +147,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7740203915653671919}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Point1
   m_TagString: Untagged
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
@@ -181,7 +181,7 @@ GameObject:
   - component: {fileID: 8764513102605999074}
   - component: {fileID: 8481326183709426915}
   - component: {fileID: 1377967624186107530}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -283,7 +283,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3515950057228190331}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Point3
   m_TagString: Untagged
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
@@ -315,7 +315,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2103168185123693442}
   - component: {fileID: 4292784506337875168}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SpiderSpawnPoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -371,7 +371,7 @@ GameObject:
   - component: {fileID: 458308094413094284}
   - component: {fileID: 8983427193156718409}
   - component: {fileID: 9109967080661981527}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Skull
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -475,7 +475,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5469677666451664827}
   - component: {fileID: 1064297525599271456}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PlayerRadar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -524,7 +524,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 704442127549160127}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SpellCastPoint
   m_TagString: Untagged
   m_Icon: {fileID: 7148428337604731935, guid: 0000000000000000d000000000000000, type: 0}
@@ -555,7 +555,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3685331569685683361}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: AttackPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -590,7 +590,7 @@ GameObject:
   - component: {fileID: 769384139056132349}
   - component: {fileID: 5307108508754322712}
   - component: {fileID: 4587308245639095802}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Staff
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -629,6 +629,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _attackData: {fileID: 11400000, guid: d12e5177de85dca4eb78b2a126226945, type: 2}
   _attackPoint: {fileID: 3685331569685683361}
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 9
 --- !u!114 &769384139056132349
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -686,7 +689,7 @@ GameObject:
   - component: {fileID: 1634999511675378810}
   - component: {fileID: 9141931415236407984}
   - component: {fileID: 3890585197881672342}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Necromancer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -793,6 +796,7 @@ MonoBehaviour:
   _characterTransform: {fileID: 4209303868582343765}
   _health: {fileID: 9141931415236407984}
   _playerRadar: {fileID: 1064297525599271456}
+  _state: 0
   _spiderSpawnSpell: {fileID: 4292784506337875168}
   _enemySpellCaster: {fileID: 5307108508754322712}
   _switchToMeleeDistance: 2.2

@@ -9,12 +9,13 @@ namespace MainGame
 
         [SerializeField] private EnemyAttackData _attackData;
         [SerializeField] private Transform _attackPoint;
+        [SerializeField] private LayerMask _layerMask;
 
         public EnemyAttackData AttackData => _attackData;
         public void Attack()
         {
             Debug.Log("Enemy Attack");
-            if (Physics.Raycast(_attackPoint.position, _attackPoint.forward, out RaycastHit hitInfo, _attackData.Distance))
+            if (Physics.Raycast(_attackPoint.position, _attackPoint.forward, out RaycastHit hitInfo, _attackData.Distance, _layerMask))
             {
                 OnHit?.Invoke(hitInfo.collider);
             }

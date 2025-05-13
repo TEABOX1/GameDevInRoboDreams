@@ -174,7 +174,7 @@ namespace MainGame
                 if (Vector3.Dot(playerDirection, forward) < _cosine)
                     return false;
             }
-            if (!Physics.Raycast(position, (playerPosition - position).normalized, out RaycastHit hit, _range, _layerMask))
+            if (!Physics.Raycast(position, (playerPosition - position).normalized, out RaycastHit hit, _range, _layerMask, QueryTriggerInteraction.Ignore))
                 return false;
             if (hit.collider != _playerService.Player.CharacterController)
                 return false;
