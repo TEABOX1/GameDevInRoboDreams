@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93fb607df0455af4f861150998bd6fc0, type: 3}
   m_Name: NecroFireball
   m_EditorClassIdentifier: 
-  _spellPrefab: {fileID: 2283355801111002140, guid: 213a87fc02c2db54c9ff995622b1b5a4, type: 3}
+  _spellPrefab: {fileID: 953049045142672827, guid: aec8ffc1f49daa64cb4607747d9dd873, type: 3}
   _speed: 10
   _damage: 20
   _damageRange: 3
