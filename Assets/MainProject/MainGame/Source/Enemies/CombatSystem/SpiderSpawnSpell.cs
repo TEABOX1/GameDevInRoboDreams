@@ -8,6 +8,7 @@ namespace MainGame
 {
     public class SpiderSpawnSpell : MonoBehaviour
     {
+        public event Action OnSpiderSpellCast; //added for animation
         public event Action<int> OnSpiderDeath;
 
         [SerializeField] private List<Transform> _areaPoints = new List<Transform>();
@@ -15,10 +16,19 @@ namespace MainGame
         [SerializeField] private BossFightArea _fightArea;
         //[SerializeField] private SpidersPool _enemyPool;
         [SerializeField] private SpiderEnemyController _enemyController;
+        [SerializeField] private NecroSpellCastAnimation necroSpellAnimation;
 
         private List<Vector3> _spawnPoints = new List<Vector3>();
         private List<EnemyController> _spiders = new List<EnemyController>();
         private IHealthService _healthService;
+
+        //added for animation
+        [ContextMenu("Force spawn Spiders")]
+        private void ForceState()
+        {
+            SpawnSpiders();
+        }
+        //end of animation
 
         public float SpawnSpellCooldown => _spawnCooldown;
         public int SpawnSpidersCount => _spiders.Count;
@@ -27,6 +37,7 @@ namespace MainGame
         {
             GetSpawnPoints();
             _healthService = ServiceLocator.Instance.GetService<IHealthService>();
+            necroSpellAnimation.OnSpiderAnimationFinished += SpawnHandler;
         }
 
         private void GetSpawnPoints()
@@ -53,6 +64,12 @@ namespace MainGame
 
         public void SpawnSpiders()
         {
+            OnSpiderSpellCast?.Invoke(); // added for animation
+            
+        }
+
+        protected void SpawnHandler()
+        {
             Debug.Log("Necro Spawn Spiders");
             for (int i = 0; i < _spawnPoints.Count; i++)
             {
@@ -66,7 +83,7 @@ namespace MainGame
                 spider.Health.OnDeath += () => SpiderDeathHandler(spider);
 
                 _spiders.Add(spider);
-            }  
+            }
         }
 
         private void SpiderDeathHandler(SpiderEnemyController spider)

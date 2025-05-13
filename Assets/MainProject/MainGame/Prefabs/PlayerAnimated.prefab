@@ -1602,8 +1602,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4595964492831888494}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.12278816, y: -0.08192668, z: 0.04189378, w: 0.98815787}
-  m_LocalPosition: {x: 0.4999999, y: 1.0978615, z: -3.7889087}
+  m_LocalRotation: {x: 0.12278817, y: -0.08192669, z: 0.04189378, w: 0.9881579}
+  m_LocalPosition: {x: 0.49999997, y: 1.0978616, z: -3.788909}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1982,7 +1982,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5090633067049699871}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.29251453, y: -0.087956816, z: 0.027030896, w: 0.95182365}
+  m_LocalRotation: {x: 0.29251453, y: -0.08795682, z: 0.027030898, w: 0.95182365}
   m_LocalPosition: {x: 1.6856158, y: 2.6173635, z: -3.3158455}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2813,6 +2813,7 @@ GameObject:
   - component: {fileID: 473629838513023185}
   - component: {fileID: 4023563448562485808}
   - component: {fileID: 1229444994754392549}
+  - component: {fileID: 1781278997804668581}
   m_Layer: 0
   m_Name: RPGHeroPolyart
   m_TagString: Untagged
@@ -2932,6 +2933,26 @@ MonoBehaviour:
   _crossFadeTime: 0.125
   _dampTime: 0.125
   _firstLockDuration: 0.5
+--- !u!114 &1781278997804668581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7269670469910228089}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a645212080385b4699bb41a568a58f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _plaeyrController: {fileID: 7989978997377308321}
+  _health: {fileID: 741573440045913492}
+  _animator: {fileID: 4595346600204768839}
+  _getHitName: GetHit
+  _idleName: Idle
+  _crossFadeTime: 0.125
+  _dampTime: 0.125
+  _lockDuration: 1
 --- !u!1 &7288212054694820696
 GameObject:
   m_ObjectHideFlags: 0

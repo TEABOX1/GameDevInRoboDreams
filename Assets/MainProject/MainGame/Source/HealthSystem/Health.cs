@@ -12,6 +12,12 @@ namespace MainGame
         [SerializeField] private Collider _characterCollider;
         [SerializeField] private int _maxHealth;
 
+        [ContextMenu("Force health")]
+        private void ForceState()
+        {
+            SetHealth(10);
+        }
+
         private int _health;
         private bool _isAlive;
 
