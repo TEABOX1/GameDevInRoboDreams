@@ -689,6 +689,7 @@ GameObject:
   - component: {fileID: 1634999511675378810}
   - component: {fileID: 9141931415236407984}
   - component: {fileID: 3890585197881672342}
+  - component: {fileID: 3220654040933530849}
   m_Layer: 6
   m_Name: Necromancer
   m_TagString: Untagged
@@ -736,7 +737,7 @@ CharacterController:
   serializedVersion: 3
   m_Height: 3
   m_Radius: 0.75
-  m_SlopeLimit: 45
+  m_SlopeLimit: 25
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
@@ -749,11 +750,11 @@ NavMeshAgent:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8484161575490926756}
   m_Enabled: 1
-  m_AgentTypeID: 0
+  m_AgentTypeID: -334000983
   m_Radius: 2
   m_Speed: 3.5
   m_Acceleration: 8
-  avoidancePriority: 50
+  avoidancePriority: 0
   m_AngularSpeed: 120
   m_StoppingDistance: 0.1
   m_AutoTraverseOffMeshLink: 1
@@ -801,3 +802,18 @@ MonoBehaviour:
   _enemySpellCaster: {fileID: 5307108508754322712}
   _switchToMeleeDistance: 2.2
   _switchToRangedDistance: 5
+--- !u!114 &3220654040933530849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8484161575490926756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79c3648f1dc4ffc4092f80135fd7159d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _type: 2
+  _health: {fileID: 9141931415236407984}
+  _enemyController: {fileID: 3890585197881672342}

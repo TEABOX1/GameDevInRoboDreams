@@ -38,6 +38,8 @@ namespace MainGame
 
             enemyController.NavMeshAgent.SetDestination(enemyController.NavPointProvider.GetPoint()); // місце ключової проблеми
 
+            enemyController.Health.Heal(enemyController.Health.MaxHealthValue); // хіл на повернення до патрулювання
+
             conditions = new List<IStateCondition>
                 { new BaseCondition((byte)EnemyBehaviour.Deciding, ArrivedCondition) };
         }

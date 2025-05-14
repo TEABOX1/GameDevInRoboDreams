@@ -50,6 +50,7 @@ namespace MainGame
             }
         }
 
+        private EnemyService _enemyService;
         private readonly NavMeshAgent _agent;
         private readonly CharacterController _characterController;
         private readonly EnemyAttack _attackController;
@@ -87,6 +88,8 @@ namespace MainGame
             _attackTimer = 0f;
             _spellTimer = 0f;
             _spawnTimer = 18f;
+
+            _enemyService = ServiceLocator.Instance.GetService<EnemyService>();
 
             _currentMode = AttackMode.Ranged;
             _currentState = AttackState.Attack;
@@ -184,7 +187,7 @@ namespace MainGame
                 if (_spellTimer < _enemySpellCaster.EnemySpellData.CooldownTime && _spawnTimer < _spiderSpawnSpell.SpawnSpellCooldown)
                     return;
 
-                if (_spawnTimer >= _spiderSpawnSpell.SpawnSpellCooldown && _spiderSpawnSpell.SpawnSpidersCount == 0) // поки що не працює друга умова - треба змінити на подію
+                if (_spawnTimer >= _spiderSpawnSpell.SpawnSpellCooldown && _enemyService.GetEnemiesOfTypeCount(EnemyTypes.Spider) == 0 /*_spiderSpawnSpell.SpawnSpidersCount == 0*/)
                 {
                     //to-do: викликати анімацію спавну павуків
                     _spiderSpawnSpell.SpawnSpiders();

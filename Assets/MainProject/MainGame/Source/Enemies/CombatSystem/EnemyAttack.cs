@@ -15,7 +15,7 @@ namespace MainGame
         public void Attack()
         {
             Debug.Log("Enemy Attack");
-            if (Physics.Raycast(_attackPoint.position, _attackPoint.forward, out RaycastHit hitInfo, _attackData.Distance, _layerMask))
+            if (Physics.Raycast(_attackPoint.position, _attackPoint.forward, out RaycastHit hitInfo, _attackData.Distance, _layerMask, QueryTriggerInteraction.Ignore))
             {
                 OnHit?.Invoke(hitInfo.collider);
             }

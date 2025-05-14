@@ -9,8 +9,8 @@ namespace MainGame
         public event Action<PlayerControllerState> OnStateChanged;
         
         [SerializeField] private CharacterController _characterController;
-        [SerializeField] private Health _health;
-        
+        [SerializeField] private Health _health; //TODO можна прибрати
+
         [Header("PlayerSettings")]
         [SerializeField] private float _speed;
         [SerializeField] private float _drag;
@@ -27,7 +27,7 @@ namespace MainGame
         
         private void Start()
         {
-            ServiceLocator.Instance.GetService<IHealthService>().AddCharacter(_health);
+            ServiceLocator.Instance.GetService<IHealthService>().AddCharacter(_health); //TODO можна прибрати
                 
             _stateMachine = new StateMachine();
             

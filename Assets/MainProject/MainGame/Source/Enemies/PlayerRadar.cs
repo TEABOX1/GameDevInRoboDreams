@@ -120,6 +120,7 @@ namespace MainGame
         public void LookAround()
         {
             OnLookAround?.Invoke();
+            Debug.Log("Enemy Look Around");
 
             if (_hasTarget)
             {
@@ -158,6 +159,12 @@ namespace MainGame
 
         private bool CheckTarget(Transform targetable, bool useFov = true)
         {
+            // Перевірка чи існує Transform і чи активний його GameObject
+            if (targetable == null || !targetable.gameObject.activeInHierarchy)
+            {
+                return false;
+            }
+
             Vector3 position = _transform.position;
             Vector3 playerPosition = targetable.position;
 

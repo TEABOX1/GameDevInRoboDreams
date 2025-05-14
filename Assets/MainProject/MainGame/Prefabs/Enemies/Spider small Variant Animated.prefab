@@ -14,7 +14,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 393881992596086971, guid: 7828297c5cdb88748b5273c5312bcdc1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -12.64
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 393881992596086971, guid: 7828297c5cdb88748b5273c5312bcdc1, type: 3}
       propertyPath: m_LocalPosition.y
@@ -22,7 +22,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 393881992596086971, guid: 7828297c5cdb88748b5273c5312bcdc1, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 7.48
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 393881992596086971, guid: 7828297c5cdb88748b5273c5312bcdc1, type: 3}
       propertyPath: m_LocalRotation.w
@@ -74,7 +74,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9140390336803777328, guid: 7828297c5cdb88748b5273c5312bcdc1, type: 3}
       propertyPath: m_Name
-      value: Spider small Variant
+      value: Spider small Variant Animated
       objectReference: {fileID: 0}
     - target: {fileID: 9140390336803777328, guid: 7828297c5cdb88748b5273c5312bcdc1, type: 3}
       propertyPath: m_IsActive

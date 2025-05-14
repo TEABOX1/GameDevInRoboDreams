@@ -10,9 +10,12 @@ namespace MainGame
         //[SerializeField] private SpidersPool _enemyPool;
         [SerializeField] private SpiderEnemyController _enemyController;
 
+        private int priority;
+
         protected override void Awake()
         {
             enabled = false;
+            priority = 0;
             //підписка на подію старту квеста
             // ... += QuestStartHandler();
         }
@@ -24,6 +27,9 @@ namespace MainGame
             var spider = Instantiate(_enemyController, _hit.position, Quaternion.identity);
             //var spider = _enemyPool.GetEnemy(_hit.position, Quaternion.identity);
             spider.Initialize(this);
+            
+            spider.NavMeshAgent.avoidancePriority = priority;
+            priority++;
 
             _healthService.AddCharacter(spider.Health);
             spider.Health.OnDeath += () => EnemyDeathHandler(spider);

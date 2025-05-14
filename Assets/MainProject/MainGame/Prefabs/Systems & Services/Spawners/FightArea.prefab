@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnPoint: {fileID: 401492479387646912}
-  _spawnRadius: 20
+  _spawnRadius: 18
   _offset: {x: 0, y: 0, z: 0}
   _spawnCount: 3
   _boss: {fileID: 3890585197881672342, guid: 402f691624247ea409e5c05ecc7217d7, type: 3}
@@ -63,6 +63,10 @@ PrefabInstance:
     - target: {fileID: 1999653677226504002, guid: ba293bf722b6af84889f9875e5a65ff8, type: 3}
       propertyPath: m_Name
       value: SpidersPatrolArea
+      objectReference: {fileID: 0}
+    - target: {fileID: 4337583595455725063, guid: ba293bf722b6af84889f9875e5a65ff8, type: 3}
+      propertyPath: _spawnRadius
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 8082688269314069735, guid: ba293bf722b6af84889f9875e5a65ff8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -122,6 +126,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 401492479387646912}
     m_Modifications:
+    - target: {fileID: 3031986835512848165, guid: 77d895a2c257e0f4bb229d31305bed2a, type: 3}
+      propertyPath: _spawnRadius
+      value: 18
+      objectReference: {fileID: 0}
     - target: {fileID: 5265816996927428200, guid: 77d895a2c257e0f4bb229d31305bed2a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using GlobalSource;
-using MainGame;
 using UnityEngine;
 
 namespace MainGame
@@ -9,24 +8,24 @@ namespace MainGame
     //TODO: Remove
     public class EnemyTest : MonoBehaviour, IEnemy
     {
-        public event Action<IEnemy> OnDied;
+        public event Action<IEnemy> OnDeath;
         
         [SerializeField] private Health _health;
         [SerializeField] private EnemyTypes _type = EnemyTypes.Spider;
         [SerializeField] private List<Collider> _colliders;
         
-        private IHealthService _healthService;
         private EnemyService _enemyService;
-        
+        private Collider _collider; //щоб прибрати конфлікти
+
         public IReadOnlyList<Collider> Colliders => _colliders;
         
         public EnemyTypes EnemyType => _type;
-        
+        public Collider Collider => _collider; //щоб прибрати конфлікти
+
         private void Start()
         {
-            _healthService = ServiceLocator.Instance.GetService<IHealthService>();
-            _healthService.AddCharacter(_health);
-            
+            _collider = _colliders[0]; //щоб прибрати конфлікти
+
             _enemyService = ServiceLocator.Instance.GetService<EnemyService>();
             _enemyService.RegisterEnemy(this);
 
@@ -41,7 +40,7 @@ namespace MainGame
 
         private void DeathHandler()
         {
-            OnDied?.Invoke(this);
+            OnDeath?.Invoke(this);
             
             Debug.Log($"{gameObject.name} died");
             Destroy(gameObject);
