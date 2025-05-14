@@ -197,8 +197,8 @@ namespace MainGame
                 if (_spellTimer >= _enemySpellCaster.EnemySpellData.CooldownTime)
                 {
                     //to-do: викликати анімацію касту фаерболу
-                    Vector3 point = enemyController.PlayerRadar.CurrentTarget.position + new Vector3(0f, 0.5f, 0f);
-                    _enemySpellCaster.CastSpell(point);
+                    //Vector3 point = enemyController.PlayerRadar.CurrentTarget.position + new Vector3(0f, 0.5f, 0f);
+                    _enemySpellCaster.CastSpell(enemyController.PlayerRadar.CurrentTarget.position);
                     _spellTimer = 0f;
                 }
             }
