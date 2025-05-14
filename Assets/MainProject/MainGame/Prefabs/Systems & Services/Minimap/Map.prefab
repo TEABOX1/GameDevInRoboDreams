@@ -242,12 +242,13 @@ MonoBehaviour:
   _rawImage: {fileID: 7379428102076251509}
   _worldMin: {x: 0, y: 0}
   _worldMax: {x: 500, y: 500}
-  _mapMin: {x: -140, y: -140}
-  _mapMax: {x: 140, y: 140}
+  _mapMin: {x: 0, y: 0}
+  _mapMax: {x: 560, y: 560}
   _tiling: {x: 0.25, y: 0.25}
-  _markers: []
+  _markers:
+  - {fileID: 0}
   _markerPrefab: {fileID: 2341523813200975119}
-  _content: {fileID: 7931057743563859644}
+  _content: {fileID: 2398591245267789275}
 --- !u!1 &7883377764706924389
 GameObject:
   m_ObjectHideFlags: 0
