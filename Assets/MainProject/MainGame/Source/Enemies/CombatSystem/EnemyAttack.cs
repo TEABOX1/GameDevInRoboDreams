@@ -6,14 +6,24 @@ namespace MainGame
     public class EnemyAttack : MonoBehaviour
     {
         public event Action<Collider> OnHit;
+        public event Action OnMeeleAttackStart; //added for animation
 
         [SerializeField] private EnemyAttackData _attackData;
         [SerializeField] private Transform _attackPoint;
         [SerializeField] private LayerMask _layerMask;
 
+        //added for animation
+        [ContextMenu("Force Attack")]
+        private void ForceState()
+        {
+            Attack();
+        }
+        //end of animation
+
         public EnemyAttackData AttackData => _attackData;
         public void Attack()
         {
+            OnMeeleAttackStart?.Invoke();  //added for animation
             Debug.Log("Enemy Attack");
             if (Physics.Raycast(_attackPoint.position, _attackPoint.forward, out RaycastHit hitInfo, _attackData.Distance, _layerMask, QueryTriggerInteraction.Ignore))
             {

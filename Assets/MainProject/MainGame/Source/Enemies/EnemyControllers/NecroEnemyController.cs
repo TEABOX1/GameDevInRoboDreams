@@ -12,6 +12,7 @@ namespace MainGame
         [SerializeField] private float _switchToMeleeDistance;
         [SerializeField] private float _switchToRangedDistance;
 
+
         public SpiderSpawnSpell SpiderSpawnSpell => _spiderSpawnSpell;
         public EnemySpellCaster EnemySpellCaster => _enemySpellCaster;
         public float ToMeleeDistance => _switchToMeleeDistance;

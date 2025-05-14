@@ -6,6 +6,7 @@ namespace MainGame
     {
         [SerializeField] Rigidbody _rigidbody;
         [SerializeField] private float _lifeTime = 5f;
+        [SerializeField] ParticleSystem particleSystem;
 
         private EnemySpellDamageDealer _damageDealer;
 
@@ -13,6 +14,8 @@ namespace MainGame
         {
             _rigidbody.velocity = direction.normalized * speed;
             _damageDealer = damageDealer;
+
+            particleSystem.Play();
 
             Destroy(gameObject, _lifeTime);
         }
