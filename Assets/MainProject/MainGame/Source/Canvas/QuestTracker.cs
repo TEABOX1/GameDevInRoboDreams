@@ -29,10 +29,10 @@ namespace MainGame
         private void StartQuestHandler(string questID)
         {
             _questCanvas.SetActive(true);
-            for ( int i = 0; i < _questPoint.QuestListInfo.Count; i++ )
+            for (int i = 0; i < _questPoint.QuestDialogEntryInfo.Count; i++)
             {
-                if( _questPoint.QuestListInfo[i].QuestId == questID )
-                    _questTask.text = _questPoint.QuestListInfo[i].QuestName;
+                if (_questPoint.QuestDialogEntryInfo[i].questInfo.QuestId == questID)
+                    _questTask.text = _questPoint.QuestDialogEntryInfo[i].questInfo.QuestName;
             }
         }
 

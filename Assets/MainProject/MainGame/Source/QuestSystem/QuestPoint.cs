@@ -38,7 +38,7 @@ namespace MainGame
         private DialogueEvents _dialogueEvents;
         private InputController _inputController;
         
-        public List<QuestInfo> QuestListInfo { get { return _questInfo; } }
+        public List<QuestDialogueEntry> QuestDialogEntryInfo { get { return _questDialogues; } }
 
         protected override void Awake()
         {
