@@ -22,6 +22,8 @@ namespace MainGame
         private QuestEvents _questEvents;
         private InputController _inputController;
         
+        public List<QuestInfo> QuestListInfo { get { return _questInfo; } }
+
         protected override void Awake()
         {
             base.Awake();

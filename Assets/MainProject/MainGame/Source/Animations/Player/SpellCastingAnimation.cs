@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine;
 using GlobalSource;
 using UnityEngine.InputSystem;
+using Tiny;
 
 namespace MainGame
 {
@@ -12,6 +13,8 @@ namespace MainGame
         [SerializeField] private SpellCaster _attack;
         [SerializeField] private Animator _animator;
         [SerializeField] private GameObject _sword;
+        [SerializeField] private Trail _leftHand;
+        [SerializeField] private Trail _rightHand;
         //[SerializeField] private HandsIK _handsIK;
         //MeeleNames
         [SerializeField] private string _magicAttackCastingName;
@@ -57,6 +60,8 @@ namespace MainGame
         {
             if (isCasting)
             {
+                //_leftHand.enabled = true;
+                //_rightHand.enabled = true;
                 _sword.SetActive(false);
                 _animator.CrossFadeInFixedTime(_magicAttackCastingId, _crossFadeTime, 1);
             }
@@ -79,6 +84,8 @@ namespace MainGame
             yield return _lockDelay;
             _inputController.DefaultMapUnlock();
             _animator.CrossFadeInFixedTime(_idleId, _crossFadeTime);
+            //_leftHand.enabled = false;
+            //_rightHand.enabled = false;
             _sword.SetActive(true);
         }
 

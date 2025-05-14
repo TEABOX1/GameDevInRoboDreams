@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine;
 using GlobalSource;
 using UnityEngine.InputSystem;
+using Tiny;
 
 namespace MainGame
 {
@@ -11,6 +12,8 @@ namespace MainGame
         [SerializeField] private PlayerController _plaeyrController;
         [SerializeField] private MeleeAttack _attack;
         [SerializeField] private Animator _animator;
+
+        [SerializeField] private Trail _trailScript;
         //[SerializeField] private HandsIK _handsIK;
         //MeeleNames
         [SerializeField] private string _meeleAttack1Name;
@@ -42,10 +45,10 @@ namespace MainGame
         {
             _inputController = ServiceLocator.Instance.GetService<InputController>();
 
-            _Health = ServiceLocator.Instance.GetService<IPlayerService>().Player
-                .GetComponent<IHealth>();
+            //_Health = ServiceLocator.Instance.GetService<IPlayerService>().Player
+            //    .GetComponent<IHealth>();
 
-            _Health.OnDeath += PlayerDeathHandler;
+            //_Health.OnDeath += PlayerDeathHandler;
 
             _lockDelay = new WaitForSeconds(_firstLockDuration);
 
@@ -77,6 +80,7 @@ namespace MainGame
 
         private IEnumerator LockRoutine()
         {
+            _trailScript.enabled = true;
             _inputController.DefaulMapLock();
             if (_plaeyrController.PlayerControllerState != PlayerControllerState.Idle)
             {
@@ -90,6 +94,7 @@ namespace MainGame
             yield return _lockDelay;
             _inputController.DefaultMapUnlock();
             _animator.CrossFadeInFixedTime(_idleId, _crossFadeTime);
+            _trailScript.enabled = false;
         }
 
         private void LocomotionStateHandler(PlayerControllerState state)
