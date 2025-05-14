@@ -6,5 +6,6 @@ namespace MainGame
         Spider = 1,
         Boss = 2,
         Egg = 4,
+        
     }
 }
