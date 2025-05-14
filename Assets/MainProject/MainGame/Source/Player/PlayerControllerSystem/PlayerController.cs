@@ -16,7 +16,8 @@ namespace MainGame
         [SerializeField] private float _drag;
         [SerializeField] private Vector2 _jumpSpeed;
         [SerializeField] private float _rollSpeed;
-
+        [SerializeField] private AnimationCurve _rollCurve;
+        
         private StateMachine _stateMachine;
 
         public StateMachine StateMachine => _stateMachine;
@@ -47,7 +48,7 @@ namespace MainGame
             
             _stateMachine.AddState((byte)PlayerControllerState.Roll,
                 new RollState(_stateMachine, (byte)PlayerControllerState.Roll, _characterController,
-                    _rollSpeed, _drag));
+                    _rollSpeed, /*_drag,*/ _rollCurve));
             
             _stateMachine.InitState((byte)PlayerControllerState.Idle);
             

@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _questId: KillSpidersQuest
   _questName: Kill spiders!
-  _questPrerequisites: []
+  _questPrerequisites:
+  - {fileID: 11400000, guid: 44b13714ad2b0de49a01b089bab2e793, type: 2}
   _questSteps:
   - {fileID: 3439359978997416817, guid: 1639c568275c9d34f87d26e48a726eac, type: 3}
-  _abilityUnlockReward: {fileID: 11400000, guid: 9f35f6398c779f84680f5354df6afbf9, type: 2}
+  - {fileID: 3439359978997416817, guid: 173ccd6464d6a2d4d8da9f9905cd387e, type: 3}
+  _abilityUnlockReward: {fileID: 0}

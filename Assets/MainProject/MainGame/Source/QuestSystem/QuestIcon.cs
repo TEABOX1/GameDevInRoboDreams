@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace MainGame
@@ -10,6 +11,11 @@ namespace MainGame
         [SerializeField] private GameObject _canStartIcon;
         [SerializeField] private GameObject _requirementsNotMetToFinishIcon;
         [SerializeField] private GameObject _canFinishIcon;
+
+        public void OnEnable()
+        {
+            SetState(QuestState.RequirementNotMet, true, true);
+        }
 
         public void SetState(QuestState newState, bool startPoint, bool finishPoint)
         {
@@ -33,7 +39,7 @@ namespace MainGame
                     if (finishPoint) _canFinishIcon.SetActive(true);
                     break;
                 case QuestState.Finished:
-                    break;
+                    return;
                 default:
                     Debug.LogWarning("Quest State not recognized by switch statement for quest icon: " + newState);
                     break;

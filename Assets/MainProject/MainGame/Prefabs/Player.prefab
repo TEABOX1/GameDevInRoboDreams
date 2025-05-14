@@ -256,7 +256,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spellDamageDealer: {fileID: 2782736637102260533}
-  _spellData: {fileID: 11400000, guid: 9f35f6398c779f84680f5354df6afbf9, type: 2}
+  _spellData: {fileID: 0}
   _spawnPoint: {fileID: 6299938574395130448}
   _layerMask:
     serializedVersion: 2

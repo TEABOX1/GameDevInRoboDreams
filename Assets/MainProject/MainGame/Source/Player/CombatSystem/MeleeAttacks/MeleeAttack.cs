@@ -16,6 +16,7 @@ namespace MainGame
         private bool _isAttacking = false;
         
         private InputController _inputController;
+        private AnimationEventsController _animationEventsController;
         
         public int NumberOfAttacks => _numberOfAttacks;
         
@@ -23,6 +24,9 @@ namespace MainGame
         {
             _inputController = ServiceLocator.Instance.GetService<InputController>();
             _inputController.OnPrimaryInput += PrimaryHandler;
+            
+            _animationEventsController = ServiceLocator.Instance.GetService<AnimationEventsController>();
+            _animationEventsController.OnAttackAnimationEnd += AttackAnimationEndHandler;
         }
 
         private void Update()
@@ -33,14 +37,13 @@ namespace MainGame
 
         private void PrimaryHandler()
         {
-            //TODO: Uncomment after adding animation event
-            // if (_isAttacking || !_characterController.isGrounded || _numberOfAttacks >= 3) return;
+            if (_isAttacking || !_characterController.isGrounded || _numberOfAttacks >= 3) return;
             
             _isAttacking = true;
             _lastAttackTime = Time.time;
             _numberOfAttacks++;
 
-            Debug.Log(_numberOfAttacks);
+            // Debug.Log(_numberOfAttacks);
             
             switch (_numberOfAttacks)
             {
@@ -58,8 +61,9 @@ namespace MainGame
         }
         
         //TODO: Add OnAttackAnimationEnd() animation event
-        public void OnAttackAnimationEnd()
+        private void AttackAnimationEndHandler()
         {
+            Debug.Log(_numberOfAttacks);
             _isAttacking = false;
 
             if (_numberOfAttacks >= 3)

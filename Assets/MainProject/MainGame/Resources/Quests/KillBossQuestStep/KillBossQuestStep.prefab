@@ -44,3 +44,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9c86cd77a3a45f5a3d4994e786c0d85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _startFightDialogue: {fileID: 11400000, guid: 9b2554fcca7919444ae19b229189f6ad, type: 2}
+  _finishFightDialogue: {fileID: 11400000, guid: e1b874d359a3b254e95a0526c28ddeaa, type: 2}

@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12da250283eb4d21bd2b828afb3b8a8d, type: 3}
+  m_Name: DestroyEggsQuestFinishDialogue
+  m_EditorClassIdentifier: 
+  _dialogueId: DestroyEggsQuestFinishDialogue
+  _dialogueData:
+  - lineId: 1
+    dialogueLine: I have done it. All ten nests are destroyed. The earth no longer
+      trembles under their poison.
+    answerOption:
+    - answerText: Next
+      nextLineId: 2
+      triggerComplete: 0
+    image: {fileID: 21300000, guid: 3b263900f7c870a498421a2b6acdaf27, type: 3}
+  - lineId: 2
+    dialogueLine: I can feel it. The forest sighed in relief. You did well.
+    answerOption:
+    - answerText: Next
+      nextLineId: 3
+      triggerComplete: 0
+    image: {fileID: 21300000, guid: 44036bdd3dc83864ca75d54ecd843074, type: 3}
+  - lineId: 3
+    dialogueLine: But it was strange... I felt a force running through me. When I
+      hit one of the nests, it was as if fire had burst from within...
+    answerOption:
+    - answerText: Next
+      nextLineId: 4
+      triggerComplete: 0
+    image: {fileID: 21300000, guid: 3b263900f7c870a498421a2b6acdaf27, type: 3}
+  - lineId: 4
+    dialogueLine: Something that has long slept within you awakens. Take this knowledge.
+      A spell that lives on fire. You deserve it.
+    answerOption:
+    - answerText: Close
+      nextLineId: 
+      triggerComplete: 1
+    image: {fileID: 21300000, guid: 44036bdd3dc83864ca75d54ecd843074, type: 3}
+  _alternativeDialogue: {fileID: 0}
+  WasPlayed: 1
