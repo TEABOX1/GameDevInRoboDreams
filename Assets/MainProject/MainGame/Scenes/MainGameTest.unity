@@ -2662,6 +2662,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 97dc6acf831afa145824bb38c00f0675, type: 3}
   m_PrefabInstance: {fileID: 1506480810}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1041483212 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5011730906790276957, guid: dd77207e21b355f49b2500348bf8cf8a, type: 3}
+  m_PrefabInstance: {fileID: 5152588708272582142}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1041898570
 GameObject:
   m_ObjectHideFlags: 0
@@ -6813,6 +6818,10 @@ PrefabInstance:
       propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5011730906790276957, guid: dd77207e21b355f49b2500348bf8cf8a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5068261639770503996, guid: dd77207e21b355f49b2500348bf8cf8a, type: 3}
       propertyPath: _health
       value: 
@@ -6861,6 +6870,10 @@ PrefabInstance:
       propertyPath: _spellCaster
       value: 
       objectReference: {fileID: 1638974547}
+    - target: {fileID: 8335128825378202318, guid: dd77207e21b355f49b2500348bf8cf8a, type: 3}
+      propertyPath: _fireBallAbility
+      value: 
+      objectReference: {fileID: 1041483212}
     - target: {fileID: 8341024192098511621, guid: dd77207e21b355f49b2500348bf8cf8a, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
