@@ -10,13 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c7fb9366729f4a2f864f9345bb1a896b, type: 3}
-  m_Name: KillSpidersQuest
+  m_Name: QuestInfo
   m_EditorClassIdentifier: 
-  _questId: KillSpidersQuest
-  _questName: Kill spiders!
+  _questId: QuestInfo
+  _questName: Kill Boss
   _questPrerequisites:
-  - {fileID: 11400000, guid: 44b13714ad2b0de49a01b089bab2e793, type: 2}
+  - {fileID: 11400000, guid: 1d55774e7f893e344946ad1468bc18a2, type: 2}
   _questSteps:
-  - {fileID: 3439359978997416817, guid: 1639c568275c9d34f87d26e48a726eac, type: 3}
   - {fileID: 3439359978997416817, guid: 173ccd6464d6a2d4d8da9f9905cd387e, type: 3}
   _abilityUnlockReward: {fileID: 0}

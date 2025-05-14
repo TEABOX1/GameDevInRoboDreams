@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using GlobalSource;
 using UnityEngine;
@@ -76,17 +77,26 @@ namespace MainGame
 
         private void AdvanceQuestHandler(string questId)
         {
+            StartCoroutine(TimerForNextQuestStep(questId));
+        }
+        //TODO: Can be moved to another script
+        private IEnumerator TimerForNextQuestStep(string questId)
+        {
+            yield return new WaitForSeconds(1f);
+            
             Quest quest = GetQuestById(questId);
             
             quest.MoveToNextStep();
-            if(quest.CurrentStepExists())
+            if (quest.CurrentStepExists())
+            {
                 quest.InstantiateCurrentQuestStep(transform);
+            }
             else
             {
                 ChangeQuestState(quest.QuestInfo.QuestId, QuestState.CanFinish);
             }
         }
-
+        
         private void FinishQuestHandler(string questId)
         {
             Quest quest = GetQuestById(questId);

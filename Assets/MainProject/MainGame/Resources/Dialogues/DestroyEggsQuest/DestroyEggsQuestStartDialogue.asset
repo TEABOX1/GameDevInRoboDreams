@@ -1,0 +1,101 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12da250283eb4d21bd2b828afb3b8a8d, type: 3}
+  m_Name: DestroyEggsQuestStartDialogue
+  m_EditorClassIdentifier: 
+  _dialogueId: DestroyEggsQuestStartDialogue
+  _dialogueData:
+  - lineId: 1
+    dialogueLine: Where am I?.. What happened?
+    answerOption:
+    - answerText: Next
+      nextLineId: 2
+      triggerComplete: 0
+    image: {fileID: 21300000, guid: 3b263900f7c870a498421a2b6acdaf27, type: 3}
+  - lineId: 2
+    dialogueLine: You have finally woken up. You were dying when I found you in the
+      swamp. Forests rarely let go of those who have fallen into their embrace. But
+      you are an exception.
+    answerOption:
+    - answerText: Next
+      nextLineId: 3
+      triggerComplete: 0
+    image: {fileID: 21300000, guid: 44036bdd3dc83864ca75d54ecd843074, type: 3}
+  - lineId: 3
+    dialogueLine: The pain... My head is empty. I... don't remember anything.
+    answerOption:
+    - answerText: Next
+      nextLineId: 4
+      triggerComplete: 0
+    image: {fileID: 21300000, guid: 3b263900f7c870a498421a2b6acdaf27, type: 3}
+  - lineId: 4
+    dialogueLine: That's normal. Your body has healed, but memory is a fragile thing.
+      It will return in time... or with need.
+    answerOption:
+    - answerText: Next
+      nextLineId: 5
+      triggerComplete: 0
+    image: {fileID: 21300000, guid: 44036bdd3dc83864ca75d54ecd843074, type: 3}
+  - lineId: 5
+    dialogueLine: Who are you?.. Why did you help me?
+    answerOption:
+    - answerText: Next
+      nextLineId: 6
+      triggerComplete: 0
+    image: {fileID: 21300000, guid: 3b263900f7c870a498421a2b6acdaf27, type: 3}
+  - lineId: 6
+    dialogueLine: I am only a servant of balance. And you are a spark that has not
+      yet been ignited. My forest is sick. A dark force has spawned creatures that
+      have never been here. Spiders. Large, aggressive. Their eggs poison the earth
+      and everything around.
+    answerOption:
+    - answerText: Next
+      nextLineId: 7
+      triggerComplete: 0
+    image: {fileID: 21300000, guid: 44036bdd3dc83864ca75d54ecd843074, type: 3}
+  - lineId: 7
+    dialogueLine: "And you want me to\u2026 help?"
+    answerOption:
+    - answerText: Next
+      nextLineId: 8
+      triggerComplete: 0
+    image: {fileID: 21300000, guid: 3b263900f7c870a498421a2b6acdaf27, type: 3}
+  - lineId: 8
+    dialogueLine: Yes. Destroy 10 of their nests. This will cleanse the roots, and
+      it will help you regain your strength. I sense two powers in you. Light and
+      something else, something secret that escapes my gaze. You are both a warrior
+      and a magician - a strange combination. But to find the path, you must walk
+      it.
+    answerOption:
+    - answerText: "If it helps me get myself back\u2026I\u2019ll do it."
+      nextLineId: 9
+      triggerComplete: 1
+    - answerText: I need to think.
+      nextLineId: 10
+      triggerComplete: 0
+    image: {fileID: 21300000, guid: 44036bdd3dc83864ca75d54ecd843074, type: 3}
+  - lineId: 9
+    dialogueLine: Okay. Your journey begins now. And the forest will watch over you.
+    answerOption:
+    - answerText: Close
+      nextLineId: 
+      triggerComplete: 0
+    image: {fileID: 21300000, guid: 44036bdd3dc83864ca75d54ecd843074, type: 3}
+  - lineId: 10
+    dialogueLine: Okay, I'll wait for you to come back.
+    answerOption:
+    - answerText: Close
+      nextLineId: 
+      triggerComplete: 0
+    image: {fileID: 21300000, guid: 44036bdd3dc83864ca75d54ecd843074, type: 3}
+  _alternativeDialogue: {fileID: 11400000, guid: 00e3e990134b3cc46863b17059ea5601, type: 2}
+  WasPlayed: 1

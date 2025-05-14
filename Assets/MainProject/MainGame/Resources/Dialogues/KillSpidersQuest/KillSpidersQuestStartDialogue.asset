@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12da250283eb4d21bd2b828afb3b8a8d, type: 3}
+  m_Name: KillSpidersQuestStartDialogue
+  m_EditorClassIdentifier: 
+  _dialogueId: KillSpidersQuestStartDialogue
+  _dialogueData:
+  - lineId: 1
+    dialogueLine: What is this? I feel like a part of me has become clearer.
+    answerOption:
+    - answerText: Next
+      nextLineId: 2
+      triggerComplete: 0
+    image: {fileID: 21300000, guid: 3b263900f7c870a498421a2b6acdaf27, type: 3}
+  - lineId: 2
+    dialogueLine: The destruction of the eggs is only the beginning. The source of
+      the evil is still alive. Their mothers, the spider matrons, still prowl in
+      the shadows. If they are not stopped, it will all begin again.
+    answerOption:
+    - answerText: Then I will move on. I will finish what I started.
+      nextLineId: 3
+      triggerComplete: 1
+    - answerText: Okay, a little rest and then we'll continue.
+      nextLineId: 4
+      triggerComplete: 0
+    image: {fileID: 21300000, guid: 44036bdd3dc83864ca75d54ecd843074, type: 3}
+  - lineId: 3
+    dialogueLine: You are no longer just a traveler. You are the fire that can clear
+      the thicket of darkness.
+    answerOption:
+    - answerText: Close
+      nextLineId: 
+      triggerComplete: 0
+    image: {fileID: 21300000, guid: 44036bdd3dc83864ca75d54ecd843074, type: 3}
+  - lineId: 4
+    dialogueLine: Okay, but there's very little time left, so hurry up.
+    answerOption:
+    - answerText: Close
+      nextLineId: 
+      triggerComplete: 0
+    image: {fileID: 21300000, guid: 44036bdd3dc83864ca75d54ecd843074, type: 3}
+  _alternativeDialogue: {fileID: 11400000, guid: f050fbf96c85a7c4b8c198503c9ed656, type: 2}
+  WasPlayed: 1
