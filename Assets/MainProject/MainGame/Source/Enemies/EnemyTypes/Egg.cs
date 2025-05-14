@@ -9,7 +9,9 @@ namespace MainGame
         public event Action<IEnemy> OnDeath;
 
         [SerializeField] private Health _health;
+        [SerializeField] private EggController _eggController;
 
+        private IHealthService _healthService;
         private EnemyTypes _type = EnemyTypes.Egg;
         private EnemyService _enemyService;
         private Collider _collider;
@@ -21,6 +23,9 @@ namespace MainGame
         {
             _collider = _health.Collider;
 
+            _healthService = ServiceLocator.Instance.GetService<IHealthService>();
+            _healthService.AddCharacter(_health);
+
             _enemyService = ServiceLocator.Instance.GetService<EnemyService>();
             _enemyService.RegisterEnemy(this);
 
@@ -29,12 +34,9 @@ namespace MainGame
 
         private void DeathHandler()
         {
-            OnDeath?.Invoke(this);
-        }
-
-        private void OnDestroy()
-        {
             _enemyService.UnregisterEnemy(this);
+            _eggController.Destroy();
+            OnDeath?.Invoke(this);
         }
     }
 }

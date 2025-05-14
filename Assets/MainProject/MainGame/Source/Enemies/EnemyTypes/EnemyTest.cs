@@ -13,7 +13,8 @@ namespace MainGame
         [SerializeField] private Health _health;
         [SerializeField] private EnemyTypes _type = EnemyTypes.Spider;
         [SerializeField] private List<Collider> _colliders;
-        
+
+        private IHealthService _healthService;
         private EnemyService _enemyService;
         private Collider _collider; //щоб прибрати конфлікти
 
@@ -25,6 +26,9 @@ namespace MainGame
         private void Start()
         {
             _collider = _colliders[0]; //щоб прибрати конфлікти
+
+            _healthService = ServiceLocator.Instance.GetService<IHealthService>();
+            _healthService.AddCharacter(_health);
 
             _enemyService = ServiceLocator.Instance.GetService<EnemyService>();
             _enemyService.RegisterEnemy(this);

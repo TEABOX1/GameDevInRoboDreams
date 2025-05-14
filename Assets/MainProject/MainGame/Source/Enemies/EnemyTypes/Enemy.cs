@@ -12,6 +12,7 @@ namespace MainGame
         [SerializeField] private Health _health;
         [SerializeField] private EnemyController _enemyController;
 
+        private IHealthService _healthService;
         private EnemyService _enemyService;
         private Collider _collider;
 
@@ -22,6 +23,9 @@ namespace MainGame
         private void Awake()
         {
             _collider = _health.Collider;
+
+            _healthService = ServiceLocator.Instance.GetService<IHealthService>();
+            _healthService.AddCharacter(_health);
 
             _enemyService = ServiceLocator.Instance.GetService<EnemyService>();
             _enemyService.RegisterEnemy(this);

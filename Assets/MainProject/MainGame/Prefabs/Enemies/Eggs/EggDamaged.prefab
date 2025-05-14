@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &156258
+--- !u!1 &2042922335446225687
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,46 +8,46 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 494514}
-  - component: {fileID: 3364424}
-  - component: {fileID: 2353844}
+  - component: {fileID: 7653828612300978532}
+  - component: {fileID: 7221809148731527635}
+  - component: {fileID: 2686538139878702432}
   m_Layer: 0
-  m_Name: spider_egg_3x
+  m_Name: EggDamaged
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &494514
+  m_IsActive: 0
+--- !u!4 &7653828612300978532
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 156258}
+  m_GameObject: {fileID: 2042922335446225687}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.5372432, y: 0.45974967, z: 0.45974967, w: 0.5372432}
-  m_LocalPosition: {x: -4.418244, y: 0.013742447, z: 9.055544}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.5, z: 0}
+  m_LocalScale: {x: 0.59999996, y: 0.59999996, z: 0.59999996}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 81.111}
---- !u!33 &3364424
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &7221809148731527635
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 156258}
-  m_Mesh: {fileID: 4300002, guid: 77e8313db93b01d4b9ccc10c21e1a6ed, type: 3}
---- !u!23 &2353844
+  m_GameObject: {fileID: 2042922335446225687}
+  m_Mesh: {fileID: 4300002, guid: 9e96e26c2a9fc02499f837273208e745, type: 3}
+--- !u!23 &2686538139878702432
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 156258}
+  m_GameObject: {fileID: 2042922335446225687}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -73,7 +73,7 @@ MeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
