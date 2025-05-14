@@ -1,12 +1,11 @@
 namespace MainGame
 {
-    //TODO: Remove
     public enum EnemyTypes
     {
-        None = 0,
+        Egg = 0,
         Spider = 1,
         Boss = 2,
-        Egg = 4,
-        
+
+        None = 255
     }
 }
