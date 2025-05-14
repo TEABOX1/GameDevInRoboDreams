@@ -157,6 +157,18 @@ namespace MainGame
                     Vector3.up).normalized;
 
             _characterTransform.rotation = Quaternion.LookRotation(direction);
-        }       
+        }
+
+        //метод для розподілу групи ворогів навколо гравця
+        private Vector3 GetCirclePosition(Vector3 center, float radius, int index, int totalEnemies)
+        {
+            float angle = index * (360f / totalEnemies);
+            Vector3 dir = Quaternion.Euler(0, angle, 0) * Vector3.forward;
+            if (NavMesh.SamplePosition(center + dir * radius, out NavMeshHit hit, radius, NavMesh.AllAreas))
+            {
+                return hit.position;
+            }
+            return center;
+        }
     }
 }

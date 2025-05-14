@@ -26,6 +26,7 @@ namespace MainGame
 
         private List<EnemyController> _enemies = new();
 
+        private int priority;
 
         private Vector3 _point;
         private NavMeshHit _hit;
@@ -82,6 +83,9 @@ namespace MainGame
             var enemy = Instantiate(_enemy, _hit.position, Quaternion.identity);
             //var enemy = _enemyPool.GetEnemy(_hit.position, Quaternion.identity);
             enemy.Initialize(this);
+
+            enemy.NavMeshAgent.avoidancePriority = priority;
+            priority++;
 
             _healthService.AddCharacter(enemy.Health);
             enemy.Health.OnDeath += () => EnemyDeathHandler(enemy);

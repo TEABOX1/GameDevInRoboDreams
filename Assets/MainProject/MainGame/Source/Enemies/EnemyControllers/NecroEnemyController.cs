@@ -60,7 +60,7 @@ namespace MainGame
         protected override void HealthDeathHandler()
         {
             base.HealthDeathHandler();
-            ServiceLocator.Instance.GetService<IHealthService>().RemoveCharacter(_health);
+            //ServiceLocator.Instance.GetService<IHealthService>().RemoveCharacter(_health);
         }
 
         private void OnDrawGizmosSelected()

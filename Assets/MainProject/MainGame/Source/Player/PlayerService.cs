@@ -19,6 +19,7 @@ namespace MainGame
         {
             base.Awake();
             _playerTargetables.Add(_playerTargetable.CharacterController, _playerTargetable);
+            Player.TargetPivot.gameObject.SetActive(false); // можливо потім доведеться вмикати це значення вручну
         }
 
         public bool IsPlayer(Collider collider)

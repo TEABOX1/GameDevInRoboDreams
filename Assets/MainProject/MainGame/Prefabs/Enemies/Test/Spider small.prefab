@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyController: {fileID: 5162297892322621337}
-  _range: 10
+  _range: 15
   _angle: 90
   _layerMask:
     serializedVersion: 2
@@ -266,7 +266,7 @@ NavMeshAgent:
   m_Radius: 1
   m_Speed: 3.5
   m_Acceleration: 8
-  avoidancePriority: 50
+  avoidancePriority: 0
   m_AngularSpeed: 120
   m_StoppingDistance: 0.1
   m_AutoTraverseOffMeshLink: 1
@@ -309,6 +309,7 @@ MonoBehaviour:
   _characterTransform: {fileID: 393881992596086971}
   _health: {fileID: 1847116409828724491}
   _playerRadar: {fileID: 72097693034819557}
+  _state: 0
 --- !u!114 &810181660663880470
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -323,6 +324,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _attackData: {fileID: 11400000, guid: 4c02b32e620a13a47a4fdda6f580d1dd, type: 2}
   _attackPoint: {fileID: 2578422246263208344}
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &7025186525284963749
 MonoBehaviour:
   m_ObjectHideFlags: 0

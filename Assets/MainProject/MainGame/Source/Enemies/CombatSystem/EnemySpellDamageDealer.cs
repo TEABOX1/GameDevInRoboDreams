@@ -20,7 +20,7 @@ namespace MainGame
 
         public void DealSpellDamage(Vector3 center)
         {
-            Collider[] colliders = Physics.OverlapSphere(center, _spellData.DamageRange, _layerMask);
+            Collider[] colliders = Physics.OverlapSphere(center, _spellData.DamageRange, _layerMask, QueryTriggerInteraction.Ignore);
             
             HashSet<IHealth> damagedHealths = new HashSet<IHealth>();
 

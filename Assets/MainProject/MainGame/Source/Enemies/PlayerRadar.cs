@@ -120,6 +120,7 @@ namespace MainGame
         public void LookAround()
         {
             OnLookAround?.Invoke();
+            Debug.Log("Enemy Look Around");
 
             if (_hasTarget)
             {
@@ -158,6 +159,12 @@ namespace MainGame
 
         private bool CheckTarget(Transform targetable, bool useFov = true)
         {
+            // Перевірка чи існує Transform і чи активний його GameObject
+            if (targetable == null || !targetable.gameObject.activeInHierarchy)
+            {
+                return false;
+            }
+
             Vector3 position = _transform.position;
             Vector3 playerPosition = targetable.position;
 
@@ -174,7 +181,7 @@ namespace MainGame
                 if (Vector3.Dot(playerDirection, forward) < _cosine)
                     return false;
             }
-            if (!Physics.Raycast(position, (playerPosition - position).normalized, out RaycastHit hit, _range, _layerMask))
+            if (!Physics.Raycast(position, (playerPosition - position).normalized, out RaycastHit hit, _range, _layerMask, QueryTriggerInteraction.Ignore))
                 return false;
             if (hit.collider != _playerService.Player.CharacterController)
                 return false;

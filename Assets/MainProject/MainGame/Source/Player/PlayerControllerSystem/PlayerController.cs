@@ -10,7 +10,7 @@ namespace MainGame
         
         [SerializeField] private CharacterController _characterController;
         [SerializeField] private Health _health;
-        
+
         [Header("PlayerSettings")]
         [SerializeField] private float _speed;
         [SerializeField] private float _drag;

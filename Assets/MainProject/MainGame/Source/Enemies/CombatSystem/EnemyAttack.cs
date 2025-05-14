@@ -10,6 +10,7 @@ namespace MainGame
 
         [SerializeField] private EnemyAttackData _attackData;
         [SerializeField] private Transform _attackPoint;
+        [SerializeField] private LayerMask _layerMask;
 
         //added for animation
         [ContextMenu("Force Attack")]
@@ -24,7 +25,7 @@ namespace MainGame
         {
             OnMeeleAttackStart?.Invoke();  //added for animation
             Debug.Log("Enemy Attack");
-            if (Physics.Raycast(_attackPoint.position, _attackPoint.forward, out RaycastHit hitInfo, _attackData.Distance))
+            if (Physics.Raycast(_attackPoint.position, _attackPoint.forward, out RaycastHit hitInfo, _attackData.Distance, _layerMask, QueryTriggerInteraction.Ignore))
             {
                 OnHit?.Invoke(hitInfo.collider);
             }

@@ -2,7 +2,6 @@ using GlobalSource;
 using System;
 using UnityEngine;
 using UnityEngine.AI;
-using static UnityEngine.Rendering.DebugUI;
 using Random = UnityEngine.Random;
 
 namespace MainGame

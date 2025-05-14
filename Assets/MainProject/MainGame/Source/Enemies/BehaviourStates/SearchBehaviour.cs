@@ -30,11 +30,14 @@ namespace MainGame
 
             _agent.isStopped = false;
             _agent.ResetPath();
-            _agent.stoppingDistance = 0f;
+            _agent.stoppingDistance = 0.1f;
 
-            enemyController.NavMeshAgent.speed = _chaseSpeed;
+            float randomSpeed = Mathf.Max(0.1f, Random.Range(_chaseSpeed - 0.75f, _chaseSpeed + 0.75f)); // додано рандомізвцію швидкості 
+            enemyController.NavMeshAgent.speed = randomSpeed;
+
             enemyController.NavMeshAgent.SetDestination(enemyController.PlayerRadar.LastTargetPosition);
-
+            //enemyController.NavMeshAgent.SetDestination(GetCirclePosition(enemyController.PlayerRadar.LastTargetPosition, 1.5f, enemyController.NavMeshAgent.avoidancePriority, 3));
+            
             conditions = new List<IStateCondition>
                 { new BaseCondition((byte)EnemyBehaviour.Deciding, ArrivedCondition) };
         }
@@ -80,6 +83,18 @@ namespace MainGame
         private bool ArrivedCondition()
         {
             return _agent.pathPending || _agent.remainingDistance <= _agent.stoppingDistance;
+        }
+
+        //метод для розподілу групи ворогів навколо гравця
+        private Vector3 GetCirclePosition(Vector3 center, float radius, int index, int totalEnemies)
+        {
+            float angle = index * (360f / totalEnemies);
+            Vector3 dir = Quaternion.Euler(0, angle, 0) * Vector3.forward;
+            if (NavMesh.SamplePosition(center + dir * radius, out NavMeshHit hit, radius, NavMesh.AllAreas))
+            {
+                return hit.position;
+            }
+            return center;
         }
     }
 }
