@@ -90,7 +90,7 @@ namespace MainGame
             if (!HasEnemiesOfType(EnemyTypes.Spider))
                 OnAllSpidersDefeated?.Invoke();
 
-            if (!HasEnemiesOfType(EnemyTypes.Spider))
+            if (!HasEnemiesOfType(EnemyTypes.Boss))
                 OnBossDefeated?.Invoke();
         }
     }
