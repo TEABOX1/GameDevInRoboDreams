@@ -1,12 +1,12 @@
 using UnityEngine;
+using static UnityEngine.Rendering.DebugUI;
 
 namespace MainGame
 {
-    public class EnemyAnimatorController : MonoBehaviour
+    public class SpiderAnimatorController : MonoBehaviour
     {
         [SerializeField] private Animator _animator;
         [SerializeField] private EnemyController _enemy;
-        //[SerializeField] private EnemyHitScanGun _hitScanGun;
         [SerializeField] private float _crossFadeTime;
         [SerializeField] private float _dampTime;
         [Space, Header("States")]
@@ -18,102 +18,72 @@ namespace MainGame
         [Space, Header("Parameters")]
         [SerializeField] private string _horizontalName;
         [SerializeField] private string _verticalName;
-        //[SerializeField] private string _aimName;
+        [SerializeField] private string _animationValueName;
 
         private int _idleId;
         private int _movementId;
         private int _deathId;
-        private int _meeleId;
 
         private Vector2 _movementValue;
         
         private int _horizontalId;
         private int _verticalId;
-        //private int _aimId;
+        private int _animationValueId;
 
-       // private float _aimValue;
-        
+        float[] _animationValueForIdle = { 0f, 0.5f, 1f };
+        float[] _animationValueForDeath = { 0f, 1f };
+
+
         private void Awake()
         {
             _idleId = Animator.StringToHash(_idleName);
             _movementId = Animator.StringToHash(_movementName);
             _deathId = Animator.StringToHash(_deathName);
-           // _meeleId = Animator.StringToHash(_meeleName);
 
             _horizontalId = Animator.StringToHash(_horizontalName);
             _verticalId = Animator.StringToHash(_verticalName);
-            //_aimId = Animator.StringToHash(_aimName);
+            _animationValueId = Animator.StringToHash(_animationValueName);
 
             _enemy.OnBehaviourChanged += BehaviourStateHandler;
-            //_enemy.EnemyAnimator = this;
-            //_hitScanGun.OnMeeleHit += MeeleHit;
         }
 
         private void BehaviourStateHandler(EnemyBehaviour state)
         {
             switch (state)
             {
-                case EnemyBehaviour.Idle:
+                case EnemyBehaviour.Deciding:
                     _animator.CrossFadeInFixedTime(_idleId, _crossFadeTime);
                     _movementValue = Vector2.zero;
-                   // _aimValue = 0f;
+                    break;
+                case EnemyBehaviour.Idle:
+                    _animator.CrossFadeInFixedTime(_idleId, _crossFadeTime);
+                    _animator.SetFloat(_animationValueId, _animationValueForIdle[Random.Range(0, _animationValueForIdle.Length)], _dampTime, Time.deltaTime);
+                    _movementValue = Vector2.zero;
                     break;
                 case EnemyBehaviour.Patrol:
                     _animator.CrossFadeInFixedTime(_movementId, _crossFadeTime);
                     _movementValue = Vector2.up;
-                  //  _aimValue = 0f;
                     break;
                 case EnemyBehaviour.Search:
                     _animator.CrossFadeInFixedTime(_movementId, _crossFadeTime);
                     _movementValue = Vector2.up;
-                   // _aimValue = 0f;
                     break;
                 case EnemyBehaviour.Attack:
                     //_animator.CrossFadeInFixedTime(_idleId, _crossFadeTime);
                     _movementValue = Vector2.zero;
-                  //  _aimValue = 1f;
                     break;
                 case EnemyBehaviour.Death:
                     _animator.CrossFadeInFixedTime(_deathId, _crossFadeTime);
+                    _animator.SetFloat(_animationValueId, _animationValueForDeath[Random.Range(0, _animationValueForDeath.Length)], _dampTime, Time.deltaTime);
                     _movementValue = Vector2.zero;
-                  //  _aimValue = 0f;
                     break;
             }
-        }
-
-        private void MeeleHit(Collider collider)
-        {
-            _animator.CrossFadeInFixedTime(_meeleId, _crossFadeTime);
-        }
-
-        public void SetAproachingAnimation()
-        {
-            _animator.CrossFadeInFixedTime(_movementId, _crossFadeTime);
-            _movementValue = Vector2.up;
-            //_aimValue = 0f;
-        }
-
-        public void SetShootAnimation()
-        {
-            _animator.CrossFadeInFixedTime(_idleId, _crossFadeTime);
-            _movementValue = Vector2.zero;
-            //_aimValue = 1f;
-        }
-
-        public void SetMeeleAnimation()
-        {
-            _animator.CrossFadeInFixedTime(_idleId, _crossFadeTime);
-            _movementValue = Vector2.zero;
-            //_aimValue = 1f;
         }
 
         private void Update()
         {
             _animator.SetFloat(_horizontalId, _movementValue.x, _dampTime, Time.deltaTime);
             _animator.SetFloat(_verticalId, _movementValue.y, _dampTime, Time.deltaTime);
-            
-            //_animator.SetLayerWeight(1, _aimValue);
-            //_animator.SetFloat(_aimId, _aimValue);
         }
     }
 }

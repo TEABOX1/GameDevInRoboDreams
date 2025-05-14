@@ -34,7 +34,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: FireballMagicAttack
-  m_Speed: 1
+  m_Speed: 2
   m_CycleOffset: 0
   m_Transitions: []
   m_StateMachineBehaviours: []
@@ -46,7 +46,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 6571473395271613878, guid: afb2e0e8e5b867f49ad94f4e813c3570, type: 3}
+  m_Motion: {fileID: 7400020, guid: 013ee0a8b56bacd44b928eab033163af, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -60,7 +60,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: SummonMagicAttack
-  m_Speed: 1
+  m_Speed: 2
   m_CycleOffset: 0
   m_Transitions: []
   m_StateMachineBehaviours: []
