@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &401492479387646912
 Transform:
   m_ObjectHideFlags: 0
@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnPoint: {fileID: 401492479387646912}
-  _spawnRadius: 18
+  _spawnRadius: 112.9
   _offset: {x: 0, y: 0, z: 0}
   _spawnCount: 3
   _boss: {fileID: 6413521070598903940, guid: ee451132985ea804b856714e48a3f03a, type: 3}
@@ -71,7 +71,7 @@ PrefabInstance:
       objectReference: {fileID: 4992481950980946878, guid: dd4240d66e471f34a80786b606de4736, type: 3}
     - target: {fileID: 4337583595455725063, guid: ba293bf722b6af84889f9875e5a65ff8, type: 3}
       propertyPath: _spawnRadius
-      value: 18
+      value: 112.9
       objectReference: {fileID: 0}
     - target: {fileID: 4337583595455725063, guid: ba293bf722b6af84889f9875e5a65ff8, type: 3}
       propertyPath: _enemyController
@@ -135,6 +135,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 401492479387646912}
     m_Modifications:
+    - target: {fileID: 2249038591971543021, guid: 622976d1f56fc3f45888c7af4f9270f1, type: 3}
+      propertyPath: m_Radius
+      value: 112.9
+      objectReference: {fileID: 0}
     - target: {fileID: 2632876992173751906, guid: 622976d1f56fc3f45888c7af4f9270f1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -207,7 +211,7 @@ PrefabInstance:
       objectReference: {fileID: 6413521070598903940, guid: ee451132985ea804b856714e48a3f03a, type: 3}
     - target: {fileID: 3031986835512848165, guid: 77d895a2c257e0f4bb229d31305bed2a, type: 3}
       propertyPath: _spawnRadius
-      value: 18
+      value: 112.9
       objectReference: {fileID: 0}
     - target: {fileID: 5265816996927428200, guid: 77d895a2c257e0f4bb229d31305bed2a, type: 3}
       propertyPath: m_LocalPosition.x

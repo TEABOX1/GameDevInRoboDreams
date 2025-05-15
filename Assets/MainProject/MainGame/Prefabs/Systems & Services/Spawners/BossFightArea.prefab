@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnPoint: {fileID: 5265816996927428200}
-  _spawnRadius: 20
+  _spawnRadius: 112.9
   _offset: {x: 0, y: 0, z: 0}
   _spawnCount: 1
-  _boss: {fileID: 3890585197881672342, guid: 402f691624247ea409e5c05ecc7217d7, type: 3}
+  _boss: {fileID: 6413521070598903940, guid: ee451132985ea804b856714e48a3f03a, type: 3}
