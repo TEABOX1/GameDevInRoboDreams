@@ -11,6 +11,7 @@ namespace MainGame
         NavMeshAgent NavMeshAgent { get; }
         CharacterController CharacterController { get; }
         Transform CharacterTransform { get; }
+        GameObject RootObject { get; }
         IHealth Health { get; }
         IPlayerRadar PlayerRadar { get; }
         INavPointProvider NavPointProvider { get; }

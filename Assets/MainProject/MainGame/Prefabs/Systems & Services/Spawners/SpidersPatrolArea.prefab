@@ -48,4 +48,4 @@ MonoBehaviour:
   _spawnRadius: 20
   _offset: {x: 0, y: 0, z: 0}
   _spawnCount: 3
-  _enemyController: {fileID: 2308772289528369156, guid: e553ec1c3a186494bb188bda2c26f7fd, type: 3}
+  _spider: {fileID: 2308772289528369156, guid: 4a6006aba5b72454e900bce28756515a, type: 3}

@@ -1,91 +1,76 @@
 using Boot;
 using GlobalSource;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Video;
 
 namespace Cutscene
 {
     public class CutSceneController : MonoBehaviour
     {
         [SerializeField] private Button _nextButton;
-        [SerializeField] private List<CanvasGroup> _cutsceneCanvases;
+        [SerializeField] private VideoPlayer _videoPlayer;
+        [SerializeField] private CanvasGroup _fadeOverlay;
         [SerializeField] private float _fadeDuration = 1f;
 
-        private int _currentIndex = 0;
-        private bool _isFading = false;
+        private bool _isSceneLoading = false;
 
         private void Awake()
         {
-            _nextButton.onClick.AddListener(NextButtonHandler);
+            _nextButton.onClick.AddListener(SkipVideoHandler);
 
-            foreach (var canvasGroup in _cutsceneCanvases)
+            if (_fadeOverlay != null)
             {
-                canvasGroup.alpha = 0f;
-                canvasGroup.interactable = false;
-                canvasGroup.blocksRaycasts = false;
+                _fadeOverlay.alpha = 0f;
+                _fadeOverlay.blocksRaycasts = false;
             }
 
-            StartCoroutine(FadeCanvas(_cutsceneCanvases[0], true));
+            if (_videoPlayer != null)
+            {
+                _videoPlayer.loopPointReached += OnVideoEnd;
+                _videoPlayer.Play();
+            }
         }
 
-        private void NextButtonHandler()
+        private void SkipVideoHandler()
         {
-            if (_isFading || _currentIndex >= _cutsceneCanvases.Count)
+            if (_isSceneLoading)
                 return;
 
-            StartCoroutine(SwitchToNextCanvas());
+            StartCoroutine(FadeAndLoadNextScene());
         }
 
-        private IEnumerator SwitchToNextCanvas()
+        private void OnVideoEnd(VideoPlayer vp)
         {
-            _isFading = true;
+            if (_isSceneLoading)
+                return;
 
-            yield return FadeCanvas(_cutsceneCanvases[_currentIndex], false);
-
-            _currentIndex++;
-
-            if (_currentIndex < _cutsceneCanvases.Count)
-            {
-                yield return FadeCanvas(_cutsceneCanvases[_currentIndex], true);
-            }
-            else
-            {
-                ServiceLocator.Instance.GetService<ISceneManager>().onSceneLoad += SceneLoadHandler;
-                ServiceLocator.Instance.GetService<IGameStateProvider>().SetGameState(GameState.Gameplay);
-                _nextButton.interactable = false;
-            }
-
-            _isFading = false;
+            StartCoroutine(FadeAndLoadNextScene());
         }
 
-        private IEnumerator FadeCanvas(CanvasGroup canvasGroup, bool fadeIn)
+        private IEnumerator FadeAndLoadNextScene()
         {
-            float start = fadeIn ? 0f : 1f;
-            float end = fadeIn ? 1f : 0f;
-            float elapsed = 0f;
+            _isSceneLoading = true;
+            _nextButton.interactable = false;
 
-            if (fadeIn)
+            if (_fadeOverlay != null)
             {
-                canvasGroup.interactable = true;
-                canvasGroup.blocksRaycasts = true;
+                _fadeOverlay.blocksRaycasts = true;
+                float elapsed = 0f;
+
+                while (elapsed < _fadeDuration)
+                {
+                    _fadeOverlay.alpha = Mathf.Lerp(0f, 1f, elapsed / _fadeDuration);
+                    elapsed += Time.deltaTime;
+                    yield return null;
+                }
+
+                _fadeOverlay.alpha = 1f;
             }
 
-            while (elapsed < _fadeDuration)
-            {
-                canvasGroup.alpha = Mathf.Lerp(start, end, elapsed / _fadeDuration);
-                elapsed += Time.deltaTime;
-                yield return null;
-            }
-
-            canvasGroup.alpha = end;
-
-            if (!fadeIn)
-            {
-                canvasGroup.interactable = false;
-                canvasGroup.blocksRaycasts = false;
-            }
+            ServiceLocator.Instance.GetService<ISceneManager>().onSceneLoad += SceneLoadHandler;
+            ServiceLocator.Instance.GetService<IGameStateProvider>().SetGameState(GameState.Gameplay);
         }
 
         private void SceneLoadHandler(AsyncOperation asyncOperation)

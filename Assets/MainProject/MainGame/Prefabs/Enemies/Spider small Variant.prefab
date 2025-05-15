@@ -84,10 +84,6 @@ PrefabInstance:
       propertyPath: m_StepOffset
       value: 0.2
       objectReference: {fileID: 0}
-    - target: {fileID: 6480844135793765693, guid: 7828297c5cdb88748b5273c5312bcdc1, type: 3}
-      propertyPath: m_Radius
-      value: 1.5
-      objectReference: {fileID: 0}
     - target: {fileID: 7779473807570983888, guid: 7828297c5cdb88748b5273c5312bcdc1, type: 3}
       propertyPath: m_Layer
       value: 6

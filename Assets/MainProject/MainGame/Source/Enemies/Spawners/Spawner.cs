@@ -10,9 +10,8 @@ namespace MainGame
     // Запасний скрипт на випадок якщо бос і павуки будуть в одній локації
     public class Spawner : MonoBehaviour, INavPointProvider
     {
-        public event Action<int> OnEnemyDeath;
-        public event Action OnQuestCompleted;
-        public event Action OnBossDeath;
+        //public event Action<int> OnEnemyDeath;
+        public event Action OnBossSpawn;
 
         [SerializeField] private Transform _spawnPoint;
         [SerializeField] private float _spawnRadius;
@@ -21,8 +20,8 @@ namespace MainGame
         [SerializeField] private int _spawnCount = 3;
 
         [SerializeField] private NecroEnemyController _boss;
-        //[SerializeField] private SpidersPool _enemyPool;
         [SerializeField] private SpiderEnemyController _enemy;
+        //[SerializeField] private SpidersPool _enemyPool;
 
         private List<EnemyController> _enemies = new();
 
@@ -31,31 +30,42 @@ namespace MainGame
         private Vector3 _point;
         private NavMeshHit _hit;
 
-        private IHealthService _healthService;
-
-        public int EnemyCount => _enemies.Count;
+        private QuestEvents _questEvents;
+        private DialogueEvents _dialogEvents;
+        private IPlayerService _playerService;
+        protected IHealthService _healthService;
 
         private void Awake()
         {
             enabled = false;
-            //підписка на подію старту квеста на вбивство павуків
-            // ... += QuestStartHandler();
 
+            _questEvents = ServiceLocator.Instance.GetService<QuestEvents>();
+            _dialogEvents = ServiceLocator.Instance.GetService<DialogueEvents>();
+            _playerService = ServiceLocator.Instance.GetService<IPlayerService>();
+
+            _questEvents.OnStartQuest += (questId) =>
+            {
+                if (questId == "KillSpidersQuest")
+                {
+                    QuestStartHandler();
+                }
+            };
+
+            _questEvents.OnStartQuest += (questId) =>
+            {
+                if (questId == "QuestInfo")
+                {
+                    SpawnBoss();
+                }
+            };
+            // або якщо спочатку треба заспавнити боса і потім викликати діалог - підписатися на подію OnBossSpawn
+
+            _dialogEvents.OnExitDialogue += ExitDialogueHandler;
         }
 
         private void OnEnable()
         {
-            _healthService = ServiceLocator.Instance.GetService<IHealthService>();
             SpawnEnemies(_spawnCount);
-        }
-
-        private void Update()
-        {
-            if (EnemyCount == 0)
-            {
-                OnQuestCompleted?.Invoke();
-                SpawnBoss();
-            }
         }
 
         private void SpawnEnemies(int count)
@@ -96,11 +106,11 @@ namespace MainGame
         private void SpawnBoss()
         {
             Vector3 spawnPoint = GetExactPoint(_spawnPoint.position);
-            NecroEnemyController boss = Instantiate(_boss, spawnPoint, _spawnPoint.rotation);
+            var boss = Instantiate(_boss, spawnPoint, _spawnPoint.rotation);
             boss.Initialize(this);
 
             _healthService.AddCharacter(boss.Health);
-            boss.Health.OnDeath += () => BossDeathHandler(); //можливо перенести цю подію в EnemyController
+            boss.Health.OnDeath += () => BossDeathHandler();
         }
 
         public Vector3 GetPoint()
@@ -144,16 +154,20 @@ namespace MainGame
 
         private void EnemyDeathHandler(SpiderEnemyController enemy)
         {
-            _healthService.RemoveCharacter(enemy.Health);
-            //_enemyPool.ReturnEnemy(enemy);
             _enemies.Remove(enemy);
-            OnEnemyDeath?.Invoke(EnemyCount);
+            //_enemyPool.ReturnEnemy(enemy);
+            //OnEnemyDeath?.Invoke(EnemyCount);
         }
 
         private void BossDeathHandler()
         {
-            OnBossDeath?.Invoke();
             enabled = false;
+        }
+
+        private void ExitDialogueHandler()
+        {
+            _playerService.Player.TargetPivot.gameObject.SetActive(true);
+            _enemies[0].enabled = true; // треба вимкнути у префабі
         }
     }
 }

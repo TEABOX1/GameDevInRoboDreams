@@ -847,8 +847,28 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2047431873750690676, guid: 4a6006aba5b72454e900bce28756515a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1207459445}
   m_SourcePrefab: {fileID: 100100000, guid: 4a6006aba5b72454e900bce28756515a, type: 3}
+--- !u!1 &1207459439 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2047431873750690676, guid: 4a6006aba5b72454e900bce28756515a, type: 3}
+  m_PrefabInstance: {fileID: 964622270}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1207459445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1207459439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7ad3ba8df234b6e801caecbdabcd1e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1383444272
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1499,8 +1519,28 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5897088529927935569, guid: 3f49dff1fd326c4498711105f3ae0739, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1679444240}
   m_SourcePrefab: {fileID: 100100000, guid: 3f49dff1fd326c4498711105f3ae0739, type: 3}
+--- !u!1 &1679444239 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5897088529927935569, guid: 3f49dff1fd326c4498711105f3ae0739, type: 3}
+  m_PrefabInstance: {fileID: 1679444238}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1679444240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1679444239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7ad3ba8df234b6e801caecbdabcd1e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1961933052
 GameObject:
   m_ObjectHideFlags: 0

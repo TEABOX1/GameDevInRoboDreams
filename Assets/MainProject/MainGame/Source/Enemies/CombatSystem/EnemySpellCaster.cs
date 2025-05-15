@@ -10,7 +10,7 @@ namespace MainGame
         [SerializeField] private EnemySpellDamageDealer _spellDamageDealer;
         [SerializeField] private EnemySpellData _spellData;
         [SerializeField] private Transform _castPoint;
-        [SerializeField] private NecroSpellCastAnimation _castAnimation;
+        //[SerializeField] private NecroSpellCastAnimation _castAnimation;
 
         Vector3 _attackPoint;
 
@@ -19,7 +19,7 @@ namespace MainGame
         private void ForceState()
         {
             Vector3 buf = new Vector3(0,0,0);
-            CastSpell(buf);
+            CastSpell();
         }
         //end of animation
 
@@ -27,17 +27,17 @@ namespace MainGame
 
         public void Awake()
         {
-            _castAnimation.OnFireballAnimationFinished += ProcceedCast;
+            //_castAnimation.OnFireballAnimationFinished += ProcceedCast;
         }
 
-        public void CastSpell(Vector3 targetTransform)
+        public void CastSpell()
         {
-            _attackPoint = targetTransform;
             OnFireballCast?.Invoke(); //added for animation
         }
 
-        protected void ProcceedCast()
+        public void ProcceedCast(Vector3 targetTransform)
         {
+            _attackPoint = targetTransform;
             Debug.Log("Necro Cast Spell");
             Vector3 direction = (_attackPoint - _castPoint.position).normalized;
             EnemySpellBase spell = Instantiate(_spellData.SpellPrefab, _castPoint.position, _castPoint.rotation);

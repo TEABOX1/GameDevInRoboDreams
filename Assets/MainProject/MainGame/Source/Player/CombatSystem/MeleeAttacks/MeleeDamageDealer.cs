@@ -31,8 +31,8 @@ namespace MainGame
             _weaponTrigger.WeaponCollider.enabled = false;
 
             _animationEventsController = ServiceLocator.Instance.GetService<AnimationEventsController>();
-            _animationEventsController.OnStartDealDamage += StartDealDamageHandler;
-            _animationEventsController.OnStopDealDamage += StopDealDamageHandler;
+            //_animationEventsController.OnStartDealDamage += StartDealDamageHandler;
+            //_animationEventsController.OnStopDealDamage += StopDealDamageHandler;
         }
 
         // private void Update()

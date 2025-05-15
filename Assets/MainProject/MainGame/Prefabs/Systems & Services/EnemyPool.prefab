@@ -46,5 +46,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemyPrefab: {fileID: 2308772289528369156, guid: e553ec1c3a186494bb188bda2c26f7fd, type: 3}
   _initialPoolSize: 3
-  _maxPoolSize: 12
-  _autoExpand: 1
+  _maxPoolSize: 3
+  _autoExpand: 0
