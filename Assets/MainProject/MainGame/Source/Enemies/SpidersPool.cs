@@ -8,8 +8,8 @@ namespace MainGame
     {
         [SerializeField] private SpiderEnemyController _enemyPrefab;
         [SerializeField] private int _initialPoolSize = 3;
-        [SerializeField] private int _maxPoolSize = 12;
-        [SerializeField] private bool _autoExpand = true; //можна встановити обмеження на кількість павуків
+        [SerializeField] private int _maxPoolSize = 3;
+        [SerializeField] private bool _autoExpand = false; //можна встановити обмеження на кількість павуків
 
         private List<SpiderEnemyController> _pool = new List<SpiderEnemyController>();
 

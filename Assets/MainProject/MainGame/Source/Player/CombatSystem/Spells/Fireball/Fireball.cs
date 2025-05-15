@@ -31,7 +31,7 @@ namespace MainGame.Fireball
         //     transform.position += _direction * (_speed * Time.deltaTime);
         // }
 
-        private void OnCollisionEnter(Collision collision)
+        private void OnTriggerEnter(Collider collider)
         {
             _damageDealer.DealSpellDamage(transform.position);
             

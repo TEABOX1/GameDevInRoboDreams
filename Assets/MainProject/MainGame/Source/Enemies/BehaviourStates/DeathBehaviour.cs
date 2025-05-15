@@ -1,11 +1,11 @@
 using GlobalSource;
-using UnityEditor;
 using UnityEngine;
 
 namespace MainGame
 {
     public class DeathBehaviour : BehaviourStateBase
     {
+        private AnimationEventsController _animationEventsController;
         public DeathBehaviour(StateMachine stateMachine, byte stateId, IEnemyController enemyController) : base(stateMachine, stateId, enemyController)
         {
         }
@@ -14,7 +14,13 @@ namespace MainGame
         {
             base.Enter();
             Debug.Log("Enemy dead");
-            // Object.Destroy(enemyController.RootObject);
+
+            //_animationEventsController.OnDeathFinished += DeathHandler();
+        }
+
+        private void DeathHandler()
+        {
+            Object.Destroy(enemyController.RootObject);
         }
 
         public override void Dispose()
