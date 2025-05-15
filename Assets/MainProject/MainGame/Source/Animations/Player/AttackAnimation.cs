@@ -11,6 +11,7 @@ namespace MainGame
     public class AttackAnimation : MonoBehaviour
     {
         public event Action OnAttackAnimationEnd;
+        public event Action OnAttackAnimationStart;
 
         [SerializeField] private PlayerController _plaeyrController;
         [SerializeField] private MeleeAttack _attack;
@@ -84,6 +85,7 @@ namespace MainGame
         private IEnumerator LockRoutine()
         {
             _trailScript.enabled = true;
+            OnAttackAnimationStart?.Invoke();
             _inputController.DefaulMapLock();
             if (_plaeyrController.PlayerControllerState != PlayerControllerState.Idle)
             {

@@ -15,6 +15,7 @@ namespace MainGame
         IHealth Health { get; }
         IPlayerRadar PlayerRadar { get; }
         INavPointProvider NavPointProvider { get; }
+        AnimationEventsController AnimationEventsController { get; }
 
         void ComputeBehaviour();
         void RestorePatrolStamina();

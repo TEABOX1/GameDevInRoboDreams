@@ -98,4 +98,4 @@ MonoBehaviour:
       triggerComplete: 0
     image: {fileID: 21300000, guid: 44036bdd3dc83864ca75d54ecd843074, type: 3}
   _alternativeDialogue: {fileID: 11400000, guid: 00e3e990134b3cc46863b17059ea5601, type: 2}
-  WasPlayed: 0
+  WasPlayed: 1

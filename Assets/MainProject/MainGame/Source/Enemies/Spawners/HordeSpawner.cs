@@ -82,7 +82,7 @@ namespace MainGame
             _point.x = randomInCircle.x + center.x;
             _point.y = center.y;
             _point.z = randomInCircle.y + center.z;
-            NavMesh.SamplePosition(_point, out _hit, 1.0f, NavMesh.AllAreas);
+            NavMesh.SamplePosition(_point, out _hit, 3.0f, NavMesh.AllAreas);
         }
 
         protected void OnDrawGizmosSelected()
@@ -99,6 +99,7 @@ namespace MainGame
 
         protected virtual void QuestStartHandler()
         {
+            Debug.Log("Spawn enbaled");
             enabled = true;
         }
     }
