@@ -19,12 +19,31 @@ namespace MainGame
         [SerializeField] private AnimationCurve _rollCurve;
         
         private StateMachine _stateMachine;
+        private ISaveService _saveService;
+        
+        private Transform _playerTransform;
 
         public StateMachine StateMachine => _stateMachine;
         public CharacterController CharacterController => _characterController;
         public float Speed => _speed;
         // public string CurrentState => _stateMachine == null ? "[NULL]" : _stateMachine.CurrentState.GetType().Name;
         public PlayerControllerState PlayerControllerState => (PlayerControllerState)_stateMachine.CurrentState.StateId;
+
+        private void Awake()
+        {
+            _saveService = ServiceLocator.Instance.GetService<ISaveService>();
+            _playerTransform = transform;
+        }
+
+        private void OnEnable()
+        {
+            LoadPlayerInfo();
+        }
+
+        private void OnDisable()
+        {
+            SavePlayerInfo();
+        }
         
         private void Start()
         {
@@ -62,7 +81,25 @@ namespace MainGame
 
         private void OnDestroy()
         {
+            SavePlayerInfo();
+            
+            _saveService.SaveAll();
+            
             _stateMachine?.Dispose();
+        }
+
+        private void SavePlayerInfo()
+        {
+            _saveService.SaveData.playerInfoData.PlayerPosition = _playerTransform.localPosition;
+            // _saveService.SaveData.playerInfoData.PlayerRotationY = _playerTransform.eulerAngles.y;
+            _saveService.SaveData.playerInfoData.HealthValue = _health.HealthValue;
+        }
+
+        private void LoadPlayerInfo()
+        {
+            _health.SetHealth(_saveService.SaveData.playerInfoData.HealthValue);
+            _playerTransform.position = _saveService.SaveData.playerInfoData.PlayerPosition;
+            // _playerTransform.rotation = Quaternion.Euler(0f, _saveService.SaveData.playerInfoData.PlayerRotationY, 0f);
         }
         
         private void StateChangeHandler(byte stateId)

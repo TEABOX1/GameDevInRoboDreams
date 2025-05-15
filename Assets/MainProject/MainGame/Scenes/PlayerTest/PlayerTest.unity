@@ -7400,7 +7400,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spellDamageDealer: {fileID: 3270353022654157709}
-  _spellData: {fileID: 11400000, guid: 9f35f6398c779f84680f5354df6afbf9, type: 2}
+  _spellData: {fileID: 0}
   _spawnPoint: {fileID: 4701188224246929756}
   _layerMask:
     serializedVersion: 2
@@ -8429,6 +8429,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2429790783730780864, guid: ce3df8641da14de44bb4b8d750594e89, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2429790783730780864, guid: ce3df8641da14de44bb4b8d750594e89, type: 3}
       propertyPath: _cameraYawAnchor
       value: 

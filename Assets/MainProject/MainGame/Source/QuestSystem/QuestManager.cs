@@ -49,6 +49,14 @@ namespace MainGame
                     quest.InstantiateCurrentQuestStep(transform);
                 }
                 _questEvents.QuestStateChange(quest);
+
+                
+                
+                //TODO: Change to saving data instead of ClaimRewards every time
+                if (quest.QuestState == QuestState.Finished)
+                {
+                    ClaimRewards(quest);
+                }
             }
         }
 
@@ -117,6 +125,7 @@ namespace MainGame
             Quest quest = GetQuestById(id);
             quest.QuestState = state;
             _questEvents.QuestStateChange(quest);
+            SaveQuests();
         }
 
         private void ClaimRewards(Quest quest)
@@ -166,6 +175,21 @@ namespace MainGame
         private void OnDestroy()
         {
             SaveQuests();
+
+            Debug.Log("Saved Quests: ");
+            foreach (QuestData questData in _saveService.SaveData.playerInfoData.questData)
+            {
+                Debug.Log(questData.QuestId);
+                Debug.Log(questData.QuestStepIndex);
+                Debug.Log(questData.State);
+                foreach (var questStepState in questData.QuestStepStates)
+                {
+                    Debug.Log(questStepState);
+                }
+                Debug.Log("\n");
+            }
+
+            _saveService.SaveAll();
         }
         
         private void SaveQuests()
