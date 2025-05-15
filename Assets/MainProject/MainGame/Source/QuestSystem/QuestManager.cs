@@ -157,7 +157,7 @@ namespace MainGame
                 QuestInfo info = allQuests[i];
                 if(idToQuestMap.ContainsKey(info.QuestId))
                     Debug.Log($"Quest {info.QuestId} already exists");
-                // idToQuestMap.Add(info.QuestId, new Quest(info));
+                //idToQuestMap.Add(info.QuestId, new Quest(info));
                 idToQuestMap.Add(info.QuestId, LoadQuests(info));
             }
 

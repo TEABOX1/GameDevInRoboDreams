@@ -17,6 +17,7 @@ namespace MainGame
             _questEvent.OnAdvanceQuest += AdvanceQuest;
             _questEvent.OnQuestStateChange += QuestStateChangeHandler;
             _questEvent.OnFinishQuest += FinishQuestHandler;
+            _questEvent.OnQuestStepStateChange += QuestStepStateChange;
 
             _questCanvas.SetActive(false);
         }
@@ -48,10 +49,24 @@ namespace MainGame
 
         private void QuestStateChangeHandler(Quest quest)
         {
+            if (quest.QuestState != QuestState.InProgress || quest.QuestState != QuestState.CanFinish)
+                return;
             _questCanvas.SetActive(true);
             for (int i = 0; i < _questPoint.QuestDialogEntryInfo.Count; i++)
             {
                 if (_questPoint.QuestDialogEntryInfo[i].questInfo.QuestId == quest.QuestInfo.QuestId)
+                    _questTask.text = _questPoint.QuestDialogEntryInfo[i].questInfo.QuestName;
+            }
+        }
+
+        private void QuestStepStateChange(string questID, int stepIndex, QuestStepState questStepState)
+        {
+            //if (questStepState.QuestState != QuestState.InProgress || quest.QuestState != QuestState.CanFinish)
+            //    return;
+            _questCanvas.SetActive(true);
+            for (int i = 0; i < _questPoint.QuestDialogEntryInfo.Count; i++)
+            {
+                if (_questPoint.QuestDialogEntryInfo[i].questInfo.QuestId == questID)
                     _questTask.text = _questPoint.QuestDialogEntryInfo[i].questInfo.QuestName;
             }
         }

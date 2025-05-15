@@ -127,6 +127,7 @@ namespace MainGame
             _inputController.DefaultMapUnlock();
             _inputController.UIMapUnlock();
 
+            Debug.Log("fuck");
             _dialogueEvents.ExitDialogue();
             
             if(_shouldTriggerOnComplete)

@@ -25,38 +25,42 @@ namespace MainGame
             _dialogEvents = ServiceLocator.Instance.GetService<DialogueEvents>();
             _playerService = ServiceLocator.Instance.GetService<IPlayerService>();
 
-            _questEvents.OnStartQuest += (questId) =>
+            //_questEvents.OnStartQuest += (questId) =>
+            //{
+            //    if (questId == "QuestInfo")
+            //    {
+            //        QuestStartHandler();
+            //    }
+            //};
+
+            // àáî ÿêùî ñïî÷àòêó òðåáà çàñïàâíèòè áîñà ³ ïîò³ì âèêëèêàòè ä³àëîã:
+            Debug.Log("connect ro quest finish");
+            _questEvents.OnFinishQuest += (questId) =>
             {
-                if (questId == "QuestInfo")
+                if (questId == "KillSpidersQuest")
                 {
+                    Debug.Log("try to handle quest");
                     QuestStartHandler();
                 }
             };
 
-            // àáî ÿêùî ñïî÷àòêó òðåáà çàñïàâíèòè áîñà ³ ïîò³ì âèêëèêàòè ä³àëîã:
-            /*_questEvents.OnFinishQuest += (questId) =>
-            {
-                if (questId == "KillSpidersQuest")
-                {
-                    QuestStartHandler();
-                }
-            };*/
-
-            _dialogEvents.OnExitDialogue += ExitDialogueHandler;
+            //_dialogEvents.OnExitDialogue += ExitDialogueHandler;
         }
 
         public Vector3 GetExactPoint(Vector3 targetPosition)
         {
-            NavMesh.SamplePosition(targetPosition, out _hit, 1.0f, NavMesh.AllAreas);
+            Debug.Log("try to get points");
+            NavMesh.SamplePosition(targetPosition, out _hit, 10.0f, NavMesh.AllAreas);
             while (!_hit.hit)
             {
-                NavMesh.SamplePosition(targetPosition, out _hit, 1.0f, NavMesh.AllAreas);
+                NavMesh.SamplePosition(targetPosition, out _hit, 10.0f, NavMesh.AllAreas);
             }
             return _hit.position;
         }
 
         protected override void SpawnEnemy()
         {
+            Debug.Log("spawn boss");
             Vector3 spawnPoint = GetExactPoint(_spawnPoint.position);
             var boss = Instantiate(_boss, spawnPoint, _spawnPoint.rotation);
             boss.Initialize(this);
@@ -78,6 +82,8 @@ namespace MainGame
         private void ExitDialogueHandler()
         {
             _playerService.Player.TargetPivot.gameObject.SetActive(true);
+            if (_enemies.Count == 0)
+                return;
             _enemies[0].enabled = true; // òðåáà âèìêíóòè ó ïðåôàá³
         }
     }

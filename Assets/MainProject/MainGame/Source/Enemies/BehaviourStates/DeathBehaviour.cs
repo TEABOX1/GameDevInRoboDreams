@@ -8,6 +8,7 @@ namespace MainGame
         private AnimationEventsController _animationEventsController;
         public DeathBehaviour(StateMachine stateMachine, byte stateId, IEnemyController enemyController) : base(stateMachine, stateId, enemyController)
         {
+            _animationEventsController = enemyController.AnimationEventsController;
         }
 
         public override void Enter()
@@ -15,11 +16,12 @@ namespace MainGame
             base.Enter();
             Debug.Log("Enemy dead");
 
-            //_animationEventsController.OnDeathFinished += DeathHandler();
+            enemyController.AnimationEventsController.OnDeathFinished += DeathHandler;
         }
 
         private void DeathHandler()
         {
+            Debug.Log("finish death");
             Object.Destroy(enemyController.RootObject);
         }
 

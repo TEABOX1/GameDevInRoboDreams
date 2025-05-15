@@ -12,6 +12,7 @@ namespace MainGame
 
         public void DeathFinished()
         {
+            Debug.Log("end death animation");
             OnDeathFinished?.Invoke();
         }
     }

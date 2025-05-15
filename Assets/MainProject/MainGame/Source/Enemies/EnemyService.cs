@@ -45,7 +45,7 @@ namespace MainGame
             {
                 _enemies.Remove(enemy);
                 Debug.Log($"UnRegisterEnemy {enemy.Collider.gameObject.name}");
-                enemy.OnDeath -= HandleEnemyDied;
+                //enemy.OnDeath -= HandleEnemyDied;
             }
             
             var keysToRemove = new List<Collider>();
@@ -92,22 +92,24 @@ namespace MainGame
         {
             EnemyDied?.Invoke(enemy);
 
+            Debug.Log("fuck");
             if (!HasEnemiesOfType(EnemyTypes.Egg))
             {
                 OnAllSpiderEggsDefeated?.Invoke();
-                _questEvents.FinishQuest("DestroyEggsQuest");
+                Debug.Log("Egs Destroy");
+                //_questEvents.FinishQuest("DestroyEggsQuest");
             }
 
             if (!HasEnemiesOfType(EnemyTypes.Spider))
             {
                 OnAllSpidersDefeated?.Invoke();
-                _questEvents.FinishQuest("KillSpidersQuest");
+                //_questEvents.FinishQuest("KillSpidersQuest");
             }
 
             if (!HasEnemiesOfType(EnemyTypes.Boss))
             {
                 OnBossDefeated?.Invoke();
-                _questEvents.FinishQuest("QuestInfo");
+                //_questEvents.FinishQuest("QuestInfo");
             }
         }
     }

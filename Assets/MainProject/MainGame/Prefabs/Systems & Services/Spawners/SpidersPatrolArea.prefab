@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8082688269314069735}
   - component: {fileID: 4337583595455725063}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SpidersPatrolArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}

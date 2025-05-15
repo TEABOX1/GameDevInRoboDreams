@@ -16,8 +16,8 @@ namespace MainGame
 
         private void Start()
         {
-            //_health = ServiceLocator.Instance.GetService<IPlayerService>().Player.GetComponent<IHealth>();
-            //_health.OnDeath += DeathHandler;
+            _health = ServiceLocator.Instance.GetService<IPlayerService>().Player.GetComponent<IHealth>();
+            _health.OnDeath += DeathHandler;
         }
 
         private void DeathHandler()

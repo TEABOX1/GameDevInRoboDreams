@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3035215781635888603}
   - component: {fileID: 8620927658420512684}
   - component: {fileID: 5347055266381882687}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: FightingZone1 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -81,7 +81,7 @@ GameObject:
   - component: {fileID: 5270477061097551880}
   - component: {fileID: 406141543437732588}
   - component: {fileID: 1376844679487152803}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: CalmZone1 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -151,7 +151,7 @@ GameObject:
   - component: {fileID: 6746631142468953212}
   - component: {fileID: 7810010495293504490}
   - component: {fileID: 5456993090669100930}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: CalmZone1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -221,7 +221,7 @@ GameObject:
   - component: {fileID: 1873000489673517847}
   - component: {fileID: 8243434655856309788}
   - component: {fileID: 4540656346817373639}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: CalmZone1 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -289,7 +289,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4680954798470831362}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: AudiZones
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -327,7 +327,7 @@ GameObject:
   - component: {fileID: 6859246989566194548}
   - component: {fileID: 3164265944930755288}
   - component: {fileID: 9122226267387329985}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: FightingZone1
   m_TagString: Untagged
   m_Icon: {fileID: 0}

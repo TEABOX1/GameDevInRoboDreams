@@ -19,6 +19,8 @@ namespace MainGame
         [SerializeField] protected Health _health;
         [SerializeField] protected PlayerRadar _playerRadar;
 
+        [Header("Animation")]
+        [SerializeField] protected AnimationEventsController _animationEventsController;
         //added for animation test
         [SerializeField] protected EnemyBehaviour _state;
 
@@ -36,6 +38,8 @@ namespace MainGame
 
         protected EnemyBehaviour _currentBehaviour;
         protected float _patrolStamina;
+
+        public AnimationEventsController AnimationEventsController => _animationEventsController;
 
         public EnemyBehaviour EnemyControllerState => (EnemyBehaviour)_behaviourMachine.CurrentState.StateId; //added for animation
 
@@ -179,6 +183,7 @@ namespace MainGame
 
         protected virtual void HealthDeathHandler()
         {
+            Debug.Log("health ended");
             _behaviourTree = null;
             _behaviourMachine.ForceState((byte)EnemyBehaviour.Death);
             ServiceLocator.Instance.GetService<IHealthService>().RemoveCharacter(_health);

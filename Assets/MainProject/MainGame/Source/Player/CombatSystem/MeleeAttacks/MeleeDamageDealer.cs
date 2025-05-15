@@ -11,6 +11,7 @@ namespace MainGame
         [SerializeField] private MeleeAttack _meleeAttack;
 
         [SerializeField] private Weapon _weaponTrigger;
+        [SerializeField] private AttackAnimation _attackAnimation;
         
         public WeaponData WeaponData => _weaponData;
         
@@ -31,8 +32,8 @@ namespace MainGame
             _weaponTrigger.WeaponCollider.enabled = false;
 
             _animationEventsController = ServiceLocator.Instance.GetService<AnimationEventsController>();
-            //_animationEventsController.OnStartDealDamage += StartDealDamageHandler;
-            //_animationEventsController.OnStopDealDamage += StopDealDamageHandler;
+            _attackAnimation.OnAttackAnimationStart += StartDealDamageHandler;
+            _attackAnimation.OnAttackAnimationEnd += StopDealDamageHandler;
         }
 
         // private void Update()

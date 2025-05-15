@@ -707,6 +707,7 @@ GameObject:
   - component: {fileID: 7080534998357113790}
   - component: {fileID: 455231992118544581}
   - component: {fileID: 5066446031497110702}
+  - component: {fileID: 3821162167975684490}
   m_Layer: 6
   m_Name: Model
   m_TagString: Untagged
@@ -836,6 +837,18 @@ MonoBehaviour:
   _crossFadeTime: 0.125
   _dampTime: 0.125
   _lockDuration: 2
+--- !u!114 &3821162167975684490
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2751730744588612402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7ad3ba8df234b6e801caecbdabcd1e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2807990137830488246
 GameObject:
   m_ObjectHideFlags: 0
@@ -1677,6 +1690,7 @@ MonoBehaviour:
   _rootObject: {fileID: 6579346127119722510}
   _health: {fileID: 7512816652554352076}
   _playerRadar: {fileID: 6538323210641945528}
+  _animationEventsController: {fileID: 3821162167975684490}
   _state: 0
   _spiderSpawnSpell: {fileID: 6687506608772738144}
   _enemySpellCaster: {fileID: 7528238248791826906}
