@@ -86,7 +86,7 @@ namespace MainGame
 
             _agent.isStopped = false;
 
-            _agent.stoppingDistance = _attackController.AttackData.Distance; // change
+            _agent.stoppingDistance = _attackController.AttackData.Distance;
             _agent.SetDestination(enemyController.PlayerRadar.CurrentTarget.position);
 
             Vector3 velocity = _agent.desiredVelocity;
@@ -116,7 +116,6 @@ namespace MainGame
             if (_time < _attackController.AttackData.Interval)
                 return;
 
-            //to-do: викликати анімацію атаки
             _attackController.Attack();
 
             _distance = Vector3.Distance(enemyController.PlayerRadar.CurrentTarget.position, _characterTransform.position);

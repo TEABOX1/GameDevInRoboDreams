@@ -12,11 +12,14 @@ namespace MainGame
         [SerializeField] private float _switchToMeleeDistance;
         [SerializeField] private float _switchToRangedDistance;
 
+        [Header("Animation")]
+        [SerializeField] private NecroSpellCastAnimation _necroSpellCastAnimation;
 
         public SpiderSpawnSpell SpiderSpawnSpell => _spiderSpawnSpell;
         public EnemySpellCaster EnemySpellCaster => _enemySpellCaster;
         public float ToMeleeDistance => _switchToMeleeDistance;
         public float ToRangedDistance => _switchToRangedDistance;
+        public NecroSpellCastAnimation NecroSpellCastAnimation => _necroSpellCastAnimation;
 
         protected override void InitStateMachine()
         {
@@ -55,12 +58,6 @@ namespace MainGame
             _behaviourTree = new BehaviourTree(hasTarget);
 
             ComputeBehaviour();
-        }
-
-        protected override void HealthDeathHandler()
-        {
-            base.HealthDeathHandler();
-            //ServiceLocator.Instance.GetService<IHealthService>().RemoveCharacter(_health);
         }
 
         private void OnDrawGizmosSelected()

@@ -15,6 +15,7 @@ namespace MainGame
         [SerializeField] protected NavMeshAgent _navMeshAgent;
         [SerializeField] protected CharacterController _characterController;
         [SerializeField] protected Transform _characterTransform;
+        [SerializeField] protected GameObject _rootObject;
         [SerializeField] protected Health _health;
         [SerializeField] protected PlayerRadar _playerRadar;
 
@@ -26,7 +27,7 @@ namespace MainGame
         {
             _behaviourMachine.SetState((byte)_state);
         }
-        //End animation test
+        //end animation test
 
         protected INavPointProvider _navPointProvider;
 
@@ -49,10 +50,11 @@ namespace MainGame
         public NavMeshAgent NavMeshAgent => _navMeshAgent;
         public CharacterController CharacterController => _characterController;
         public Transform CharacterTransform => _characterTransform;
+        public GameObject RootObject => _rootObject;
         public IHealth Health => _health;
         public IPlayerRadar PlayerRadar => _playerRadar;
         public INavPointProvider NavPointProvider => _navPointProvider;
-        public StateMachine BehaviourMachine => _behaviourMachine;
+        //public StateMachine BehaviourMachine => _behaviourMachine;
 
         private void Awake()
         {
@@ -179,7 +181,7 @@ namespace MainGame
         {
             _behaviourTree = null;
             _behaviourMachine.ForceState((byte)EnemyBehaviour.Death);
-            //ServiceLocator.Instance.GetService<IHealthService>().RemoveCharacter(_health);
+            ServiceLocator.Instance.GetService<IHealthService>().RemoveCharacter(_health);
         }
     }
 }

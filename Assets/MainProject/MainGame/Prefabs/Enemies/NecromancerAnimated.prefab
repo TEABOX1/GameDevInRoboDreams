@@ -1853,7 +1853,6 @@ MonoBehaviour:
   _spellDamageDealer: {fileID: 4587308245639095802}
   _spellData: {fileID: 11400000, guid: 7bc5cd55a7220a242a6b130a39d8bd40, type: 2}
   _castPoint: {fileID: 704442127549160127}
-  _castAnimation: {fileID: 706217789265228444}
 --- !u!114 &4587308245639095802
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2246,6 +2245,7 @@ MonoBehaviour:
   _navMeshAgent: {fileID: 1634999511675378810}
   _characterController: {fileID: 3939733820279713715}
   _characterTransform: {fileID: 4209303868582343765}
+  _rootObject: {fileID: 8484161575490926756}
   _health: {fileID: 9141931415236407984}
   _playerRadar: {fileID: 1064297525599271456}
   _state: 0
@@ -2253,6 +2253,7 @@ MonoBehaviour:
   _enemySpellCaster: {fileID: 5307108508754322712}
   _switchToMeleeDistance: 2.2
   _switchToRangedDistance: 5
+  _necroSpellCastAnimation: {fileID: 706217789265228444}
 --- !u!114 &-5554149308267528791
 MonoBehaviour:
   m_ObjectHideFlags: 0

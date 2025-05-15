@@ -307,6 +307,7 @@ MonoBehaviour:
   _navMeshAgent: {fileID: 6480844135793765693}
   _characterController: {fileID: 6244283321716443552}
   _characterTransform: {fileID: 393881992596086971}
+  _rootObject: {fileID: 9140390336803777328}
   _health: {fileID: 1847116409828724491}
   _playerRadar: {fileID: 72097693034819557}
   _state: 0

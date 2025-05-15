@@ -34,7 +34,7 @@ namespace MainGame
                 enemies = _enemyService.GetEnemies();
                 foreach (var enemy in enemies)
                 {
-                    enemy.EnemyController.BehaviourMachine.ForceState((byte)EnemyBehaviour.Patrol);
+                    //enemy.EnemyController.BehaviourMachine.ForceState((byte)EnemyBehaviour.Patrol);
                 }
 
             }

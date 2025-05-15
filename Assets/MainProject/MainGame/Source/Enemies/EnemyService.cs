@@ -19,6 +19,14 @@ namespace MainGame
         private List<IEnemy> _enemies = new();
         private Dictionary<Collider, IEnemy> _colliderToEnemyMap = new();
 
+        private QuestEvents _questEvents;
+
+        protected override void Awake()
+        {
+            base.Awake();
+            _questEvents = ServiceLocator.Instance.GetService<QuestEvents>();
+        }
+
         public void RegisterEnemy(IEnemy enemy)
         {
             if (!_enemies.Contains(enemy))
@@ -85,13 +93,22 @@ namespace MainGame
             EnemyDied?.Invoke(enemy);
 
             if (!HasEnemiesOfType(EnemyTypes.Egg))
+            {
                 OnAllSpiderEggsDefeated?.Invoke();
+                _questEvents.FinishQuest("DestroyEggsQuest");
+            }
 
             if (!HasEnemiesOfType(EnemyTypes.Spider))
+            {
                 OnAllSpidersDefeated?.Invoke();
+                _questEvents.FinishQuest("KillSpidersQuest");
+            }
 
             if (!HasEnemiesOfType(EnemyTypes.Boss))
+            {
                 OnBossDefeated?.Invoke();
+                _questEvents.FinishQuest("QuestInfo");
+            }
         }
     }
 }

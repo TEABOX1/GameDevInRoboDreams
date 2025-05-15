@@ -29,8 +29,6 @@ namespace MainGame
         protected virtual void Awake()
         {
             enabled = false;
-            //підписка на подію старту квеста
-            // ... += QuestStartHandler();
         }
 
         protected virtual void OnEnable()

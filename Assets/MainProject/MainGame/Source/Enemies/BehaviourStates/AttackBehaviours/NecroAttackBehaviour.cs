@@ -56,6 +56,7 @@ namespace MainGame
         private readonly EnemyAttack _attackController;
         private readonly EnemySpellCaster _enemySpellCaster;
         private readonly SpiderSpawnSpell _spiderSpawnSpell;
+        private NecroSpellCastAnimation _necroSpellCastAnimation;
 
         private readonly Transform _characterTransform;
         private readonly Transform _targetTransform;
@@ -74,6 +75,7 @@ namespace MainGame
             _attackController = enemyController.EnemyAttack;
             _enemySpellCaster = enemyController.EnemySpellCaster;
             _spiderSpawnSpell = enemyController.SpiderSpawnSpell;
+            _necroSpellCastAnimation = enemyController.NecroSpellCastAnimation;
 
             _characterTransform = enemyController.CharacterTransform;
             _targetTransform = enemyController.PlayerRadar.CurrentTarget;
@@ -90,6 +92,7 @@ namespace MainGame
             _spawnTimer = 18f;
 
             _enemyService = ServiceLocator.Instance.GetService<EnemyService>();
+            _necroSpellCastAnimation.OnFireballAnimationFinished += ProcceedCast;
 
             _currentMode = AttackMode.Ranged;
             _currentState = AttackState.Attack;
@@ -170,7 +173,6 @@ namespace MainGame
                 if (_attackTimer < _attackController.AttackData.Interval)
                     return;
 
-                //to-do: викликати анімацію атаки
                 _attackController.Attack();
 
                 _distance = Vector3.Distance(enemyController.PlayerRadar.CurrentTarget.position, _characterTransform.position);
@@ -189,30 +191,33 @@ namespace MainGame
 
                 if (_spawnTimer >= _spiderSpawnSpell.SpawnSpellCooldown && _enemyService.GetEnemiesOfTypeCount(EnemyTypes.Spider) == 0 /*_spiderSpawnSpell.SpawnSpidersCount == 0*/)
                 {
-                    //to-do: викликати анімацію спавну павуків
                     _spiderSpawnSpell.SpawnSpiders();
                     _spawnTimer = 0f;
                 }
                 
                 if (_spellTimer >= _enemySpellCaster.EnemySpellData.CooldownTime)
                 {
-                    //to-do: викликати анімацію касту фаерболу
-                    //Vector3 point = enemyController.PlayerRadar.CurrentTarget.position + new Vector3(0f, 0.5f, 0f);
-                    _enemySpellCaster.CastSpell(enemyController.PlayerRadar.CurrentTarget.position);
+                    _enemySpellCaster.CastSpell();
                     _spellTimer = 0f;
                 }
             }
             
         }
 
-        /*public override void Exit()
+        private void ProcceedCast()
+        {
+            //Vector3 point = enemyController.PlayerRadar.CurrentTarget.position + new Vector3(0f, 0.5f, 0f);
+            _enemySpellCaster.ProcceedCast(enemyController.PlayerRadar.CurrentTarget.position);
+        }
+
+        public override void Exit()
         {
             base.Exit();
 
             _agent.isStopped = false;
             _agent.ResetPath();
             _agent.stoppingDistance = 0f;
-        }*/
+        }
 
         public override void Dispose()
         {
@@ -240,7 +245,6 @@ namespace MainGame
                     Vector3.up).normalized;
 
             _characterTransform.rotation = Quaternion.LookRotation(direction);
-            //можливо треба буде повертати також зброю (посох)
         }
 
         private void UpdateTimers(float deltaTime)
