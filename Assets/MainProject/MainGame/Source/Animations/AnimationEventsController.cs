@@ -8,23 +8,11 @@ namespace MainGame
     {
         public override Type Type { get; } = typeof(AnimationEventsController);
 
-        public event Action OnStartDealDamage;
-        public event Action OnStopDealDamage;
-        public event Action OnAttackAnimationEnd;
+        public event Action OnDeathFinished;
 
-        public void StartDealDamage()
+        public void DeathFinished()
         {
-            OnStartDealDamage?.Invoke();
-        }
-
-        public void StopDealDamage()
-        {
-            OnStopDealDamage?.Invoke();
-        }
-
-        public void AttackAnimationEnd()
-        {
-            OnAttackAnimationEnd?.Invoke();
+            OnDeathFinished?.Invoke();
         }
     }
 }

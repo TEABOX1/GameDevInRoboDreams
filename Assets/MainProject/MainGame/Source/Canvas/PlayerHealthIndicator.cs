@@ -17,7 +17,6 @@ namespace MainGame
         private void Start()
         {
             ForceHealth(_health.HealthValue);
-            Debug.Log("Health: " + _health.HealthValue);
             _health.OnHealthChanged += HealthChangedHandler;
         }
 

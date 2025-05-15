@@ -48,7 +48,12 @@ namespace MainGame
 
         private void QuestStateChangeHandler(Quest quest)
         {
-
+            _questCanvas.SetActive(true);
+            for (int i = 0; i < _questPoint.QuestDialogEntryInfo.Count; i++)
+            {
+                if (_questPoint.QuestDialogEntryInfo[i].questInfo.QuestId == quest.QuestInfo.QuestId)
+                    _questTask.text = _questPoint.QuestDialogEntryInfo[i].questInfo.QuestName;
+            }
         }
     }
 }

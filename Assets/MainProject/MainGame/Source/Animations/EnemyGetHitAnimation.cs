@@ -47,7 +47,7 @@ namespace MainGame
 
         private IEnumerator LockRoutine()
         {
-            _animator.CrossFadeInFixedTime(_getHitId, _crossFadeTime);
+            _animator.Play(_getHitId, 0);
             yield return _lockDelay;
             _animator.CrossFadeInFixedTime(_idleId, _crossFadeTime);
         }
