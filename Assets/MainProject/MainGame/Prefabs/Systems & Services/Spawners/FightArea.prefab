@@ -51,8 +51,8 @@ MonoBehaviour:
   _spawnRadius: 18
   _offset: {x: 0, y: 0, z: 0}
   _spawnCount: 3
-  _boss: {fileID: 3890585197881672342, guid: 3f49dff1fd326c4498711105f3ae0739, type: 3}
-  _enemy: {fileID: 2308772289528369156, guid: 4a6006aba5b72454e900bce28756515a, type: 3}
+  _boss: {fileID: 6413521070598903940, guid: ee451132985ea804b856714e48a3f03a, type: 3}
+  _enemy: {fileID: 4992481950980946878, guid: dd4240d66e471f34a80786b606de4736, type: 3}
 --- !u!1001 &3495557400575344422
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -65,6 +65,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpidersPatrolArea
       objectReference: {fileID: 0}
+    - target: {fileID: 4337583595455725063, guid: ba293bf722b6af84889f9875e5a65ff8, type: 3}
+      propertyPath: _spider
+      value: 
+      objectReference: {fileID: 4992481950980946878, guid: dd4240d66e471f34a80786b606de4736, type: 3}
     - target: {fileID: 4337583595455725063, guid: ba293bf722b6af84889f9875e5a65ff8, type: 3}
       propertyPath: _spawnRadius
       value: 18
@@ -200,7 +204,7 @@ PrefabInstance:
     - target: {fileID: 3031986835512848165, guid: 77d895a2c257e0f4bb229d31305bed2a, type: 3}
       propertyPath: _boss
       value: 
-      objectReference: {fileID: 3890585197881672342, guid: 3f49dff1fd326c4498711105f3ae0739, type: 3}
+      objectReference: {fileID: 6413521070598903940, guid: ee451132985ea804b856714e48a3f03a, type: 3}
     - target: {fileID: 3031986835512848165, guid: 77d895a2c257e0f4bb229d31305bed2a, type: 3}
       propertyPath: _spawnRadius
       value: 18
