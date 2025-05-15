@@ -52,6 +52,7 @@ namespace MainGame
         public IHealth Health => _health;
         public IPlayerRadar PlayerRadar => _playerRadar;
         public INavPointProvider NavPointProvider => _navPointProvider;
+        public StateMachine BehaviourMachine => _behaviourMachine;
 
         private void Awake()
         {

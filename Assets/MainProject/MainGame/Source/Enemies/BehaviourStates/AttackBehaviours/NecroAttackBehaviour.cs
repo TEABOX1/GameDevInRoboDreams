@@ -205,14 +205,14 @@ namespace MainGame
             
         }
 
-        public override void Exit()
+        /*public override void Exit()
         {
             base.Exit();
 
             _agent.isStopped = false;
             _agent.ResetPath();
             _agent.stoppingDistance = 0f;
-        }
+        }*/
 
         public override void Dispose()
         {

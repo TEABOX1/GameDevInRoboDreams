@@ -326,7 +326,7 @@ MonoBehaviour:
   _attackPoint: {fileID: 2578422246263208344}
   _layerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 9
 --- !u!114 &7025186525284963749
 MonoBehaviour:
   m_ObjectHideFlags: 0
