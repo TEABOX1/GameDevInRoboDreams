@@ -30,6 +30,9 @@ namespace MainGame
 
             Debug.Log("Enter Patrol State");
 
+            _agent.isStopped = false;
+            _agent.ResetPath();
+            _agent.stoppingDistance = 0.1f;
             enemyController.NavMeshAgent.speed = _patrolSpeed;
 
             if (enemyController.NavPointProvider == null)

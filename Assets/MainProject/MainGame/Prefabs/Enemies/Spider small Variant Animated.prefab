@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8638713575164878880}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: DEF-fang_1.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41,7 +41,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4100975903519363271}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: DEF-leg_b2.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73,7 +73,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6397489001427283179}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: DEF-leg_c3.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -104,7 +104,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1766106200653412764}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: DEF-leg_d2.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -136,7 +136,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5596979139521582324}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: DEF-head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -169,7 +169,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2888032966394411136}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: DEF-leg_a2.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -201,7 +201,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6754614698249246592}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: DEF-leg_d1.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -233,7 +233,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4877287041541696780}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: DEF-leg_b1.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -265,7 +265,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1096123149245770978}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: DEF-thorax
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -310,7 +310,7 @@ GameObject:
   - component: {fileID: 6378754351494526640}
   - component: {fileID: 5131242962643908415}
   - component: {fileID: 6432795714045114934}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: spider (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -427,7 +427,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 829281925403062062}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: DEF-leg_b2.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -459,7 +459,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3064399819209539788}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: DEF-leg_a1.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -491,7 +491,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6087562158713739254}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: DEF-leg_a1.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -523,7 +523,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8331422909713030029}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: DEF-fang_2.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -554,7 +554,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5062964367321377868}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: DEF-fang_1.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -586,7 +586,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5888272484124810121}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: DEF-leg_c1.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -618,7 +618,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 450679642760385887}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: DEF-leg_c1.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -650,7 +650,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2654541924034322152}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: DEF-root
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -682,7 +682,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2915117392044486061}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: DEF-leg_b3.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -713,7 +713,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4164953903727115902}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: DEF-leg_d3.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -744,7 +744,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6015759977309894438}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: DEF-leg_c2.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -776,7 +776,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 812976036327620156}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: rig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -808,7 +808,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6597123490758566701}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: DEF-fang_2.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -839,7 +839,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8587598088528266172}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: DEF-leg_b3.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -870,7 +870,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 384197803093976123}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: DEF-leg_d3.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -902,7 +902,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6226016801703867731}
   - component: {fileID: 6069064885609073499}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: spider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1019,7 +1019,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6231974367770316293}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: DEF-leg_c3.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1050,7 +1050,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1806356422780065765}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: DEF-leg_b1.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1082,7 +1082,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7814670563241124518}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: DEF-leg_a2.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1114,7 +1114,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6131101155326171781}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: DEF-leg_d1.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1146,7 +1146,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6213978160450394662}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: DEF-leg_d2.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1178,7 +1178,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6943920329929649228}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: DEF-leg_a3.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1209,7 +1209,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1729621532909053040}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: DEF-abdomen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1240,7 +1240,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4577300134757213756}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: DEF-leg_a3.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1271,7 +1271,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 827665973988597689}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: DEF-waist
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1303,7 +1303,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4926149802869053340}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: DEF-leg_c2.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1340,15 +1340,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 393881992596086971, guid: 7828297c5cdb88748b5273c5312bcdc1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.86
+      value: -4.405133
       objectReference: {fileID: 0}
     - target: {fileID: 393881992596086971, guid: 7828297c5cdb88748b5273c5312bcdc1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.0000019073486
       objectReference: {fileID: 0}
     - target: {fileID: 393881992596086971, guid: 7828297c5cdb88748b5273c5312bcdc1, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.45
+      value: 4.2414837
       objectReference: {fileID: 0}
     - target: {fileID: 393881992596086971, guid: 7828297c5cdb88748b5273c5312bcdc1, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1382,6 +1382,10 @@ PrefabInstance:
       propertyPath: _characterCollider
       value: 
       objectReference: {fileID: 5863254604411708475}
+    - target: {fileID: 4121251371096881744, guid: 7828297c5cdb88748b5273c5312bcdc1, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 6244283321716443552, guid: 7828297c5cdb88748b5273c5312bcdc1, type: 3}
       propertyPath: m_Height
       value: 0.3
@@ -1399,12 +1403,24 @@ PrefabInstance:
       value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 7779473807570983888, guid: 7828297c5cdb88748b5273c5312bcdc1, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7779473807570983888, guid: 7828297c5cdb88748b5273c5312bcdc1, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8758577494559916552, guid: 7828297c5cdb88748b5273c5312bcdc1, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 9140390336803777328, guid: 7828297c5cdb88748b5273c5312bcdc1, type: 3}
       propertyPath: m_Name
       value: Spider small Variant Animated
+      objectReference: {fileID: 0}
+    - target: {fileID: 9140390336803777328, guid: 7828297c5cdb88748b5273c5312bcdc1, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 9140390336803777328, guid: 7828297c5cdb88748b5273c5312bcdc1, type: 3}
       propertyPath: m_IsActive
@@ -1420,6 +1436,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 9140390336803777328, guid: 7828297c5cdb88748b5273c5312bcdc1, type: 3}
       insertIndex: 2
       addedObject: {fileID: 5863254604411708475}
+    - targetCorrespondingSourceObject: {fileID: 9140390336803777328, guid: 7828297c5cdb88748b5273c5312bcdc1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5573341656269763108}
   m_SourcePrefab: {fileID: 100100000, guid: 7828297c5cdb88748b5273c5312bcdc1, type: 3}
 --- !u!1 &1835060899596176557 stripped
 GameObject:
@@ -1445,8 +1464,23 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.5, y: 0.4, z: 1.5}
-  m_Center: {x: 0, y: 0.25, z: 0}
+  m_Size: {x: 1.5, y: 0.8, z: 1.5}
+  m_Center: {x: 0, y: 0.4, z: 0}
+--- !u!114 &5573341656269763108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1835060899596176557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79c3648f1dc4ffc4092f80135fd7159d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _type: 1
+  _health: {fileID: 9082639125367711894}
+  _enemyController: {fileID: 2308772289528369156}
 --- !u!114 &2308772289528369156 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5162297892322621337, guid: 7828297c5cdb88748b5273c5312bcdc1, type: 3}

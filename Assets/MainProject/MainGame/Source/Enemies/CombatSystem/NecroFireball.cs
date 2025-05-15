@@ -20,7 +20,7 @@ namespace MainGame
             Destroy(gameObject, _lifeTime);
         }
 
-        private void OnCollisionEnter(Collision collision)
+        private void OnTriggerEnter(Collider collider)
         {
             _damageDealer.DealSpellDamage(transform.position);
 
