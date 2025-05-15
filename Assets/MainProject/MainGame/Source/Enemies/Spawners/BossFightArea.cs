@@ -10,7 +10,6 @@ namespace MainGame
         public event Action<int> OnEnemyDeath;
         public event Action OnBossDeath;
         public event Action<IHealth> OnBossSpawn;
-        public event Action OnBossSpawn;
 
         [SerializeField] private NecroEnemyController _boss;
 
@@ -62,13 +61,11 @@ namespace MainGame
             var boss = Instantiate(_boss, spawnPoint, _spawnPoint.rotation);
             boss.Initialize(this);
 
-            OnBossSpawn?.Invoke(boss.Health);
-
             _healthService.AddCharacter(boss.Health);
             boss.Health.OnDeath += () => BossDeathHandler(boss);
             _enemies.Add(boss);
 
-            OnBossSpawn?.Invoke();
+            OnBossSpawn?.Invoke(boss.Health);
         }
 
         private void BossDeathHandler(NecroEnemyController boss)
