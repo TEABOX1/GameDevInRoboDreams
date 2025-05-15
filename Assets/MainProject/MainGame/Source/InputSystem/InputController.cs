@@ -50,6 +50,9 @@ namespace MainGame
         private InputActionMap _defaultActionMap;
         private InputActionMap _uiActionMap;
 
+        private int _defaultMapLockCounter = 0;
+        private int _uiMapLockCounter = 0;
+        
         protected override void Awake()
         {
             base.Awake();
@@ -150,22 +153,30 @@ namespace MainGame
 
         public void DefaulMapLock()
         {
-            _defaultActionMap.Disable();
+            _defaultMapLockCounter++;
+            if (_defaultActionMap.enabled)
+                _defaultActionMap.Disable();
         }
 
         public void UIMapLock()
         {
-            _uiActionMap.Disable();
+            _uiMapLockCounter++;
+            if (_uiActionMap.enabled)
+                _uiActionMap.Disable();
         }
 
         public void DefaultMapUnlock()
         {
+            _defaultMapLockCounter = Mathf.Max(0, _defaultMapLockCounter - 1);
+            if (_defaultMapLockCounter != 0) return;
             _defaultActionMap.Enable();
             CursorDisable();
         }
 
         public void UIMapUnlock()
         {
+            _uiMapLockCounter = Mathf.Max(0, _uiMapLockCounter - 1);
+            if (_uiMapLockCounter != 0) return;
             _uiActionMap.Enable();
             CursorDisable();
         }

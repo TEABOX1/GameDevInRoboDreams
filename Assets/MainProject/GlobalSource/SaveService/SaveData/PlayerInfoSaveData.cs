@@ -1,4 +1,5 @@
 using System;
+using MainGame;
 
 namespace GlobalSource
 {
@@ -6,5 +7,6 @@ namespace GlobalSource
     public struct PlayerInfoSaveData
     {
         public int DebugSaveInfo;
+        public QuestData[] questData;
     }
 }

@@ -26,11 +26,24 @@ namespace MainGame
             if (enemy.EnemyType != EnemyTypes.Spider) return;
             
             _spidersKilled++;
+            UpdateState();
             
             if (_spidersKilled >= _spidersToKill)
             {
                 FinishQuestStep();
             }
+        }
+
+        private void UpdateState()
+        {
+            string state = _spidersKilled.ToString();
+            ChangeQuestStepState(state);
+        }
+
+        protected override void SetQuestStepState(string newState)
+        {
+            _spidersKilled = int.Parse(newState);
+            UpdateState();
         }
     }
 }

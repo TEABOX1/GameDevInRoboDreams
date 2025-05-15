@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using GlobalSource;
 using UnityEngine;
 
@@ -11,8 +13,11 @@ namespace MainGame
 
         private QuestEvents _questEvents;
         
+        private ISaveService _saveService;
+         
         protected void Awake()
-        {
+        { 
+            _saveService = ServiceLocator.Instance.GetService<ISaveService>();
             _quests = CreateQuestMap();
         }
 
@@ -23,6 +28,8 @@ namespace MainGame
             _questEvents.OnStartQuest += StartQuestHandler;
             _questEvents.OnAdvanceQuest += AdvanceQuestHandler;
             _questEvents.OnFinishQuest += FinishQuestHandler;
+            _questEvents.OnQuestStepStateChange += QuestStepStateChangeHandler;
+            
         }
 
         private void OnDisable()
@@ -30,19 +37,20 @@ namespace MainGame
             _questEvents.OnStartQuest -= StartQuestHandler;
             _questEvents.OnAdvanceQuest -= AdvanceQuestHandler;
             _questEvents.OnFinishQuest -= FinishQuestHandler;
+            _questEvents.OnQuestStepStateChange -= QuestStepStateChangeHandler;
         }
         //TODO: Add save quests using this for load questSteps
-        // private void Start()
-        // {
-        //     foreach (Quest quest in _quests.Values)
-        //     {
-        //         if (quest.QuestState == QuestState.InProgress)
-        //         {
-        //             quest.InstantiateCurrentQuestStep(transform);
-        //         }
-        //         _questEvents.QuestStateChange(quest);
-        //     }
-        // }
+        private void Start()
+        {
+            foreach (Quest quest in _quests.Values)
+            {
+                if (quest.QuestState == QuestState.InProgress)
+                {
+                    quest.InstantiateCurrentQuestStep(transform);
+                }
+                _questEvents.QuestStateChange(quest);
+            }
+        }
 
         private void Update()
         {
@@ -121,6 +129,13 @@ namespace MainGame
             SpellInventory spellInventory = ServiceLocator.Instance.GetService<SpellInventory>();
             spellInventory.UnlockSpell(spellReward);
         }
+
+        private void QuestStepStateChangeHandler(string questId, int stepIndex, QuestStepState questStepState)
+        {
+           Quest quest = GetQuestById(questId);
+           quest.StoreQuestStepState(questStepState, stepIndex);
+           ChangeQuestState(questId, quest.QuestState);
+        }
         
         private Dictionary<string, Quest> CreateQuestMap()
         {
@@ -133,7 +148,8 @@ namespace MainGame
                 QuestInfo info = allQuests[i];
                 if(idToQuestMap.ContainsKey(info.QuestId))
                     Debug.Log($"Quest {info.QuestId} already exists");
-                idToQuestMap.Add(info.QuestId, new Quest(info));
+                // idToQuestMap.Add(info.QuestId, new Quest(info));
+                idToQuestMap.Add(info.QuestId, LoadQuests(info));
             }
 
             return idToQuestMap;
@@ -145,6 +161,49 @@ namespace MainGame
             if(quest == null)
                 Debug.Log($"Quest {questId} not found");
             return quest;
+        }
+
+        private void OnDestroy()
+        {
+            SaveQuests();
+        }
+        
+        private void SaveQuests()
+        {
+            List<QuestData> allQuestsData = new List<QuestData>();
+
+            foreach (Quest quest in _quests.Values)
+            {
+                if (quest.QuestState == QuestState.RequirementNotMet ||
+                    quest.QuestState == QuestState.CanStart) continue;
+                QuestData questData = quest.GetQuestData();
+                allQuestsData.Add(questData);
+            }
+            _saveService.SaveData.playerInfoData.questData = allQuestsData.ToArray();
+        }
+        
+        private Quest LoadQuests(QuestInfo questInfo)
+        {
+            Quest quest;
+            QuestData[] questDataArray = _saveService.SaveData.playerInfoData.questData;
+
+            if (questDataArray != null)
+            {
+                List<QuestData> savedQuests = questDataArray.ToList();
+                if (savedQuests.Any(q => q.QuestId == questInfo.QuestId))
+                {
+                    QuestData savedQuestData = savedQuests
+                        .First(q => q.QuestId == questInfo.QuestId);
+                    quest = new Quest(
+                        questInfo,
+                        savedQuestData.State,
+                        savedQuestData.QuestStepIndex,
+                        savedQuestData.QuestStepStates
+                    );
+                    return quest;
+                }
+            }
+            return new Quest(questInfo);
         }
     }
 }

@@ -32,6 +32,11 @@ namespace MainGame
             _dialogueEvents.OnLineUpdated += LineUpdatedHandler;
         }
         
+        private void Start()
+        {
+            _canvas.enabled = false;
+        }
+        
         private void OnDisable()
         {
             _dialogueEvents.OnCheckDialogue -= EnterDialogueHandler;

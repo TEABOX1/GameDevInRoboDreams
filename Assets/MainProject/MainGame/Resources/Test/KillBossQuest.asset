@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c7fb9366729f4a2f864f9345bb1a896b, type: 3}
-  m_Name: QuestInfo
+  m_Name: KillBossQuest
   m_EditorClassIdentifier: 
-  _questId: QuestInfo
+  _questId: KillBossQuest
   _questName: Kill Boss
   _questPrerequisites:
   - {fileID: 11400000, guid: 1d55774e7f893e344946ad1468bc18a2, type: 2}
