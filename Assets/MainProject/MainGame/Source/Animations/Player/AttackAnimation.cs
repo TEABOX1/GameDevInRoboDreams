@@ -4,11 +4,14 @@ using UnityEngine;
 using GlobalSource;
 using UnityEngine.InputSystem;
 using Tiny;
+using System;
 
 namespace MainGame
 {
     public class AttackAnimation : MonoBehaviour
     {
+        public event Action OnAttackAnimationEnd;
+
         [SerializeField] private PlayerController _plaeyrController;
         [SerializeField] private MeleeAttack _attack;
         [SerializeField] private Animator _animator;
@@ -40,7 +43,7 @@ namespace MainGame
 
         private InputController _inputController;
         private IHealth _Health;
-        
+
         private void Start()
         {
             _inputController = ServiceLocator.Instance.GetService<InputController>();
@@ -94,6 +97,7 @@ namespace MainGame
             yield return _lockDelay;
             _inputController.DefaultMapUnlock();
             _animator.CrossFadeInFixedTime(_idleId, _crossFadeTime);
+            OnAttackAnimationEnd?.Invoke();
             _trailScript.enabled = false;
         }
 

@@ -7,7 +7,9 @@ namespace MainGame
 {
     public class BossFightArea : HordeSpawner
     {
-        //public event Action<int> OnEnemyDeath;
+        public event Action<int> OnEnemyDeath;
+        public event Action OnBossDeath;
+        public event Action<IHealth> OnBossSpawn;
         public event Action OnBossSpawn;
 
         [SerializeField] private NecroEnemyController _boss;
@@ -32,7 +34,7 @@ namespace MainGame
                 }
             };
 
-            // або якщо спочатку треба заспавнити боса і потім викликати діалог:
+            // Г ГЎГ® ГїГЄГ№Г® Г±ГЇГ®Г·Г ГІГЄГі ГІГ°ГҐГЎГ  Г§Г Г±ГЇГ ГўГ­ГЁГІГЁ ГЎГ®Г±Г  Ві ГЇГ®ГІВіГ¬ ГўГЁГЄГ«ГЁГЄГ ГІГЁ Г¤ВіГ Г«Г®ГЈ:
             /*_questEvents.OnFinishQuest += (questId) =>
             {
                 if (questId == "KillSpidersQuest")
@@ -60,6 +62,8 @@ namespace MainGame
             var boss = Instantiate(_boss, spawnPoint, _spawnPoint.rotation);
             boss.Initialize(this);
 
+            OnBossSpawn?.Invoke(boss.Health);
+
             _healthService.AddCharacter(boss.Health);
             boss.Health.OnDeath += () => BossDeathHandler(boss);
             _enemies.Add(boss);
@@ -77,7 +81,7 @@ namespace MainGame
         private void ExitDialogueHandler()
         {
             _playerService.Player.TargetPivot.gameObject.SetActive(true);
-            _enemies[0].enabled = true; // треба вимкнути у префабі
+            _enemies[0].enabled = true; // ГІГ°ГҐГЎГ  ГўГЁГ¬ГЄГ­ГіГІГЁ Гі ГЇГ°ГҐГґГ ГЎВі
         }
     }
 }

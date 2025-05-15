@@ -57,7 +57,8 @@ namespace MainGame
 
         private IEnumerator FireballLockRoutine()
         {
-            _animator.CrossFadeInFixedTime(_fireballCastId, _crossFadeTime);
+            _animator.Play(_fireballCastId, 0);
+            //_animator.CrossFadeInFixedTime(_fireballCastId, _crossFadeTime);
             yield return _lockDelay;
             _animator.CrossFadeInFixedTime(_idleId, _crossFadeTime);
             OnFireballAnimationFinished?.Invoke();
@@ -65,7 +66,8 @@ namespace MainGame
 
         private IEnumerator SpiderSpawnLockRoutine()
         {
-            _animator.CrossFadeInFixedTime(_spiderSpawnCastId, _crossFadeTime);
+            _animator.Play(_spiderSpawnCastId, 0);
+            //_animator.CrossFadeInFixedTime(_spiderSpawnCastId, _crossFadeTime);
             yield return _lockDelay;
             _animator.CrossFadeInFixedTime(_idleId, _crossFadeTime);
             OnSpiderAnimationFinished?.Invoke();

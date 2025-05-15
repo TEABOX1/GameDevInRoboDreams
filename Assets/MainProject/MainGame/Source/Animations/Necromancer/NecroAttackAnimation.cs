@@ -59,7 +59,8 @@ namespace MainGame
 
         private void PlayAttack()
         {
-            _animator.CrossFadeInFixedTime(_meeleAttackId, _crossFadeTime);
+            _animator.Play(_meeleAttackId, 0);
+            //_animator.CrossFadeInFixedTime(_meeleAttackId, _crossFadeTime);
         }
     }
 }

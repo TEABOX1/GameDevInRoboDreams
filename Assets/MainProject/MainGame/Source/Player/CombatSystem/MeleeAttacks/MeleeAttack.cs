@@ -10,13 +10,14 @@ namespace MainGame
         
         [SerializeField] private CharacterController _characterController;
         [SerializeField] private float _maxComboDelay = 1f;
-        
+
+        [SerializeField] private AttackAnimation _attackAnimation;
+
         private int _numberOfAttacks = 0;
         private float _lastAttackTime;
         private bool _isAttacking = false;
         
         private InputController _inputController;
-        private AnimationEventsController _animationEventsController;
         
         public int NumberOfAttacks => _numberOfAttacks;
         
@@ -24,9 +25,8 @@ namespace MainGame
         {
             _inputController = ServiceLocator.Instance.GetService<InputController>();
             _inputController.OnPrimaryInput += PrimaryHandler;
-            
-            _animationEventsController = ServiceLocator.Instance.GetService<AnimationEventsController>();
-            _animationEventsController.OnAttackAnimationEnd += AttackAnimationEndHandler;
+
+            _attackAnimation.OnAttackAnimationEnd += AttackAnimationEndHandler;
         }
 
         private void Update()
