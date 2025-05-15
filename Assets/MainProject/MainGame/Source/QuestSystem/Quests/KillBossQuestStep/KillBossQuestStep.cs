@@ -30,5 +30,9 @@ namespace MainGame
             if (enemy.EnemyType != EnemyTypes.Boss) return;
             FinishQuestStep();
         }
+
+        protected override void SetQuestStepState(string newState)
+        {
+        }
     }
 }

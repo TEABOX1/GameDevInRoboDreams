@@ -53,6 +53,7 @@ namespace MainGame
             
             _inputController.DefaulMapLock();
             _inputController.UIMapLock();
+            _inputController.CursorEnable();
             
             ShowLine(_currentDialogue.DialogueData[0].lineId); 
         }
