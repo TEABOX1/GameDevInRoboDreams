@@ -15,7 +15,7 @@ namespace MainGame
 
         private QuestEvents _questEvents;
         private DialogueEvents _dialogEvents;
-        private IPlayerService _playerService;
+        //private IPlayerService _playerService;
 
         protected override void Awake()
         {
@@ -23,7 +23,7 @@ namespace MainGame
 
             _questEvents = ServiceLocator.Instance.GetService<QuestEvents>();
             _dialogEvents = ServiceLocator.Instance.GetService<DialogueEvents>();
-            _playerService = ServiceLocator.Instance.GetService<IPlayerService>();
+            //_playerService = ServiceLocator.Instance.GetService<IPlayerService>();
 
             //_questEvents.OnStartQuest += (questId) =>
             //{
@@ -33,18 +33,17 @@ namespace MainGame
             //    }
             //};
 
-            // àáî ÿêùî ñïî÷àòêó òðåáà çàñïàâíèòè áîñà ³ ïîò³ì âèêëèêàòè ä³àëîã:
-            Debug.Log("connect ro quest finish");
-            _questEvents.OnFinishQuest += (questId) =>
-            {
-                if (questId == "KillSpidersQuest")
-                {
-                    Debug.Log("try to handle quest");
-                    QuestStartHandler();
-                }
-            };
+            //Debug.Log("connect ro quest finish");
+            //_questEvents.OnFinishQuest += (questId) =>
+            //{
+            //    if (questId == "KillSpidersQuest")
+            //    {
+            //        Debug.Log("try to handle quest");
+            //        QuestStartHandler();
+            //    }
+            //};
 
-            //_dialogEvents.OnExitDialogue += ExitDialogueHandler;
+            _dialogEvents.OnExitDialogue += ExitDialogueHandler; // підписка на закінчення діалогу з босом
         }
 
         public Vector3 GetExactPoint(Vector3 targetPosition)
@@ -64,8 +63,9 @@ namespace MainGame
             Vector3 spawnPoint = GetExactPoint(_spawnPoint.position);
             var boss = Instantiate(_boss, spawnPoint, _spawnPoint.rotation);
             boss.Initialize(this);
+            boss.enabled = false; // disable контролера боса для блокування атаки
 
-            _healthService.AddCharacter(boss.Health);
+            //_healthService.AddCharacter(boss.Health);
             boss.Health.OnDeath += () => BossDeathHandler(boss);
             _enemies.Add(boss);
 
@@ -76,15 +76,14 @@ namespace MainGame
         {
             _enemies.Remove(boss);
             //OnEnemyDeath?.Invoke(_enemies.Count);
-            enabled = false;
+            //enabled = false;
         }
 
         private void ExitDialogueHandler()
         {
-            _playerService.Player.TargetPivot.gameObject.SetActive(true);
             if (_enemies.Count == 0)
                 return;
-            _enemies[0].enabled = true; // òðåáà âèìêíóòè ó ïðåôàá³
+            _enemies[0].enabled = true; // enable контролера боса для атаки
         }
     }
 }

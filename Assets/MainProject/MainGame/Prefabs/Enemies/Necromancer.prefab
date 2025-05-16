@@ -1827,8 +1827,8 @@ MonoBehaviour:
   - {fileID: 8663027069620019657}
   - {fileID: 252001948062787296}
   _spawnCooldown: 15
-  _fightArea: {fileID: 0}
-  _enemyController: {fileID: 2308772289528369156, guid: 4a6006aba5b72454e900bce28756515a, type: 3}
+  _necroEnemyController: {fileID: 6413521070598903940}
+  _enemyController: {fileID: 4992481950980946878, guid: dd4240d66e471f34a80786b606de4736, type: 3}
   necroSpellAnimation: {fileID: 455231992118544581}
 --- !u!1 &7234083716024329074
 GameObject:
