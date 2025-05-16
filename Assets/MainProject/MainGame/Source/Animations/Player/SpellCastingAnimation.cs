@@ -83,7 +83,7 @@ namespace MainGame
 
             yield return _lockDelay;
             _inputController.DefaultMapUnlock();
-            _animator.CrossFadeInFixedTime(_idleId, _crossFadeTime);
+            //_animator.CrossFadeInFixedTime(_idleId, _crossFadeTime);
             //_leftHand.enabled = false;
             //_rightHand.enabled = false;
             _sword.SetActive(true);

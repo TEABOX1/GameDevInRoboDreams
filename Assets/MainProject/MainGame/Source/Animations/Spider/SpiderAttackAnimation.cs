@@ -53,9 +53,7 @@ namespace MainGame
         private IEnumerator LockRoutine()
         {
             PlayAttack();
-
             yield return _lockDelay;
-            _animator.CrossFadeInFixedTime(_idleId, _crossFadeTime);
         }
 
         private void PlayAttack()

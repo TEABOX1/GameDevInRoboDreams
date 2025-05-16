@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Boot;
 using GlobalSource;
+using UnityEngine.InputSystem.XInput;
 
 namespace MainGame
 {
@@ -19,12 +20,17 @@ namespace MainGame
         [SerializeField] private CanvasGroup _menuButtonGroup;
         [SerializeField] private bool _showOnWin;
 
+        private InputController _inputController;
+
+
         private void Awake()
         {
             _canvas.enabled = false;
             _menuButton.onClick.AddListener(MenuButtonHandler);
             _loadButton.onClick.AddListener(LoadButtonHandler);
             ServiceLocator.Instance.GetService<IPlayerService>().Player.Health.OnDeath += PlayerDeadHandler;
+            _inputController = ServiceLocator.Instance.GetService<InputController>();
+
         }
 
         public void Show()
@@ -78,6 +84,8 @@ namespace MainGame
         private void PlayerDeadHandler()
         {
             Show();
+            _inputController.DefaulMapLock();
+            _inputController.CursorEnable();
         }
         
         private void MenuButtonHandler()

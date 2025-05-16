@@ -48,7 +48,7 @@ namespace MainGame
             PlayAttack();
 
             yield return _lockDelay;
-            _animator.CrossFadeInFixedTime(_idleId, _crossFadeTime);
+            //_animator.CrossFadeInFixedTime(_idleId, _crossFadeTime);
         }
 
         private void LocomotionStateHandler(EnemyBehaviour state)

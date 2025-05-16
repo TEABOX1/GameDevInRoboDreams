@@ -63,7 +63,7 @@ namespace MainGame
 
             yield return _lockDelay;
             _inputController.DefaultMapUnlock();
-            _animator.CrossFadeInFixedTime(_idleId, _crossFadeTime);
+            //_animator.CrossFadeInFixedTime(_idleId, _crossFadeTime);
         }
 
         private void LocomotionStateHandler(PlayerControllerState state)
