@@ -6,6 +6,7 @@ namespace MainGame
     public class BossFightDetectionArea : MonoBehaviour
     {
         [SerializeField] BossFightArea _bossFightArea;
+        [SerializeField] private Dialogue _startFightDialogue;
 
         private IPlayerService _playerService;
         private QuestEvents _questEvents;
@@ -25,7 +26,7 @@ namespace MainGame
                 _playerService.Player.TargetPivot.gameObject.SetActive(true);
                 Debug.Log($"OnTriggerEnter(Player): _playerService.Player.TargetPivot.gameObject = {_playerService.Player.TargetPivot.gameObject.activeInHierarchy}");
                 _bossFightArea.enabled = true;
-                //TODO: додати виклик діалогу та/або степу квесту
+                _dialogEvents.EnterDialogue(_startFightDialogue);
             }
         }
     }
