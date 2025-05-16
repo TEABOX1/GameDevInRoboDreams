@@ -65,7 +65,7 @@ namespace MainGame
             var boss = Instantiate(_boss, spawnPoint, _spawnPoint.rotation);
             boss.Initialize(this);
 
-            _healthService.AddCharacter(boss.Health);
+            //_healthService.AddCharacter(boss.Health);
             boss.Health.OnDeath += () => BossDeathHandler(boss);
             _enemies.Add(boss);
 
@@ -76,7 +76,7 @@ namespace MainGame
         {
             _enemies.Remove(boss);
             //OnEnemyDeath?.Invoke(_enemies.Count);
-            enabled = false;
+            //enabled = false;
         }
 
         private void ExitDialogueHandler()

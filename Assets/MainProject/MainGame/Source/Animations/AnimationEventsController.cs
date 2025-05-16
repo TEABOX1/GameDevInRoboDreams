@@ -4,10 +4,8 @@ using UnityEngine;
 
 namespace MainGame
 {
-    public class AnimationEventsController : MonoServiceBase
+    public class AnimationEventsController : MonoBehaviour
     {
-        public override Type Type { get; } = typeof(AnimationEventsController);
-
         public event Action OnDeathFinished;
 
         public void DeathFinished()

@@ -57,6 +57,7 @@ namespace GlobalSource
             if (!File.Exists(filePath))
             {
                 _saveData.settingsData.soundData = SoundSaveData.Default;
+                _saveData.playerInfoData = PlayerInfoSaveData.Default;
                 return;
             }
             

@@ -706,8 +706,7 @@ GameObject:
   - component: {fileID: 5798487929057768104}
   - component: {fileID: 7080534998357113790}
   - component: {fileID: 455231992118544581}
-  - component: {fileID: 5066446031497110702}
-  - component: {fileID: 3821162167975684490}
+  - component: {fileID: 402843648955181893}
   m_Layer: 6
   m_Name: Model
   m_TagString: Untagged
@@ -817,27 +816,7 @@ MonoBehaviour:
   _dampTime: 0.125
   _fireballLockDuration: 2.5
   _spiderSpawnLockDuration: 10
---- !u!114 &5066446031497110702
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2751730744588612402}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08b7b164742031b419024dc461eb69c2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _plaeyrController: {fileID: 6413521070598903940}
-  _health: {fileID: 7512816652554352076}
-  _animator: {fileID: 1952464927274405107}
-  _getHitName: GetHit
-  _idleName: Idle
-  _crossFadeTime: 0.125
-  _dampTime: 0.125
-  _lockDuration: 2
---- !u!114 &3821162167975684490
+--- !u!114 &402843648955181893
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1690,7 +1669,7 @@ MonoBehaviour:
   _rootObject: {fileID: 6579346127119722510}
   _health: {fileID: 7512816652554352076}
   _playerRadar: {fileID: 6538323210641945528}
-  _animationEventsController: {fileID: 3821162167975684490}
+  _animationEventsController: {fileID: 402843648955181893}
   _state: 0
   _spiderSpawnSpell: {fileID: 6687506608772738144}
   _enemySpellCaster: {fileID: 7528238248791826906}

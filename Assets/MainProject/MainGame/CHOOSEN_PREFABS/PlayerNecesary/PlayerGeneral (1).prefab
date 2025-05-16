@@ -2764,7 +2764,6 @@ GameObject:
   - component: {fileID: 5003494184277042217}
   - component: {fileID: 2745214839520694023}
   - component: {fileID: 3985080594173969091}
-  - component: {fileID: 2324234120209620646}
   m_Layer: 0
   m_Name: RPGHeroPolyart
   m_TagString: Untagged
@@ -2888,18 +2887,6 @@ MonoBehaviour:
   _crossFadeTime: 0.125
   _dampTime: 0.125
   _firstLockDuration: 0.5
---- !u!114 &2324234120209620646
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8402489231018995439}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7ad3ba8df234b6e801caecbdabcd1e8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &8455366353063262318
 GameObject:
   m_ObjectHideFlags: 0
@@ -3226,6 +3213,7 @@ MonoBehaviour:
   _weapon: {fileID: 0}
   _meleeAttack: {fileID: 4476460904183420321}
   _weaponTrigger: {fileID: 3401423401849635906}
+  _attackAnimation: {fileID: 0}
 --- !u!1001 &7265947522256250574
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -12,5 +12,12 @@ namespace GlobalSource
         // public float PlayerRotationY;
         public int HealthValue;
         public QuestData[] questData;
+
+        public static readonly PlayerInfoSaveData Default = new PlayerInfoSaveData()
+        {
+            PlayerPosition = new Vector3(65f, 1f, 70f),
+            HealthValue = 100,
+            questData = null
+        }; // CHANGED
     }
 }

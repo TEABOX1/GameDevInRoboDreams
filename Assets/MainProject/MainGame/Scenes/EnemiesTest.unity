@@ -2254,6 +2254,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6413521070598903940, guid: ee451132985ea804b856714e48a3f03a, type: 3}
+      propertyPath: _animationEventsController
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6579346127119722510, guid: ee451132985ea804b856714e48a3f03a, type: 3}
       propertyPath: m_Name
       value: Necromancer

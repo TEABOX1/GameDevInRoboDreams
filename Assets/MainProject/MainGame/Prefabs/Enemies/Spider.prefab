@@ -773,7 +773,7 @@ GameObject:
   - component: {fileID: 3572877267508811603}
   - component: {fileID: 2580770695163392938}
   - component: {fileID: 665270254665865598}
-  - component: {fileID: 7113029411731242224}
+  - component: {fileID: 7297535919463037809}
   m_Layer: 6
   m_Name: Model
   m_TagString: Untagged
@@ -882,7 +882,7 @@ MonoBehaviour:
   _crossFadeTime: 0.125
   _dampTime: 0.125
   _lockDuration: 3
---- !u!114 &7113029411731242224
+--- !u!114 &7297535919463037809
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1197,7 +1197,7 @@ MonoBehaviour:
   _rootObject: {fileID: 6533565423992030753}
   _health: {fileID: 6327592935247688968}
   _playerRadar: {fileID: 7920124722776676965}
-  _animationEventsController: {fileID: 7113029411731242224}
+  _animationEventsController: {fileID: 7297535919463037809}
   _state: 0
 --- !u!114 &4991026468039905396
 MonoBehaviour:

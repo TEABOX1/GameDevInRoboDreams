@@ -771,7 +771,7 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 1
+      - time: 0.9948052
         functionName: DeathFinished
         data: 
         objectReferenceParameter: {fileID: 11500000, guid: d7ad3ba8df234b6e801caecbdabcd1e8, type: 3}
