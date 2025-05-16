@@ -90,15 +90,15 @@ namespace MainGame
 
         private void SavePlayerInfo()
         {
-            _saveService.SaveData.playerInfoData.PlayerPosition = _playerTransform.localPosition;
+            _saveService.SaveData.playerInfoData.PlayerPosition = _playerTransform.position;
             // _saveService.SaveData.playerInfoData.PlayerRotationY = _playerTransform.eulerAngles.y;
             _saveService.SaveData.playerInfoData.HealthValue = _health.HealthValue;
         }
 
         private void LoadPlayerInfo()
         {
-            //_health.SetHealth(_saveService.SaveData.playerInfoData.HealthValue);
-            //_playerTransform.position = _saveService.SaveData.playerInfoData.PlayerPosition;
+            _health.SetHealth(_saveService.SaveData.playerInfoData.HealthValue);
+            _playerTransform.position = _saveService.SaveData.playerInfoData.PlayerPosition;
             // _playerTransform.rotation = Quaternion.Euler(0f, _saveService.SaveData.playerInfoData.PlayerRotationY, 0f);
         }
         

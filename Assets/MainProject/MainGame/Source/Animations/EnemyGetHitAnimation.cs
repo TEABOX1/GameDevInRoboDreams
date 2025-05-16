@@ -49,7 +49,7 @@ namespace MainGame
         {
             _animator.Play(_getHitId, 0);
             yield return _lockDelay;
-            _animator.CrossFadeInFixedTime(_idleId, _crossFadeTime);
+            //_animator.CrossFadeInFixedTime(_idleId, _crossFadeTime);
         }
     }
 }

@@ -18,7 +18,6 @@ namespace MainGame
         private int _damage;
         private float _criticalDamage;
         
-        private AnimationEventsController _animationEventsController;
         
         protected override void Start()
         {
@@ -31,7 +30,6 @@ namespace MainGame
             
             _weaponTrigger.WeaponCollider.enabled = false;
 
-            _animationEventsController = ServiceLocator.Instance.GetService<AnimationEventsController>();
             _attackAnimation.OnAttackAnimationStart += StartDealDamageHandler;
             _attackAnimation.OnAttackAnimationEnd += StopDealDamageHandler;
         }

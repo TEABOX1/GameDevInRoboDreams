@@ -43,6 +43,7 @@ namespace MainGame
 
         private void BehaviourStateHandler(EnemyBehaviour state)
         {
+            Debug.Log("Behaviour received in animation: " + state);
             switch (state)
             {
                 case EnemyBehaviour.Deciding:
@@ -62,11 +63,12 @@ namespace MainGame
                     _movementValue = Vector2.up;
                     break;
                 case EnemyBehaviour.Attack:
-                    //_animator.CrossFadeInFixedTime(_idleId, _crossFadeTime);
+                    _animator.CrossFadeInFixedTime(_movementId, _crossFadeTime);
                     _movementValue = Vector2.zero;
                     break;
                 case EnemyBehaviour.Death:
-                    _animator.CrossFadeInFixedTime(_deathId, _crossFadeTime);
+                    Debug.Log("Crosfade Animation");
+                    _animator.Play(_deathId);
                     _movementValue = Vector2.zero;
                     break;
             }

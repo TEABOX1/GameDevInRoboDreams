@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using GlobalSource;
 using UnityEngine;
 
@@ -7,6 +8,8 @@ namespace MainGame
 {
     public class DialogueManager : MonoBehaviour
     {
+        private Dictionary<string, bool> _dialoguePlayedMap = new();
+
         private Dialogue _currentDialogue;
         private Action _onComplete;
         private bool _dialoguePlaying = false;
@@ -36,17 +39,31 @@ namespace MainGame
             if(_dialoguePlaying) return;
             
             _dialoguePlaying = true;
-            
-            if (dialogue.WasPlayed && dialogue.AlternativeDialogue != null)
+
+            //if (dialogue.WasPlayed && dialogue.AlternativeDialogue != null)
+            //{
+            //    _currentDialogue = dialogue.AlternativeDialogue;
+            //}
+            //else
+            //{
+            //    _currentDialogue = dialogue;
+            //    dialogue.WasPlayed = true;
+            //}
+            // _currentDialogue = dialogue;
+
+            string dialogueId = dialogue.DialogueId; // CHANGED
+
+            if (_dialoguePlayedMap.TryGetValue(dialogueId, out bool wasPlayed) && wasPlayed && dialogue.AlternativeDialogue != null)
             {
                 _currentDialogue = dialogue.AlternativeDialogue;
+                dialogueId = _currentDialogue.DialogueId;
             }
             else
             {
                 _currentDialogue = dialogue;
-                dialogue.WasPlayed = true;
             }
-            // _currentDialogue = dialogue;
+
+            _dialoguePlayedMap[dialogueId] = true; // CHANGED
             _onComplete = action;
             
             _dialogueEvents.CheckDialogue(_currentDialogue);
@@ -135,15 +152,25 @@ namespace MainGame
             
             _shouldTriggerOnComplete = false;
         }
-        
-        public void ResetDialoguePlayedState(Dialogue dialogue)
+
+        //public void ResetDialoguePlayedState(Dialogue dialogue)
+        //{
+        //    if (dialogue == null) return;
+
+        //    dialogue.WasPlayed = false;
+
+        //    if (dialogue.AlternativeDialogue != null)
+        //        dialogue.AlternativeDialogue.WasPlayed = false;
+        //}
+
+        public void ResetDialoguePlayedState(Dialogue dialogue) // CHANGED
         {
             if (dialogue == null) return;
 
-            dialogue.WasPlayed = false;
+            _dialoguePlayedMap[dialogue.DialogueId] = false;
 
             if (dialogue.AlternativeDialogue != null)
-                dialogue.AlternativeDialogue.WasPlayed = false;
+                _dialoguePlayedMap[dialogue.AlternativeDialogue.DialogueId] = false;
         }
     }
 }

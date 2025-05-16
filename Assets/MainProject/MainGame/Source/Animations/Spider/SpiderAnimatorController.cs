@@ -69,7 +69,7 @@ namespace MainGame
                     _movementValue = Vector2.up;
                     break;
                 case EnemyBehaviour.Attack:
-                    //_animator.CrossFadeInFixedTime(_idleId, _crossFadeTime);
+                    _animator.CrossFadeInFixedTime(_movementId, _crossFadeTime);
                     _movementValue = Vector2.zero;
                     break;
                 case EnemyBehaviour.Death:

@@ -71,4 +71,3 @@ MonoBehaviour:
       triggerComplete: 0
     image: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   _alternativeDialogue: {fileID: 0}
-  WasPlayed: 1

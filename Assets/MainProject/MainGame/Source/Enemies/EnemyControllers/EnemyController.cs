@@ -39,9 +39,8 @@ namespace MainGame
         protected EnemyBehaviour _currentBehaviour;
         protected float _patrolStamina;
 
-        public AnimationEventsController AnimationEventsController => _animationEventsController;
-
         public EnemyBehaviour EnemyControllerState => (EnemyBehaviour)_behaviourMachine.CurrentState.StateId; //added for animation
+        public AnimationEventsController AnimationEventsController => _animationEventsController;
 
         public float PatrolStamina
         {

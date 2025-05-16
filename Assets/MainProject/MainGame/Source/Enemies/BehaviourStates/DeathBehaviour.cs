@@ -5,10 +5,8 @@ namespace MainGame
 {
     public class DeathBehaviour : BehaviourStateBase
     {
-        private AnimationEventsController _animationEventsController;
         public DeathBehaviour(StateMachine stateMachine, byte stateId, IEnemyController enemyController) : base(stateMachine, stateId, enemyController)
         {
-            _animationEventsController = enemyController.AnimationEventsController;
         }
 
         public override void Enter()
@@ -22,6 +20,7 @@ namespace MainGame
         private void DeathHandler()
         {
             Debug.Log("finish death");
+            //ServiceLocator.Instance.GetService<IHealthService>().RemoveCharacter(enemyController.Health);
             Object.Destroy(enemyController.RootObject);
         }
 

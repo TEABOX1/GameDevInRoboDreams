@@ -32,7 +32,7 @@ namespace MainGame
         public string DialogueId => _dialogueId;
         public DialogueDataStruct[] DialogueData => _dialogueData;
         public Dialogue AlternativeDialogue => _alternativeDialogue;
-        public bool WasPlayed = false;
+        //public bool WasPlayed = false;
         
         public DialogueDataStruct? GetLineById(string id)
         {

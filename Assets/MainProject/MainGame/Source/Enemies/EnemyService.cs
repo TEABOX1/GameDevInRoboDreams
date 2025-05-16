@@ -108,6 +108,7 @@ namespace MainGame
 
             if (!HasEnemiesOfType(EnemyTypes.Boss))
             {
+                Debug.Log("boss destroy");
                 OnBossDefeated?.Invoke();
                 //_questEvents.FinishQuest("QuestInfo");
             }
