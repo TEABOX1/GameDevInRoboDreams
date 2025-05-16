@@ -40,7 +40,7 @@ namespace MainGame
             spider.NavMeshAgent.avoidancePriority = priority;
             priority++;
 
-            _healthService.AddCharacter(spider.Health);
+            //_healthService.AddCharacter(spider.Health);
             spider.Health.OnDeath += () => EnemyDeathHandler(spider);
 
             _enemies.Add(spider);

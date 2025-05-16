@@ -13,14 +13,16 @@ namespace MainGame
 
         [SerializeField] private List<Transform> _areaPoints = new List<Transform>();
         [SerializeField] private float _spawnCooldown;
-        [SerializeField] private BossFightArea _fightArea;
+        [SerializeField] private NecroEnemyController _necroEnemyController;
+
         //[SerializeField] private SpidersPool _enemyPool;
         [SerializeField] private SpiderEnemyController _enemyController;
         [SerializeField] private NecroSpellCastAnimation necroSpellAnimation;
 
         private List<Vector3> _spawnPoints = new List<Vector3>();
         private List<EnemyController> _spiders = new List<EnemyController>();
-        private IHealthService _healthService;
+        private INavPointProvider _fightArea;
+        //private IHealthService _healthService;
 
         //added for animation
         [ContextMenu("Force spawn Spiders")]
@@ -35,16 +37,20 @@ namespace MainGame
 
         private void Awake()
         {
-            GetSpawnPoints();
-            _healthService = ServiceLocator.Instance.GetService<IHealthService>();
+            //_healthService = ServiceLocator.Instance.GetService<IHealthService>();
+            _fightArea = _necroEnemyController.NavPointProvider;
             necroSpellAnimation.OnSpiderAnimationFinished += SpawnHandler;
         }
 
         private void GetSpawnPoints()
         {
+            _spawnPoints.Clear();
+            Transform necromancerTransform = transform.parent;
+
             for (int i = 0; i < _areaPoints.Count; i++)
             {
-                Vector3 point = _areaPoints[i].position;
+                Vector3 point = necromancerTransform.TransformPoint(_areaPoints[i].localPosition);
+
                 NavMeshHit hit;
                 NavMesh.SamplePosition(point, out hit, 1.0f, NavMesh.AllAreas);
                 //int depth = 0;
@@ -71,6 +77,7 @@ namespace MainGame
         protected void SpawnHandler()
         {
             Debug.Log("Necro Spawn Spiders");
+            GetSpawnPoints();
             for (int i = 0; i < _spawnPoints.Count; i++)
             {
                 Vector3 point = _spawnPoints[i];
@@ -79,7 +86,7 @@ namespace MainGame
                 spider.Initialize(_fightArea);
                 spider.NavMeshAgent.avoidancePriority = i; // виставлення пріоритетності
 
-                _healthService.AddCharacter(spider.Health);
+                //_healthService.AddCharacter(spider.Health);
                 spider.Health.OnDeath += () => SpiderDeathHandler(spider);
 
                 _spiders.Add(spider);
@@ -88,7 +95,7 @@ namespace MainGame
 
         private void SpiderDeathHandler(SpiderEnemyController spider)
         {
-            _healthService.RemoveCharacter(spider.Health);
+            //_healthService.RemoveCharacter(spider.Health);
             //_enemyPool.ReturnEnemy(spider);
             _spiders.Remove(spider);
             OnSpiderDeath?.Invoke(SpawnSpidersCount);

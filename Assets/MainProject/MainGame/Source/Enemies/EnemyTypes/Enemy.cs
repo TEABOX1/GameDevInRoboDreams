@@ -40,7 +40,7 @@ namespace MainGame
 
         private void OnDestroy()
         {
-            _health.OnDeath -= DeathHandler;
+            //_health.OnDeath -= DeathHandler;
             _enemyService.UnregisterEnemy(this);
         }
     }
