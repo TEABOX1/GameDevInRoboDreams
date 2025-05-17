@@ -9,7 +9,6 @@ namespace MainGame
         [SerializeField] protected LayerMask _layerMask;
         
         protected bool _canDealDamage;
-        //TODO: Change when healthSystem is added
         protected HashSet<IHealth /*Collider*/> _hasDealtDamage;
 
         protected IHealthService _healthService;

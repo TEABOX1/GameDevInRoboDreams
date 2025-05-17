@@ -20,9 +20,19 @@ namespace MainGame
             priority = 0;
 
             _questEvents = ServiceLocator.Instance.GetService<QuestEvents>();
-            _questEvents.OnStartQuest += (questId) =>
+            // _questEvents.OnStartQuest += (questId) =>
+            // {
+            //     if (questId == "KillSpidersQuest")
+            //     {
+            //         QuestStartHandler();
+            //     }
+            // };
+            
+            _questEvents.OnQuestStateChange += (Quest quest) =>
             {
-                if (questId == "KillSpidersQuest")
+                if (quest.QuestInfo.QuestId == "KillSpidersQuest" 
+                    && 
+                    quest.QuestState == QuestState.InProgress)
                 {
                     QuestStartHandler();
                 }

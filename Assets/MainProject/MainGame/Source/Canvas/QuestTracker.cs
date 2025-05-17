@@ -14,7 +14,7 @@ namespace MainGame
         [SerializeField] private GameObject _needToDoMark;
         [SerializeField] private GameObject _doneMark;
 
-        private void Awake()
+        private void OnEnable()
         {
             _questEvent.OnStartQuest += StartQuestHandler;
             _questEvent.OnAdvanceQuest += AdvanceQuest;
