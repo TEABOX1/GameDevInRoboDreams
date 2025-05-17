@@ -1,4 +1,5 @@
 using System;
+using Boot;
 using GlobalSource;
 using UnityEngine;
 
@@ -38,6 +39,8 @@ namespace MainGame
         private void OnEnable()
         {
             LoadPlayerInfo();
+            ServiceLocator.Instance.GetService<GameplayPauseMenu>().OnSaveSignal += SavePlayerInfo;
+            ServiceLocator.Instance.GetService<GameplayPauseMenu>().OnLoadSignal += LoadPlayerInfo;
         }
 
         private void OnDisable()

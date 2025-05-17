@@ -21,11 +21,13 @@ namespace MainGame
         private EnemyService _enemyService;
         private IHealth _bossHealth;
 
+        private int _maxHealth;
+
         private void Start()
         {
             _enemyService = ServiceLocator.Instance.GetService<EnemyService>();
 
-            _enemyService.OnBossDefeated += BossDeathHandler;
+            _bossSpawner.OnBossDeath += BossDeathHandler;
 
             _bossSpawner.OnBossSpawn += BossSpawnHandler;
 
@@ -59,18 +61,22 @@ namespace MainGame
 
         private void SetHealth(int health)
         {
-            _targetHealth = health * 0.01f;
+            _targetHealth = (float)health / _maxHealth;
         }
 
         private void ForceHealth(int health)
         {
-            _displayedDamage = _displayedHealth = _targetHealth = health * 0.01f;
+            float percent = (float)health / _maxHealth;
+            _displayedDamage = _displayedHealth = _targetHealth = percent;
         }
 
         private void BossSpawnHandler(IHealth bossHealth)
         {
             _bossHealthCanvas.SetActive(true);
             _bossHealth = bossHealth;
+
+            _maxHealth = _bossHealth.MaxHealthValue;
+
             ForceHealth(_bossHealth.HealthValue);
             _bossHealth.OnHealthChanged += HealthChangedHandler;
         }

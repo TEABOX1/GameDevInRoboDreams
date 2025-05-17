@@ -28,7 +28,25 @@ namespace MainGame
         private int _horizontalId;
         private int _verticalId;
 
-        
+        private bool _isMeeleAttack;
+        private bool _isSpellCast;
+        private bool _isDeath;
+
+
+        public void SetAttackLock(bool isLocked)
+        {
+            _isMeeleAttack = isLocked;
+        }
+
+        public void SetSpellCastLock(bool isLocked)
+        {
+            _isSpellCast = isLocked;
+        }
+        public void SetDeathLock(bool isLocked)
+        {
+            _isDeath = isLocked;
+        }
+
         private void Awake()
         {
             _idleId = Animator.StringToHash(_idleName);
@@ -39,11 +57,30 @@ namespace MainGame
             _verticalId = Animator.StringToHash(_verticalName);
 
             _enemy.OnBehaviourChanged += BehaviourStateHandler;
+            _enemy.OnAttackStateChanged += AttaStateHandler;
         }
 
+        private void AttaStateHandler(IEnemyController.AttackState state)
+        {
+            switch (state)
+            {
+                case IEnemyController.AttackState.Approach:
+                    _animator.CrossFadeInFixedTime(_movementId, _crossFadeTime);
+                    _movementValue = Vector2.zero;
+                    break;
+            }
+        }
         private void BehaviourStateHandler(EnemyBehaviour state)
         {
             Debug.Log("Behaviour received in animation: " + state);
+
+            if (_isMeeleAttack && state != EnemyBehaviour.Death)
+                return;
+            if (_isSpellCast && state != EnemyBehaviour.Death)
+                return;
+            if (_isDeath && state != EnemyBehaviour.Death)
+                return;
+
             switch (state)
             {
                 case EnemyBehaviour.Deciding:
@@ -63,11 +100,11 @@ namespace MainGame
                     _movementValue = Vector2.up;
                     break;
                 case EnemyBehaviour.Attack:
-                    _animator.CrossFadeInFixedTime(_movementId, _crossFadeTime);
+                    //_animator.CrossFadeInFixedTime(_movementId, _crossFadeTime);
                     _movementValue = Vector2.zero;
                     break;
                 case EnemyBehaviour.Death:
-                    Debug.Log("Crosfade Animation");
+                    SetDeathLock(true);
                     _animator.Play(_deathId);
                     _movementValue = Vector2.zero;
                     break;

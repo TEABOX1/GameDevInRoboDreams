@@ -21,6 +21,8 @@ namespace MainGame
 
         [SerializeField] private float _firstLockDuration;
 
+        [SerializeField] private SpiderAnimatorController _animatorController;
+
 
         private int _meeleAttackId;
         private int _idleId;
@@ -52,8 +54,10 @@ namespace MainGame
 
         private IEnumerator LockRoutine()
         {
+            _animatorController.SetAttackLock(true);
             PlayAttack();
             yield return _lockDelay;
+            _animatorController.SetAttackLock(false);
         }
 
         private void PlayAttack()
