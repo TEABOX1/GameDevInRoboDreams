@@ -21,6 +21,8 @@ namespace MainGame
 
         [SerializeField] private float _lockDuration;
 
+        [SerializeField] private SpiderAnimatorController _animatorController;
+
 
         private int _getHitId;
         private int _idleId;
@@ -47,8 +49,10 @@ namespace MainGame
 
         private IEnumerator LockRoutine()
         {
+            _animatorController.SetHitLock(true);
             _animator.Play(_getHitId, 0);
             yield return _lockDelay;
+            _animatorController.SetHitLock(false);
             //_animator.CrossFadeInFixedTime(_idleId, _crossFadeTime);
         }
     }

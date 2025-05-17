@@ -4,11 +4,19 @@ using GlobalSource;
 using MainMenu;
 using Boot;
 using UnityEngine.InputSystem.XInput;
+using System;
+using UnityEngine.SceneManagement;
+
 
 namespace MainGame
 {
-    public class GameplayPauseMenu : MonoBehaviour
+    public class GameplayPauseMenu : MonoServiceBase
     {
+        public override Type Type { get; } = typeof(GameplayPauseMenu);
+
+        public event Action OnSaveSignal;
+        public event Action OnLoadSignal;
+
         public enum MenuState
         {
             Hidden,
@@ -63,8 +71,9 @@ namespace MainGame
             }
         }
         
-        private void Awake()
+        protected override void Awake()
         {
+            base.Awake();
             //Menu buttons
             _continueButton.onClick.AddListener(ContinueGameButtonHandler);
             _saveButton.onClick.AddListener(SaveProgressHandler);
@@ -121,12 +130,18 @@ namespace MainGame
         }
         private void SaveProgressHandler()
         {
+            OnSaveSignal?.Invoke();
             _saveService.SaveAll();
         }
 
         private void LoadLastSaveButtonHandler()
         {
-            _saveService.LoadAll();
+            //OnLoadSignal?.Invoke();
+            //_saveService.LoadAll();
+            //Scene currentScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene();
+            //UnityEngine.SceneManagement.SceneManager.LoadScene(currentScene.name);
+            ServiceLocator.Instance.GetService<IGameStateProvider>().SetGameState(GameState.MainMenu);
+            ServiceLocator.Instance.GetService<IGameStateProvider>().SetGameState(GameState.Gameplay);
         }
 
         private void SettingsButtonHandler()
@@ -155,7 +170,9 @@ namespace MainGame
         //Exit buttons
         private void ConfirmButtonHandler()
         {
+            OnSaveSignal?.Invoke();
             ServiceLocator.Instance.GetService<IGameStateProvider>().SetGameState(GameState.MainMenu);
+            _saveService.SaveAll();
         }
 
         private void CancelButtonHandler()

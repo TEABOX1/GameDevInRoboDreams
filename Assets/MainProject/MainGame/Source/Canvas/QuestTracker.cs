@@ -11,6 +11,9 @@ namespace MainGame
         [SerializeField] private TextMeshProUGUI _questTask;
         [SerializeField] private QuestPoint _questPoint;
 
+        [SerializeField] private GameObject _needToDoMark;
+        [SerializeField] private GameObject _doneMark;
+
         private void OnEnable()
         {
             _questEvent.OnStartQuest += StartQuestHandler;
@@ -19,6 +22,8 @@ namespace MainGame
             _questEvent.OnFinishQuest += FinishQuestHandler;
             _questEvent.OnQuestStepStateChange += QuestStepStateChange;
 
+            _needToDoMark.SetActive(false);
+            _doneMark.SetActive(false);
             _questCanvas.SetActive(false);
         }
 
@@ -51,7 +56,19 @@ namespace MainGame
         {
             if (quest.QuestState != QuestState.InProgress && quest.QuestState != QuestState.CanFinish)
                 return;
-            _questCanvas.SetActive(true);
+
+            if (quest.QuestState == QuestState.InProgress)
+            {
+                _needToDoMark.SetActive(true);
+                _doneMark.SetActive(false);
+            }
+            if (quest.QuestState == QuestState.CanFinish)
+            {
+                _needToDoMark.SetActive(false);
+                _doneMark.SetActive(true);
+            }
+
+                _questCanvas.SetActive(true);
             for (int i = 0; i < _questPoint.QuestDialogEntryInfo.Count; i++)
             {
                 if (_questPoint.QuestDialogEntryInfo[i].questInfo.QuestId == quest.QuestInfo.QuestId)

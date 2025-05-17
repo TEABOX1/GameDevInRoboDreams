@@ -16,7 +16,7 @@ namespace MainGame
         private ISaveService _saveService;
          
         protected void Awake()
-        { 
+        {
             _saveService = ServiceLocator.Instance.GetService<ISaveService>();
             _quests = CreateQuestMap();
         }
@@ -24,6 +24,9 @@ namespace MainGame
         private void OnEnable()
         {
             _questEvents = ServiceLocator.Instance.GetService<QuestEvents>();
+
+            ServiceLocator.Instance.GetService<GameplayPauseMenu>().OnSaveSignal += SaveQuests;
+            //ServiceLocator.Instance.GetService<GameplayPauseMenu>().OnLoadSignal += LoadQuests;
 
             _questEvents.OnStartQuest += StartQuestHandler;
             _questEvents.OnAdvanceQuest += AdvanceQuestHandler;

@@ -20,6 +20,8 @@ namespace MainGame
 
         [SerializeField] private float _firstLockDuration;
 
+        [SerializeField] private NecroAnimatorController _animatorController;
+
 
         private int _meeleAttackId;
         private int _idleId;
@@ -45,10 +47,12 @@ namespace MainGame
 
         private IEnumerator LockRoutine()
         {
+            _animatorController.SetAttackLock(true);
             PlayAttack();
 
             yield return _lockDelay;
             //_animator.CrossFadeInFixedTime(_idleId, _crossFadeTime);
+            _animatorController.SetAttackLock(false);
         }
 
         private void LocomotionStateHandler(EnemyBehaviour state)

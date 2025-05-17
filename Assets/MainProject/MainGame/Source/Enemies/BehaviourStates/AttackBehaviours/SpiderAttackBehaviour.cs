@@ -7,15 +7,8 @@ namespace MainGame
 {
     public class SpiderAttackBehaviour : BehaviourStateBase
     {
-        public enum AttackState
-        {
-            Approach = 0,
-            Attack = 1,
 
-            NullState = 255
-        }
-
-        public event Action<AttackState> OnAttackStateChange;
+        public event Action<IEnemyController.AttackState> OnAttackStateChange;
 
         private readonly NavMeshAgent _agent;
         private readonly CharacterController _characterController;
@@ -26,8 +19,8 @@ namespace MainGame
         private float _time;
         private float _distance;
 
-        private AttackState _currentState;
-        public AttackState CurrentState
+        private IEnemyController.AttackState _currentState;
+        public IEnemyController.AttackState CurrentState
         {
             get => _currentState;
             set
@@ -51,7 +44,7 @@ namespace MainGame
         {
             base.Enter();
             _time = 0f;
-            _currentState = AttackState.Approach;
+            _currentState = IEnemyController.AttackState.Approach;
         }
 
         protected override void OnUpdate(float deltaTime)
@@ -62,10 +55,10 @@ namespace MainGame
 
             switch (_currentState)
             {
-                case AttackState.Approach:
+                case IEnemyController.AttackState.Approach:
                     ApproachUpdate(deltaTime);
                     break;
-                case AttackState.Attack:
+                case IEnemyController.AttackState.Attack:
                     AttackUpdate(deltaTime);
                     break;
             }
@@ -80,7 +73,7 @@ namespace MainGame
             {
                 _agent.isStopped = true;
                 //_currentState = AttackState.Attack;
-                ChangeState(AttackState.Attack);
+                ChangeState(IEnemyController.AttackState.Attack);
                 return;
             }
 
@@ -103,7 +96,7 @@ namespace MainGame
             if (!_agent.pathPending && remainingDistance <= _attackController.AttackData.Distance)
             {
                 //_currentState = AttackState.Attack;
-                ChangeState(AttackState.Attack);
+                ChangeState(IEnemyController.AttackState.Attack);
             }
         }
 
@@ -124,7 +117,7 @@ namespace MainGame
             if (_distance > _attackController.AttackData.Distance)
             {
                 //_currentState = AttackState.Approach;
-                ChangeState(AttackState.Approach);
+                ChangeState(IEnemyController.AttackState.Approach);
             }
         }
 
@@ -141,11 +134,12 @@ namespace MainGame
         {
         }
 
-        protected void ChangeState(AttackState state)
+        protected void ChangeState(IEnemyController.AttackState state)
         {
             CurrentState = state;
             Debug.Log($"Spider Attack State Change! Current State = {CurrentState}");
             OnAttackStateChange?.Invoke(CurrentState);
+            enemyController.InvokeAttackState(CurrentState);
         }
 
         private void UpdateRotation()

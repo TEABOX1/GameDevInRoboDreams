@@ -793,6 +793,7 @@ MonoBehaviour:
   _crossFadeTime: 0.125
   _dampTime: 0.125
   _firstLockDuration: 3
+  _animatorController: {fileID: 5798487929057768104}
 --- !u!114 &455231992118544581
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -816,6 +817,7 @@ MonoBehaviour:
   _dampTime: 0.125
   _fireballLockDuration: 2.5
   _spiderSpawnLockDuration: 10
+  _animatorController: {fileID: 5798487929057768104}
 --- !u!114 &402843648955181893
 MonoBehaviour:
   m_ObjectHideFlags: 0

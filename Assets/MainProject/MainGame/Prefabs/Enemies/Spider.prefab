@@ -862,6 +862,7 @@ MonoBehaviour:
   _crossFadeTime: 0.125
   _dampTime: 0.125
   _firstLockDuration: 5
+  _animatorController: {fileID: 3572877267508811603}
 --- !u!114 &665270254665865598
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -882,6 +883,7 @@ MonoBehaviour:
   _crossFadeTime: 0.125
   _dampTime: 0.125
   _lockDuration: 3
+  _animatorController: {fileID: 3572877267508811603}
 --- !u!114 &7297535919463037809
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -8,7 +8,9 @@ namespace MainGame
 {
     public class EnemyController : MonoBehaviour, IEnemyController
     {
+
         public event Action<EnemyBehaviour> OnBehaviourChanged;
+        public event Action<IEnemyController.AttackState> OnAttackStateChanged;
 
         [SerializeField] protected EnemyData _data;
         [SerializeField] protected EnemyAttack _attackController;
@@ -58,6 +60,11 @@ namespace MainGame
         public IPlayerRadar PlayerRadar => _playerRadar;
         public INavPointProvider NavPointProvider => _navPointProvider;
         //public StateMachine BehaviourMachine => _behaviourMachine;
+
+        public void InvokeAttackState(IEnemyController.AttackState state)
+        {
+            OnAttackStateChanged?.Invoke(state);
+        }
 
         private void Awake()
         {

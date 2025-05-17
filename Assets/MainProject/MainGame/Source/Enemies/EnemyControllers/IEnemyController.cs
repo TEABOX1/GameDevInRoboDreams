@@ -5,6 +5,13 @@ namespace MainGame
 {
     public interface IEnemyController
     {
+        enum AttackState
+        {
+            Approach = 0,
+            Attack = 1,
+
+            NullState = 255
+        }
         float PatrolStamina { get; set; }
         EnemyData Data { get; }
         EnemyAttack EnemyAttack { get; }
@@ -19,6 +26,7 @@ namespace MainGame
 
         void ComputeBehaviour();
         void RestorePatrolStamina();
+        void InvokeAttackState(AttackState state);
 
         //void Initialize(INavPointProvider navPointProvider);
         //void ResetEnemy();

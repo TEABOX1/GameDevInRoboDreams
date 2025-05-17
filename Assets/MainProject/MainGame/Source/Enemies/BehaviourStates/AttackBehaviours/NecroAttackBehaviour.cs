@@ -7,14 +7,6 @@ namespace MainGame
 {
     public class NecroAttackBehaviour : BehaviourStateBase
     {
-        public enum AttackState
-        {
-            Approach = 0,
-            Attack =1,
-
-            NullState = 255
-        }
-
         public enum AttackMode
         {
             Melee = 0,
@@ -23,11 +15,11 @@ namespace MainGame
             NullState = 255
         }
 
-        public event Action<AttackState> OnAttackStateChange;
+        public event Action<IEnemyController.AttackState> OnAttackStateChange;
         public event Action<AttackMode> OnAttackModeChange;
 
-        private AttackState _currentState;
-        public AttackState CurrentState
+        private IEnemyController.AttackState _currentState;
+        public IEnemyController.AttackState CurrentState
         {
             get => _currentState;
             set
@@ -95,7 +87,7 @@ namespace MainGame
             _necroSpellCastAnimation.OnFireballAnimationFinished += ProcceedCast;
 
             _currentMode = AttackMode.Ranged;
-            _currentState = AttackState.Attack;
+            _currentState = IEnemyController.AttackState.Attack;
         }
 
         protected override void OnUpdate(float deltaTime)
@@ -106,22 +98,22 @@ namespace MainGame
             if (_currentMode == AttackMode.Ranged && _distance <= _switchToMeleeDistance)
             {
                 SetAttackMode(AttackMode.Melee);
-                ChangeState(AttackState.Approach);
+                ChangeState(IEnemyController.AttackState.Approach);
             }
             else if (_currentMode == AttackMode.Melee && _distance >= _switchToRangedDistance)
             {
                 SetAttackMode(AttackMode.Ranged);
-                ChangeState(AttackState.Attack);
+                ChangeState(IEnemyController.AttackState.Attack);
             }
 
             UpdateRotation();
 
             switch (_currentState)
             {
-                case AttackState.Approach:
+                case IEnemyController.AttackState.Approach:
                     ApproachUpdate(deltaTime);
                     break;
-                case AttackState.Attack:
+                case IEnemyController.AttackState.Attack:
                     AttackUpdate(deltaTime);
                     break;
             }
@@ -137,7 +129,7 @@ namespace MainGame
             {
                 _agent.isStopped = true;
                 //_currentState = AttackState.Attack;
-                ChangeState(AttackState.Attack);
+                ChangeState(IEnemyController.AttackState.Attack);
                 return;
             }
 
@@ -160,7 +152,7 @@ namespace MainGame
             if (!_agent.pathPending && remainingDistance <= _attackController.AttackData.Distance)
             {
                 //_currentState = AttackState.Attack;
-                ChangeState(AttackState.Attack);
+                ChangeState(IEnemyController.AttackState.Attack);
             }
         }
 
@@ -181,7 +173,7 @@ namespace MainGame
                 if (_distance > _attackController.AttackData.Distance)
                 {
                     //_currentState = AttackState.Approach;
-                    ChangeState(AttackState.Approach);
+                    ChangeState(IEnemyController.AttackState.Approach);
                 }
             }
             else
@@ -223,11 +215,12 @@ namespace MainGame
         {
         }
 
-        protected void ChangeState(AttackState state)
+        protected void ChangeState(IEnemyController.AttackState state)
         {
             CurrentState = state;
             Debug.Log($"Necro Attack State Change! Current State = {CurrentState}");
             OnAttackStateChange?.Invoke(CurrentState);
+            enemyController.InvokeAttackState(CurrentState);
         }
 
         private void SetAttackMode(AttackMode mode)

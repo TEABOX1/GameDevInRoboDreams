@@ -1,4 +1,5 @@
 using System;
+using Boot;
 using GlobalSource;
 using UnityEngine;
 
@@ -45,6 +46,8 @@ namespace MainGame
             _checkpointService = ServiceLocator.Instance.GetService<CheckpointService>();
             _checkpointService.OnCheckpointReached += CheckpointHandler;
             LoadPlayerInfo();
+            ServiceLocator.Instance.GetService<GameplayPauseMenu>().OnSaveSignal += SavePlayerInfo;
+            ServiceLocator.Instance.GetService<GameplayPauseMenu>().OnLoadSignal += LoadPlayerInfo;
         }
 
         private void OnDisable()
