@@ -11,13 +11,11 @@ namespace MainGame
         protected override void OnEnable()
         {
             base.OnEnable();
-            //TODO: Add subscription to event
             _enemyService.EnemyDied += SpiderKilled;
         }
 
         private void OnDisable()
         {
-            //TODO: Add unsubscription from event
             _enemyService.EnemyDied -= SpiderKilled;
         }
 

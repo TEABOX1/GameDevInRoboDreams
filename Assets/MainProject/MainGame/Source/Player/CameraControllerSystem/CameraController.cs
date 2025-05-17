@@ -14,12 +14,13 @@ namespace MainGame
         
         public Camera Camera => _camera;
         
-        private float _yaw = 0f;
+        private float _yaw;
         private float _pitch = 20f;
         
         private void Start()
         {
             ServiceLocator.Instance.GetService<InputController>().OnLookAroundInput += LookAroundHandler;
+            _yaw = ServiceLocator.Instance.GetService<ISaveService>().SaveData.playerInfoData.PlayerRotationY;
         }
         
         private void LateUpdate()

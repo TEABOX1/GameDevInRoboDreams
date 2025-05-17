@@ -15,59 +15,84 @@ MonoBehaviour:
   _dialogueId: KillBossQuestStartDialogue
   _dialogueData:
   - lineId: 1
-    dialogueLine: Oh, what a hero... He's chopping down my cronies like weeds. Do
-      you think victory is near?
+    dialogueLine: "The spider matrons are dead. But something still feels wrong.
+      The earth\u2026 it trembles."
     answerOption:
     - answerText: Next
       nextLineId: 2
       triggerComplete: 0
-    image: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+    image: {fileID: 21300000, guid: 3b263900f7c870a498421a2b6acdaf27, type: 3}
   - lineId: 2
-    dialogueLine: If these creatures were your creations, then you are next.
+    dialogueLine: "Because the corruption hasn\u2019t lost its root. What you killed\u2026
+      were merely branches. Something stronger, twisted, guided their growth."
     answerOption:
     - answerText: Next
       nextLineId: 3
       triggerComplete: 0
-    image: {fileID: 21300000, guid: 3b263900f7c870a498421a2b6acdaf27, type: 3}
+    image: {fileID: 21300000, guid: 44036bdd3dc83864ca75d54ecd843074, type: 3}
   - lineId: 3
-    dialogueLine: "No. I am but a finger in the fist. The fist of my master. And
-      he is\u2026 very unhappy that I am delaying in clearing this forest."
+    dialogueLine: You know who it is?
     answerOption:
     - answerText: Next
       nextLineId: 4
       triggerComplete: 0
-    image: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+    image: {fileID: 21300000, guid: 3b263900f7c870a498421a2b6acdaf27, type: 3}
   - lineId: 4
-    dialogueLine: Purification? You call this a filth that devours all living things?
+    dialogueLine: "A warlock. Servant of an ancient master beyond the shadows. He
+      didn\u2019t enter this forest through strength - but through weakness. The
+      weakness of men who sought power without understanding its cost. He created
+      the spiders. He poisoned the springs that feed our world."
     answerOption:
     - answerText: Next
       nextLineId: 5
       triggerComplete: 0
-    image: {fileID: 21300000, guid: 3b263900f7c870a498421a2b6acdaf27, type: 3}
+    image: {fileID: 21300000, guid: 44036bdd3dc83864ca75d54ecd843074, type: 3}
   - lineId: 5
-    dialogueLine: Nature is too chaotic. We give it order. You are but a fragment
-      of a broken sword, a memory of your former power. You will die here, on your
-      knees, among the rotten roots of this forest.
+    dialogueLine: Where can I find him?
     answerOption:
     - answerText: Next
       nextLineId: 6
       triggerComplete: 0
-    image: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+    image: {fileID: 21300000, guid: 3b263900f7c870a498421a2b6acdaf27, type: 3}
   - lineId: 6
-    dialogueLine: Nature is too chaotic. We give it order. You are but a fragment
-      of a broken sword, a memory of your former power. You will die here, on your
-      knees, among the rotten roots of this forest.
+    dialogueLine: In the west. Where the trees fall silent, even in daylight. The
+      ground there is black, like his soul. But beware. He is no ordinary foe. He
+      is an echo of calamities that once nearly destroyed the world.
     answerOption:
     - answerText: Next
       nextLineId: 7
       triggerComplete: 0
-    image: {fileID: 21300000, guid: 3b263900f7c870a498421a2b6acdaf27, type: 3}
+    image: {fileID: 21300000, guid: 44036bdd3dc83864ca75d54ecd843074, type: 3}
   - lineId: 7
-    dialogueLine: "Then die! By the fire of defilement, by the power of the lord,
-      (mumbles something indistinct)\u2026 the spider will spill your blood!"
+    dialogueLine: "If I don\u2019t stop him\u2026 will it happen again?"
+    answerOption:
+    - answerText: Next
+      nextLineId: 8
+      triggerComplete: 0
+    image: {fileID: 21300000, guid: 3b263900f7c870a498421a2b6acdaf27, type: 3}
+  - lineId: 8
+    dialogueLine: "Yes. And this time, we won\u2019t be able to heal. But I see you\u2019ve
+      changed. The spark has become a flame. You are ready."
+    answerOption:
+    - answerText: I will find him. And end this darkness.
+      nextLineId: 9
+      triggerComplete: 1
+    - answerText: Okay, but I need more training.
+      nextLineId: 10
+      triggerComplete: 0
+    image: {fileID: 21300000, guid: 44036bdd3dc83864ca75d54ecd843074, type: 3}
+  - lineId: 9
+    dialogueLine: And may the forest remember your name.
     answerOption:
     - answerText: Close
       nextLineId: 
       triggerComplete: 0
-    image: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  _alternativeDialogue: {fileID: 0}
+    image: {fileID: 21300000, guid: 44036bdd3dc83864ca75d54ecd843074, type: 3}
+  - lineId: 10
+    dialogueLine: Just come on, we don't have much time.
+    answerOption:
+    - answerText: Close
+      nextLineId: 
+      triggerComplete: 0
+    image: {fileID: 21300000, guid: 44036bdd3dc83864ca75d54ecd843074, type: 3}
+  _alternativeDialogue: {fileID: 11400000, guid: b58f9e57861ff1d419fc0f5dd51070c8, type: 2}

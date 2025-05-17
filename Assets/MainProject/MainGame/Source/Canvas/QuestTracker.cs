@@ -11,7 +11,7 @@ namespace MainGame
         [SerializeField] private TextMeshProUGUI _questTask;
         [SerializeField] private QuestPoint _questPoint;
 
-        private void Start()
+        private void OnEnable()
         {
             _questEvent.OnStartQuest += StartQuestHandler;
             _questEvent.OnAdvanceQuest += AdvanceQuest;
@@ -49,7 +49,7 @@ namespace MainGame
 
         private void QuestStateChangeHandler(Quest quest)
         {
-            if (quest.QuestState != QuestState.InProgress || quest.QuestState != QuestState.CanFinish)
+            if (quest.QuestState != QuestState.InProgress && quest.QuestState != QuestState.CanFinish)
                 return;
             _questCanvas.SetActive(true);
             for (int i = 0; i < _questPoint.QuestDialogEntryInfo.Count; i++)

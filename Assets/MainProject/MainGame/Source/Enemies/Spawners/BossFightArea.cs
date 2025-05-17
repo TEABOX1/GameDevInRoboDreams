@@ -74,6 +74,7 @@ namespace MainGame
 
         private void BossDeathHandler(NecroEnemyController boss)
         {
+            OnBossDeath?.Invoke();
             _enemies.Remove(boss);
             //OnEnemyDeath?.Invoke(_enemies.Count);
             //enabled = false;
