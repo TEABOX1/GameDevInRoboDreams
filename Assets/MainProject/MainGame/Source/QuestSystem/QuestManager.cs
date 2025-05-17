@@ -39,7 +39,7 @@ namespace MainGame
             _questEvents.OnFinishQuest -= FinishQuestHandler;
             _questEvents.OnQuestStepStateChange -= QuestStepStateChangeHandler;
         }
-        //TODO: Add save quests using this for load questSteps
+        
         private void Start()
         {
             foreach (Quest quest in _quests.Values)
@@ -49,8 +49,6 @@ namespace MainGame
                     quest.InstantiateCurrentQuestStep(transform);
                 }
                 _questEvents.QuestStateChange(quest);
-
-                
                 
                 //TODO: Change to saving data instead of ClaimRewards every time
                 if (quest.QuestState == QuestState.Finished)

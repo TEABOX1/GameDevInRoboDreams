@@ -18,11 +18,16 @@ namespace MainGame
         [SerializeField] private float _rollSpeed;
         [SerializeField] private AnimationCurve _rollCurve;
         
+        [SerializeField] private BossFightArea _bossFightArea;
+        
         private StateMachine _stateMachine;
         private ISaveService _saveService;
+        private CheckpointService _checkpointService;
         
         private Transform _playerTransform;
 
+        private bool _isInBossFight;
+        
         public StateMachine StateMachine => _stateMachine;
         public CharacterController CharacterController => _characterController;
         public float Speed => _speed;
@@ -37,11 +42,14 @@ namespace MainGame
 
         private void OnEnable()
         {
+            _checkpointService = ServiceLocator.Instance.GetService<CheckpointService>();
+            _checkpointService.OnCheckpointReached += CheckpointHandler;
             LoadPlayerInfo();
         }
 
         private void OnDisable()
         {
+            _checkpointService.OnCheckpointReached -= CheckpointHandler;
             SavePlayerInfo();
         }
         
@@ -72,6 +80,9 @@ namespace MainGame
             _stateMachine.InitState((byte)PlayerControllerState.Idle);
             
             _stateMachine.OnStateChange += StateChangeHandler;
+            
+            _bossFightArea.OnBossSpawn += BossSpawnHandler;
+            _bossFightArea.OnBossDeath += BossDeathHandler;
         }
         
         private void FixedUpdate()
@@ -90,8 +101,13 @@ namespace MainGame
 
         private void SavePlayerInfo()
         {
+            //TODO: Change _isInBossFight for any other check later, save just for now
+            if(!_health.IsAlive || _isInBossFight) return;
+            
+            Debug.Log("Saving player info from PlayerController");
+            
             _saveService.SaveData.playerInfoData.PlayerPosition = _playerTransform.position;
-            // _saveService.SaveData.playerInfoData.PlayerRotationY = _playerTransform.eulerAngles.y;
+            _saveService.SaveData.playerInfoData.PlayerRotationY = _playerTransform.eulerAngles.y;
             _saveService.SaveData.playerInfoData.HealthValue = _health.HealthValue;
         }
 
@@ -99,12 +115,26 @@ namespace MainGame
         {
             _health.SetHealth(_saveService.SaveData.playerInfoData.HealthValue);
             _playerTransform.position = _saveService.SaveData.playerInfoData.PlayerPosition;
-            // _playerTransform.rotation = Quaternion.Euler(0f, _saveService.SaveData.playerInfoData.PlayerRotationY, 0f);
+            _playerTransform.rotation = Quaternion.Euler(0f, _saveService.SaveData.playerInfoData.PlayerRotationY, 0f);
         }
         
         private void StateChangeHandler(byte stateId)
         {
             OnStateChanged?.Invoke((PlayerControllerState)stateId);
+        }
+
+        private void CheckpointHandler()
+        {
+            SavePlayerInfo();
+        }
+        
+        private void BossSpawnHandler(IHealth bossHealth)
+        {
+            _isInBossFight = true;
+        }
+        private void BossDeathHandler()
+        {
+            _isInBossFight = false;
         }
     }
 }

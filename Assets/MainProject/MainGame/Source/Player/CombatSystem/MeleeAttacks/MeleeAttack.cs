@@ -60,7 +60,6 @@ namespace MainGame
             OnAttack?.Invoke(_numberOfAttacks);
         }
         
-        //TODO: Add OnAttackAnimationEnd() animation event
         private void AttackAnimationEndHandler()
         {
             Debug.Log(_numberOfAttacks);

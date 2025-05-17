@@ -1,0 +1,82 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12da250283eb4d21bd2b828afb3b8a8d, type: 3}
+  m_Name: KillBossQuestFinishDialogue
+  m_EditorClassIdentifier: 
+  _dialogueId: KillBossQuestFinishDialogue
+  _dialogueData:
+  - lineId: 1
+    dialogueLine: "The warlock is dead. But that was just\u2026 the beginning. He
+      was talking about the Lord. About some \u201Cfist.\u201D"
+    answerOption:
+    - answerText: Next
+      nextLineId: 2
+      triggerComplete: 0
+    image: {fileID: 21300000, guid: 3b263900f7c870a498421a2b6acdaf27, type: 3}
+  - lineId: 2
+    dialogueLine: So the rumors are true... He who has been operating from the shadows
+      until now is starting to move his pieces. The Dark Lord is awakening.
+    answerOption:
+    - answerText: Next
+      nextLineId: 3
+      triggerComplete: 0
+    image: {fileID: 21300000, guid: 44036bdd3dc83864ca75d54ecd843074, type: 3}
+  - lineId: 3
+    dialogueLine: "He has a \u201Cfist\u201D\u2014five generals of his legions of
+      death. One has already fallen. Who are the rest?"
+    answerOption:
+    - answerText: Next
+      nextLineId: 4
+      triggerComplete: 0
+    image: {fileID: 21300000, guid: 3b263900f7c870a498421a2b6acdaf27, type: 3}
+  - lineId: 4
+    dialogueLine: 'Five kingdoms keep the world in balance: The green thickets of
+      the Magic Forest, The burning wasteland of the sands, The depths of the ocean,
+      The dark caves of the underworld, And the heart of the human world - the kingdom
+      of Elion.'
+    answerOption:
+    - answerText: Next
+      nextLineId: 5
+      triggerComplete: 0
+    image: {fileID: 21300000, guid: 44036bdd3dc83864ca75d54ecd843074, type: 3}
+  - lineId: 5
+    dialogueLine: And each of them is under threat?
+    answerOption:
+    - answerText: Next
+      nextLineId: 6
+      triggerComplete: 0
+    image: {fileID: 21300000, guid: 3b263900f7c870a498421a2b6acdaf27, type: 3}
+  - lineId: 6
+    dialogueLine: Yes. Your battle has just begun. Each of the generals is an embodiment
+      of anger, greed, or pain. You must defeat them... to finally reach him.
+    answerOption:
+    - answerText: Next
+      nextLineId: 7
+      triggerComplete: 0
+    image: {fileID: 21300000, guid: 44036bdd3dc83864ca75d54ecd843074, type: 3}
+  - lineId: 7
+    dialogueLine: I don't remember who I was before. But now I know who I must become.
+    answerOption:
+    - answerText: Next
+      nextLineId: 8
+      triggerComplete: 0
+    image: {fileID: 21300000, guid: 3b263900f7c870a498421a2b6acdaf27, type: 3}
+  - lineId: 8
+    dialogueLine: "You became a Spark. And that spark was destined to become a flame.
+      Farewell, my young friend. I hope we will meet again\u2026 under more favorable
+      circumstances."
+    answerOption:
+    - answerText: Close
+      nextLineId: 
+      triggerComplete: 1
+    image: {fileID: 21300000, guid: 44036bdd3dc83864ca75d54ecd843074, type: 3}
+  _alternativeDialogue: {fileID: 0}
