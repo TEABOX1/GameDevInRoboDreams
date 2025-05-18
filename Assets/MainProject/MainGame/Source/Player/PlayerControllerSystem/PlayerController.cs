@@ -65,7 +65,7 @@ namespace MainGame
         private void OnDisable()
         {
             _checkpointService.OnCheckpointReached -= CheckpointHandler;
-            SavePlayerInfo();
+            // SavePlayerInfo();
         }
         
         private void Start()
@@ -108,9 +108,9 @@ namespace MainGame
 
         private void OnDestroy()
         {
-            SavePlayerInfo();
-            
-            _saveService.SaveAll();
+            // SavePlayerInfo();
+            //
+            // _saveService.SaveAll();
             
             _stateMachine?.Dispose();
         }

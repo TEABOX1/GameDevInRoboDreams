@@ -117,8 +117,9 @@ namespace MainGame
 
         private void RollHandler()
         {
-            _animator.SetFloat(_rollHorizontalId, _inputValue.x);
-            _animator.SetFloat(_rollVerticalId, _inputValue.y);
+            Vector2 rollDirection = _inputController.GetMovementInput();
+            _animator.SetFloat(_rollHorizontalId, rollDirection.x);
+            _animator.SetFloat(_rollVerticalId, rollDirection.y);
         }
     }
 }

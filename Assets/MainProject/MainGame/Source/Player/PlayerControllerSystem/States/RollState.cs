@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using GlobalSource;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace MainGame
 {
@@ -18,6 +19,8 @@ namespace MainGame
         private float _elapsedTime;
         private float _rollDuration;
         // private float _stopThreshold = 0.1f;
+        
+        private Vector2 _movementInput;
         
         private InputController _inputController;
         
@@ -51,20 +54,29 @@ namespace MainGame
         
         public override void Enter()
         {
-            _inputController = ServiceLocator.Instance.GetService<InputController>();
-            _inputController.DefaulMapLock();
             _elapsedTime = 0f;
             
-            Vector3 direction = _characterController.velocity.normalized;
+            _inputController = ServiceLocator.Instance.GetService<InputController>();
+            _movementInput = _inputController.GetMovementInput();
+            
+            // Vector3 direction = _characterController.velocity.normalized;
+            Vector3 direction = new Vector3(_movementInput.x, 0f, _movementInput.y);
+            direction = Quaternion.Euler(0, _characterController.transform.eulerAngles.y, 0) * direction;
+            direction.Normalize();
             
             if (direction == Vector3.zero)
             {
                 direction = _characterController.transform.forward;
             }
-
-            _startVelocity = direction * _rollSpeed;
             
+            Vector3 currentVelocity = _characterController.velocity;
+            float forwardSpeed = Vector3.Dot(currentVelocity, direction);
+            float dynamicRollSpeed = _rollSpeed + forwardSpeed * 0.5f;
+            // _startVelocity = direction * _rollSpeed;
+            _startVelocity = direction * dynamicRollSpeed;
             // _velocity = direction * _rollSpeed;
+            
+            _inputController.DefaulMapLock();
         }
         
         protected override void OnUpdate(float deltaTime)
@@ -84,6 +96,11 @@ namespace MainGame
         public override void Exit()
         {
             _inputController.DefaultMapUnlock();
+        }
+        
+        private void MovementInputHandler(Vector2 movementInput, InputDevice device)
+        {
+            _movementInput = movementInput;
         }
         
         private bool RollComplete()
