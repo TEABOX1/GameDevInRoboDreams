@@ -83,6 +83,7 @@ namespace MainGame
                 Vector3 point = _spawnPoints[i];
                 //var spider = _enemyPool.GetEnemy(point, _fightArea.transform.rotation);
                 var spider = Instantiate(_enemyController, point, transform.rotation);
+                spider.GetComponent<Enemy>().EnemyType = EnemyTypes.SpawnSpider;
                 spider.Initialize(_fightArea);
                 spider.NavMeshAgent.avoidancePriority = i; // виставлення пріоритетності
 

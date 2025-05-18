@@ -1690,7 +1690,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79c3648f1dc4ffc4092f80135fd7159d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _type: 2
+  _type: 3
   _health: {fileID: 7512816652554352076}
   _enemyController: {fileID: 6413521070598903940}
 --- !u!1 &7066263604419779659
