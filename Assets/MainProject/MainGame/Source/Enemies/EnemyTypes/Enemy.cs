@@ -16,7 +16,11 @@ namespace MainGame
         private EnemyService _enemyService;
         private Collider _collider;
 
-        public EnemyTypes EnemyType => _type;
+        public EnemyTypes EnemyType
+        {
+            get { return _type; }
+            set { _type = value; }
+        }
         public Collider Collider => _collider;
         public EnemyController EnemyController => _enemyController;
 

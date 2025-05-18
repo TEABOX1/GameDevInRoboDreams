@@ -181,7 +181,7 @@ namespace MainGame
                 if (_spellTimer < _enemySpellCaster.EnemySpellData.CooldownTime && _spawnTimer < _spiderSpawnSpell.SpawnSpellCooldown)
                     return;
 
-                if (_spawnTimer >= _spiderSpawnSpell.SpawnSpellCooldown && _enemyService.GetEnemiesOfTypeCount(EnemyTypes.Spider) == 0 /*_spiderSpawnSpell.SpawnSpidersCount == 0*/)
+                if (_spawnTimer >= _spiderSpawnSpell.SpawnSpellCooldown && _enemyService.GetEnemiesOfTypeCount(EnemyTypes.SpawnSpider) == 0 /*_spiderSpawnSpell.SpawnSpidersCount == 0*/)
                 {
                     _spiderSpawnSpell.SpawnSpiders();
                     _spawnTimer = 0f;

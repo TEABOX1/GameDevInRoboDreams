@@ -4,7 +4,8 @@ namespace MainGame
     {
         Egg = 0,
         Spider = 1,
-        Boss = 2,
+        SpawnSpider = 2,
+        Boss = 3,
 
         None = 255
     }
