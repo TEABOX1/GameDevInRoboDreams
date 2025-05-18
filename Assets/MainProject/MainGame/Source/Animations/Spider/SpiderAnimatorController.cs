@@ -12,6 +12,7 @@ namespace MainGame
         [Space, Header("States")]
         [SerializeField] private string _idleName;
         [SerializeField] private string _movementName;
+        [SerializeField] private string _attackName;
         [SerializeField] private string _deathName;
         //[SerializeField] private string _meeleName;
 
@@ -22,6 +23,7 @@ namespace MainGame
 
         private int _idleId;
         private int _movementId;
+        private int _attackId;
         private int _deathId;
 
         private Vector2 _movementValue;
@@ -54,6 +56,7 @@ namespace MainGame
         {
             _idleId = Animator.StringToHash(_idleName);
             _movementId = Animator.StringToHash(_movementName);
+            _attackId = Animator.StringToHash(_attackName);
             _deathId = Animator.StringToHash(_deathName);
 
             _horizontalId = Animator.StringToHash(_horizontalName);
@@ -70,10 +73,10 @@ namespace MainGame
             {
                 case IEnemyController.AttackState.Approach:
                     _animator.CrossFadeInFixedTime(_movementId, _crossFadeTime);
-                    _movementValue = Vector2.zero;
+                    _movementValue = Vector2.up;
                     break;
                 case IEnemyController.AttackState.Attack:
-                    _animator.CrossFadeInFixedTime(_movementId, _crossFadeTime);
+                    _animator.CrossFadeInFixedTime(_attackId, _crossFadeTime);
                     _movementValue = Vector2.zero;
                     break;
             }

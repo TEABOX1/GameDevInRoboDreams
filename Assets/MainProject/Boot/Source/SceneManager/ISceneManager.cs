@@ -9,6 +9,7 @@ namespace Boot
         event Action<AsyncOperation> onSceneLoad;
         
         void SetScene(Scenes scene);
+        void ReloadCurrentScene();
         void OnSceneLoad(AsyncOperation operation);
     }
 }

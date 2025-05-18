@@ -837,6 +837,7 @@ MonoBehaviour:
   _dampTime: 0.125
   _idleName: Idle
   _movementName: Movement
+  _attackName: Attack
   _deathName: Death
   _horizontalName: Horizontal
   _verticalName: Vertical

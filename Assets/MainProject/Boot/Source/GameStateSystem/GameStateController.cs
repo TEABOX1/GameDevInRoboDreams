@@ -1,5 +1,6 @@
 using System;
 using GlobalSource;
+using static UnityEngine.Rendering.DebugUI;
 
 namespace Boot
 {
@@ -35,6 +36,11 @@ namespace Boot
         public void SetGameState(GameState gameState)
         {
             GameState = gameState;
+        }
+        public void ForceGameState(GameState gameState)
+        {
+            _stateMachine.ForceState((byte)gameState);
+            OnGameStateChanged?.Invoke(gameState);
         }
     }
 }

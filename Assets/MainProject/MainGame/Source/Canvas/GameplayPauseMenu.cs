@@ -136,12 +136,12 @@ namespace MainGame
 
         private void LoadLastSaveButtonHandler()
         {
-            //OnLoadSignal?.Invoke();
             //_saveService.LoadAll();
+            //OnLoadSignal?.Invoke();
             //Scene currentScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene();
             //UnityEngine.SceneManagement.SceneManager.LoadScene(currentScene.name);
-            ServiceLocator.Instance.GetService<IGameStateProvider>().SetGameState(GameState.MainMenu);
-            ServiceLocator.Instance.GetService<IGameStateProvider>().SetGameState(GameState.Gameplay);
+            //ServiceLocator.Instance.GetService<IGameStateProvider>().SetGameState(GameState.MainMenu);
+            ServiceLocator.Instance.GetService<ISceneManager>().ReloadCurrentScene();
         }
 
         private void SettingsButtonHandler()

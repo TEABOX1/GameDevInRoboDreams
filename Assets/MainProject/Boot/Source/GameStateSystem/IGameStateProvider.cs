@@ -10,5 +10,7 @@ namespace Boot
         GameState GameState { get; }
         
         void SetGameState(GameState gameState);
+
+        void ForceGameState(GameState gameState); //added on fix
     }
 }

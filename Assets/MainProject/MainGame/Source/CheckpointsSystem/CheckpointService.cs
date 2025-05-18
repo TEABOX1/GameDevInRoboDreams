@@ -16,7 +16,7 @@ namespace MainGame
 
         public Collider[] CheckpointColliders => _checkpointColliders;
         
-        private void OnEnable()
+        private void Start()
         {
             _playerService = ServiceLocator.Instance.GetService<IPlayerService>();
         }

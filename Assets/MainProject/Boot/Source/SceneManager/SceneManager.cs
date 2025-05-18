@@ -37,6 +37,11 @@ namespace Boot
             _stateMachine.SetState((byte)scene);
         }
 
+        public void ReloadCurrentScene()
+        {
+            _stateMachine.ForceState(_stateMachine.CurrentState.StateId);
+        }
+
         public void OnSceneLoad(AsyncOperation asyncOperation)
         {
             onSceneLoad?.Invoke(asyncOperation);

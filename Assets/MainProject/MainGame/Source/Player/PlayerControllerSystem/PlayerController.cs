@@ -2,6 +2,8 @@ using System;
 using Boot;
 using GlobalSource;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using static UnityEngine.InputSystem.InputAction;
 
 namespace MainGame
 {
@@ -20,6 +22,8 @@ namespace MainGame
         [SerializeField] private AnimationCurve _rollCurve;
         
         [SerializeField] private BossFightArea _bossFightArea;
+
+        [SerializeField] private InputAction _action;
         
         private StateMachine _stateMachine;
         private ISaveService _saveService;
@@ -48,6 +52,14 @@ namespace MainGame
             LoadPlayerInfo();
             ServiceLocator.Instance.GetService<GameplayPauseMenu>().OnSaveSignal += SavePlayerInfo;
             ServiceLocator.Instance.GetService<GameplayPauseMenu>().OnLoadSignal += LoadPlayerInfo;
+
+            _action.Enable();
+            _action.performed += Heal;
+        }
+
+        private void Heal(InputAction.CallbackContext context)
+        {
+            _health.SetHealth(_health.MaxHealthValue);
         }
 
         private void OnDisable()
@@ -91,6 +103,7 @@ namespace MainGame
         private void FixedUpdate()
         {
             _stateMachine.Update(Time.fixedDeltaTime);
+
         }
 
         private void OnDestroy()

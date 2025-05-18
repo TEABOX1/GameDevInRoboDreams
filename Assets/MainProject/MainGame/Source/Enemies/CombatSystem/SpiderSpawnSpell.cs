@@ -1,4 +1,5 @@
 using GlobalSource;
+using JetBrains.Annotations;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -22,6 +23,8 @@ namespace MainGame
         private List<Vector3> _spawnPoints = new List<Vector3>();
         private List<EnemyController> _spiders = new List<EnemyController>();
         private INavPointProvider _fightArea;
+
+        private SortedDictionary<float, EnemyController> _spidersCollection = new();
         //private IHealthService _healthService;
 
         //added for animation
@@ -42,6 +45,23 @@ namespace MainGame
             necroSpellAnimation.OnSpiderAnimationFinished += SpawnHandler;
         }
 
+        private void Update()
+        {
+            _spidersCollection.Clear();
+            for(int i = 0; i < _spiders.Count; i++ )
+            {
+                float distance = (_spiders[i].NavMeshAgent.nextPosition - ServiceLocator.Instance.GetService<PlayerService>().Player.TargetPivot.position).magnitude;
+                _spidersCollection.Add(distance, _enemyController);
+            }
+
+            int priority = 0;
+
+            foreach(KeyValuePair<float, EnemyController> entry in _spidersCollection)
+            {
+                entry.Value.NavMeshAgent.avoidancePriority = priority;
+                priority++;
+            }
+        }
         private void GetSpawnPoints()
         {
             _spawnPoints.Clear();

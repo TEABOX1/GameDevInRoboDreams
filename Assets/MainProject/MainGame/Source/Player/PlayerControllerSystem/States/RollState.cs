@@ -51,6 +51,8 @@ namespace MainGame
         
         public override void Enter()
         {
+            _inputController = ServiceLocator.Instance.GetService<InputController>();
+            _inputController.DefaulMapLock();
             _elapsedTime = 0f;
             
             Vector3 direction = _characterController.velocity.normalized;
@@ -63,8 +65,6 @@ namespace MainGame
             _startVelocity = direction * _rollSpeed;
             
             // _velocity = direction * _rollSpeed;
-            _inputController = ServiceLocator.Instance.GetService<InputController>();
-            _inputController.DefaulMapLock();
         }
         
         protected override void OnUpdate(float deltaTime)

@@ -43,7 +43,7 @@ namespace MainGame
 
             _animationValueId = Animator.StringToHash(_animationValueName);
 
-            _attack.OnMeeleAttackStart += AttackHandler;
+            //_attack.OnMeeleAttackStart += AttackHandler;
         }
 
         private void AttackHandler()

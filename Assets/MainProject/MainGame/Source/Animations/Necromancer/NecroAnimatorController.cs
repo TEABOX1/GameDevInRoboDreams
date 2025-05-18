@@ -66,7 +66,7 @@ namespace MainGame
             {
                 case IEnemyController.AttackState.Approach:
                     _animator.CrossFadeInFixedTime(_movementId, _crossFadeTime);
-                    _movementValue = Vector2.zero;
+                    _movementValue = Vector2.up;
                     break;
             }
         }
