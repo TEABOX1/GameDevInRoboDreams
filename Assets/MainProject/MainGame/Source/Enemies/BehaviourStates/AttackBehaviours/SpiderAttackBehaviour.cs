@@ -71,14 +71,13 @@ namespace MainGame
 
             if (_distance <= _attackController.AttackData.Distance)
             {
-                _agent.isStopped = true;
+                //_agent.isStopped = true;
                 //_currentState = AttackState.Attack;
                 ChangeState(IEnemyController.AttackState.Attack);
                 return;
             }
 
-            _agent.isStopped = false;
-
+            //_agent.isStopped = false;
             _agent.stoppingDistance = _attackController.AttackData.Distance;
             _agent.SetDestination(enemyController.PlayerRadar.CurrentTarget.position);
 
@@ -86,15 +85,12 @@ namespace MainGame
             velocity.y = 0f;
 
             _characterController.Move(velocity * (deltaTime * enemyController.Data.PatrolSpeed) + Physics.gravity);
-
-            Vector3 newPosition = _characterTransform.position;
-            Vector3 direction = newPosition - _characterTransform.position;
-
             _agent.nextPosition = _characterTransform.position;
 
             float remainingDistance = _agent.remainingDistance;
             if (!_agent.pathPending && remainingDistance <= _attackController.AttackData.Distance)
             {
+                //_agent.isStopped = true;
                 //_currentState = AttackState.Attack;
                 ChangeState(IEnemyController.AttackState.Attack);
             }
@@ -104,6 +100,8 @@ namespace MainGame
         {
             Vector3 movement = _agent.nextPosition - _characterTransform.position; // рекомендація Олександра
             //_characterController.Move(movement + (Physics.gravity * deltaTime));
+
+            //_agent.avoidancePriority = 0;
 
             _time += deltaTime;
             if (_time < _attackController.AttackData.Interval)
