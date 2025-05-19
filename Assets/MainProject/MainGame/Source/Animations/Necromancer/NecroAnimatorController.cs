@@ -11,6 +11,9 @@ namespace MainGame
         [Space, Header("States")]
         [SerializeField] private string _idleName;
         [SerializeField] private string _movementName;
+        [SerializeField] private string _meeleAttackName;
+        [SerializeField] private string _fireballAttackName;
+        [SerializeField] private string _spiderSpawnName;
         [SerializeField] private string _deathName;
         //[SerializeField] private string _meeleName;
 
@@ -20,6 +23,11 @@ namespace MainGame
 
         private int _idleId;
         private int _movementId;
+        //
+        private int _meeleAttackId;
+        private int _fireballAttackId;
+        private int _spiderSpawnId;
+        //
         private int _deathId;
         private int _meeleId;
 
@@ -51,22 +59,30 @@ namespace MainGame
         {
             _idleId = Animator.StringToHash(_idleName);
             _movementId = Animator.StringToHash(_movementName);
+            //
+            _meeleAttackId = Animator.StringToHash(_meeleAttackName);
+            _fireballAttackId = Animator.StringToHash(_fireballAttackName);
+            _spiderSpawnId = Animator.StringToHash(_spiderSpawnName);
+            //
             _deathId = Animator.StringToHash(_deathName);
 
             _horizontalId = Animator.StringToHash(_horizontalName);
             _verticalId = Animator.StringToHash(_verticalName);
 
             _enemy.OnBehaviourChanged += BehaviourStateHandler;
-            _enemy.OnAttackStateChanged += AttaStateHandler;
+            _enemy.OnAttackStateChanged += AttackStateHandler;
         }
 
-        private void AttaStateHandler(IEnemyController.AttackState state)
+        private void AttackStateHandler(IEnemyController.AttackState state)
         {
             switch (state)
             {
                 case IEnemyController.AttackState.Approach:
                     _animator.CrossFadeInFixedTime(_movementId, _crossFadeTime);
                     _movementValue = Vector2.up;
+                    break;
+                case IEnemyController.AttackState.Attack:
+                    _animator.CrossFadeInFixedTime(_meeleAttackId);
                     break;
             }
         }
@@ -99,10 +115,10 @@ namespace MainGame
                     _animator.CrossFadeInFixedTime(_movementId, _crossFadeTime);
                     _movementValue = Vector2.up;
                     break;
-                case EnemyBehaviour.Attack:
-                    //_animator.CrossFadeInFixedTime(_movementId, _crossFadeTime);
-                    _movementValue = Vector2.zero;
-                    break;
+                //case EnemyBehaviour.Attack:
+                //    //_animator.CrossFadeInFixedTime(_movementId, _crossFadeTime);
+                //    _movementValue = Vector2.zero;
+                //    break;
                 case EnemyBehaviour.Death:
                     SetDeathLock(true);
                     _animator.Play(_deathId);
