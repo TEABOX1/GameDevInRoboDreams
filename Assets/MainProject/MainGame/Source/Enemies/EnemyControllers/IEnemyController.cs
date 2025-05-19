@@ -13,6 +13,14 @@ namespace MainGame
             NullState = 255
         }
 
+        enum AttackMode
+        {
+            Melee = 0,
+            Ranged = 1,
+
+            NullState = 255
+        }
+
         float PatrolStamina { get; set; }
         EnemyData Data { get; }
         EnemyAttack EnemyAttack { get; }
@@ -28,6 +36,8 @@ namespace MainGame
         void ComputeBehaviour();
         void RestorePatrolStamina();
         void InvokeAttackState(AttackState state);
+        public void InvokeAttackMode(AttackMode mode);
+
 
         //void Initialize(INavPointProvider navPointProvider);
         //void ResetEnemy();

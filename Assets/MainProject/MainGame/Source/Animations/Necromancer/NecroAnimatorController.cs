@@ -36,24 +36,7 @@ namespace MainGame
         private int _horizontalId;
         private int _verticalId;
 
-        private bool _isMeeleAttack;
-        private bool _isSpellCast;
-        private bool _isDeath;
-
-
-        public void SetAttackLock(bool isLocked)
-        {
-            _isMeeleAttack = isLocked;
-        }
-
-        public void SetSpellCastLock(bool isLocked)
-        {
-            _isSpellCast = isLocked;
-        }
-        public void SetDeathLock(bool isLocked)
-        {
-            _isDeath = isLocked;
-        }
+        private IEnemyController.AttackMode _currentAttackMode;
 
         private void Awake()
         {
@@ -82,21 +65,32 @@ namespace MainGame
                     _movementValue = Vector2.up;
                     break;
                 case IEnemyController.AttackState.Attack:
+                    _movementValue = Vector2.zero;
+                    //if (_currentAttackMode == IEnemyController.AttackMode.Melee)
+                    //    _animator.CrossFadeInFixedTime(_meeleAttackId, _crossFadeTime);
+                    //else if (_currentAttackMode == IEnemyController.AttackMode.Ranged)
+                    //    _animator.CrossFadeInFixedTime(_fireballAttackId, _crossFadeTime);
                     //Fixed _animator.CrossFadeInFixedTime(_meeleAttackId)
                     _animator.CrossFadeInFixedTime(_meeleAttackId, _crossFadeTime);
                     break;
             }
         }
+
+        private void AttackModeHandler(IEnemyController.AttackMode mode)
+        {
+            _currentAttackMode = mode;
+        }
+
         private void BehaviourStateHandler(EnemyBehaviour state)
         {
             Debug.Log("Behaviour received in animation: " + state);
 
-            if (_isMeeleAttack && state != EnemyBehaviour.Death)
-                return;
-            if (_isSpellCast && state != EnemyBehaviour.Death)
-                return;
-            if (_isDeath && state != EnemyBehaviour.Death)
-                return;
+            //if (_isMeeleAttack && state != EnemyBehaviour.Death)
+            //    return;
+            //if (_isSpellCast && state != EnemyBehaviour.Death)
+            //    return;
+            //if (_isDeath && state != EnemyBehaviour.Death)
+            //    return;
 
             switch (state)
             {
@@ -121,34 +115,10 @@ namespace MainGame
                 //    _movementValue = Vector2.zero;
                 //    break;
                 case EnemyBehaviour.Death:
-                    SetDeathLock(true);
                     _animator.Play(_deathId);
                     _movementValue = Vector2.zero;
                     break;
             }
-        }
-
-        private void MeeleHit(Collider collider)
-        {
-            _animator.CrossFadeInFixedTime(_meeleId, _crossFadeTime);
-        }
-
-        public void SetAproachingAnimation()
-        {
-            _animator.CrossFadeInFixedTime(_movementId, _crossFadeTime);
-            _movementValue = Vector2.up;
-        }
-
-        public void SetShootAnimation()
-        {
-            _animator.CrossFadeInFixedTime(_idleId, _crossFadeTime);
-            _movementValue = Vector2.zero;
-        }
-
-        public void SetMeeleAnimation()
-        {
-            _animator.CrossFadeInFixedTime(_idleId, _crossFadeTime);
-            _movementValue = Vector2.zero;
         }
 
         private void Update()
