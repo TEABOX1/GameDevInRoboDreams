@@ -4,6 +4,7 @@ namespace GlobalSource
     {
         void SaveAll();
         void LoadAll();
+        void ResetSaveData();
         ref SaveData SaveData { get; }
     }
 }

@@ -12,9 +12,9 @@ namespace MainGame
         private Dictionary<string, Quest> _quests;
 
         private QuestEvents _questEvents;
-        
         private ISaveService _saveService;
-         
+        private GameplayPauseMenu _pauseMenu;
+        private CheckpointService _checkpointService;
         protected void Awake()
         {
             _saveService = ServiceLocator.Instance.GetService<ISaveService>();
@@ -24,8 +24,10 @@ namespace MainGame
         private void OnEnable()
         {
             _questEvents = ServiceLocator.Instance.GetService<QuestEvents>();
-
-            ServiceLocator.Instance.GetService<GameplayPauseMenu>().OnSaveSignal += SaveQuests;
+            _pauseMenu = ServiceLocator.Instance.GetService<GameplayPauseMenu>();
+            _checkpointService = ServiceLocator.Instance.GetService<CheckpointService>();
+            _pauseMenu.OnSaveSignal += SaveQuests;
+            _checkpointService.OnCheckpointReached += SaveQuests;
             //ServiceLocator.Instance.GetService<GameplayPauseMenu>().OnLoadSignal += LoadQuests;
 
             _questEvents.OnStartQuest += StartQuestHandler;
@@ -41,6 +43,9 @@ namespace MainGame
             _questEvents.OnAdvanceQuest -= AdvanceQuestHandler;
             _questEvents.OnFinishQuest -= FinishQuestHandler;
             _questEvents.OnQuestStepStateChange -= QuestStepStateChangeHandler;
+            
+            _pauseMenu.OnSaveSignal -= SaveQuests;
+            _checkpointService.OnCheckpointReached -= SaveQuests;
         }
         
         private void Start()
@@ -126,7 +131,7 @@ namespace MainGame
             Quest quest = GetQuestById(id);
             quest.QuestState = state;
             _questEvents.QuestStateChange(quest);
-            SaveQuests();
+            // SaveQuests();
         }
 
         private void ClaimRewards(Quest quest)
@@ -173,28 +178,30 @@ namespace MainGame
             return quest;
         }
 
-        private void OnDestroy()
-        {
-            SaveQuests();
-
-            Debug.Log("Saved Quests: ");
-            foreach (QuestData questData in _saveService.SaveData.playerInfoData.questData)
-            {
-                Debug.Log(questData.QuestId);
-                Debug.Log(questData.QuestStepIndex);
-                Debug.Log(questData.State);
-                foreach (var questStepState in questData.QuestStepStates)
-                {
-                    Debug.Log(questStepState);
-                }
-                Debug.Log("\n");
-            }
-
-            _saveService.SaveAll();
-        }
+        // private void OnDestroy()
+        // {
+        //     SaveQuests();
+        //
+        //     Debug.Log("Saved Quests: ");
+        //     foreach (QuestData questData in _saveService.SaveData.playerInfoData.questData)
+        //     {
+        //         Debug.Log(questData.QuestId);
+        //         Debug.Log(questData.QuestStepIndex);
+        //         Debug.Log(questData.State);
+        //         foreach (var questStepState in questData.QuestStepStates)
+        //         {
+        //             Debug.Log(questStepState);
+        //         }
+        //         Debug.Log("\n");
+        //     }
+        //
+        //     _saveService.SaveAll();
+        // }
         
         private void SaveQuests()
         {
+            Debug.Log("Quest saving");
+            
             List<QuestData> allQuestsData = new List<QuestData>();
 
             foreach (Quest quest in _quests.Values)

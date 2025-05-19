@@ -44,14 +44,17 @@ namespace MainMenu
             _soundMenu.Enabled = false;
 
             _saveService = ServiceLocator.Instance.GetService<ISaveService>();
+            
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.Confined;
         }
 
         private void NewGameButtonHandler()
         {
+            _saveService.ResetSaveData();
+            
             ServiceLocator.Instance.GetService<ISceneManager>().onSceneLoad += SceneLoadHandler;
             ServiceLocator.Instance.GetService<IGameStateProvider>().SetGameState(GameState.Cutscene);
-
-            _saveService.SaveData.playerInfoData.DebugSaveInfo = 0;
         }
 
         private void LoadGameButtonHandler()

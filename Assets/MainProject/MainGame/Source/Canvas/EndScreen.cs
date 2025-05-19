@@ -96,7 +96,8 @@ namespace MainGame
         private void LoadButtonHandler()
         {
             _canvas.enabled = false;
-            ServiceLocator.Instance.GetService<ISaveService>().LoadAll();
+            // ServiceLocator.Instance.GetService<ISaveService>().LoadAll();
+            ServiceLocator.Instance.GetService<ISceneManager>().ReloadCurrentScene();
         }
     }
 }

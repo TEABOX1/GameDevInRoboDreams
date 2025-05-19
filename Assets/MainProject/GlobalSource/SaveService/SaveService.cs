@@ -63,5 +63,11 @@ namespace GlobalSource
             
             _saveData = JsonUtility.FromJson<SaveData>(File.ReadAllText(filePath));
         }
+        
+        public void ResetSaveData()
+        {
+            _saveData.settingsData.soundData = SoundSaveData.Default;
+            _saveData.playerInfoData = PlayerInfoSaveData.Default;
+        }
     }
 }

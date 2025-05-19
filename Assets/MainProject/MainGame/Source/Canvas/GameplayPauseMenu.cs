@@ -99,6 +99,13 @@ namespace MainGame
             _inputController.OnEscapeInput += EscapeHandler;
         }
 
+        protected override void OnDestroy()
+        {
+            base.OnDestroy();
+            
+            Enabled = false;
+        }
+
         private void EscapeHandler()
         {
             switch (_menuState)

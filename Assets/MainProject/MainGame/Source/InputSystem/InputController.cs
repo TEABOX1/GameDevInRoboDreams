@@ -52,6 +52,8 @@ namespace MainGame
 
         private int _defaultMapLockCounter = 0;
         private int _uiMapLockCounter = 0;
+
+        private Vector2 _movementInput;
         
         protected override void Awake()
         {
@@ -181,13 +183,20 @@ namespace MainGame
             CursorDisable();
         }
         
+        public Vector2 GetMovementInput()
+        {
+            return _movementInput;
+        }
+        
         private void MovementPerformedHandler(InputAction.CallbackContext context)
         {
-            OnMovementInput?.Invoke(context.ReadValue<Vector2>(), context.control.device);
+            _movementInput = context.ReadValue<Vector2>();
+            OnMovementInput?.Invoke(_movementInput, context.control.device);
         }
         private void MovementCanceledHandler(InputAction.CallbackContext context)
         {
-            OnMovementInput?.Invoke(context.ReadValue<Vector2>(), context.control.device);
+            _movementInput = context.ReadValue<Vector2>();
+            OnMovementInput?.Invoke(_movementInput, context.control.device);
         }
         
         private void LookAroundPerformedHandler(InputAction.CallbackContext context)
