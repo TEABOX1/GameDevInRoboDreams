@@ -12,6 +12,7 @@ namespace MainGame
 
             NullState = 255
         }
+
         float PatrolStamina { get; set; }
         EnemyData Data { get; }
         EnemyAttack EnemyAttack { get; }
