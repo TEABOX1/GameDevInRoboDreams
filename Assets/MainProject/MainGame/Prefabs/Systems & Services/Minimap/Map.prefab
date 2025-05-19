@@ -35,7 +35,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 56.000008, y: 56}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5623246407577477677
 CanvasRenderer:
@@ -242,13 +242,13 @@ MonoBehaviour:
   _rawImage: {fileID: 7379428102076251509}
   _worldMin: {x: 0, y: 0}
   _worldMax: {x: 500, y: 500}
-  _mapMin: {x: 0, y: 0}
-  _mapMax: {x: 560, y: 560}
+  _mapMin: {x: -1200, y: -1200}
+  _mapMax: {x: 1200, y: 1200}
   _tiling: {x: 0.25, y: 0.25}
   _markers:
   - {fileID: 0}
   _markerPrefab: {fileID: 2341523813200975119}
-  _content: {fileID: 2398591245267789275}
+  _content: {fileID: 7931057743563859644}
 --- !u!1 &7883377764706924389
 GameObject:
   m_ObjectHideFlags: 0

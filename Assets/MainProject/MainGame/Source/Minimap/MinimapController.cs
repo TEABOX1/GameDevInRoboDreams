@@ -38,7 +38,8 @@ namespace MainGame
             {
                 Image markerImage = _minimapMarkers[i];
                 MapMarker mapMarker = _markers[i];
-                markerImage.rectTransform.anchoredPosition = GetWorldPositionOnMap(mapMarker.Transform.position);
+                //markerImage.rectTransform.anchoredPosition = GetWorldPositionOnMap(mapMarker.Transform.position);
+                markerImage.rectTransform.anchoredPosition = ClampPositionToContent(GetWorldPositionOnMap(mapMarker.Transform.position));
                 markerImage.color = mapMarker.Color;
             }
         }
@@ -65,6 +66,19 @@ namespace MainGame
             Vector2 position;
             position.x = Mathf.Lerp(_mapMin.x, _mapMax.x, normX);
             position.y = Mathf.Lerp(_mapMin.y, _mapMax.y, normY);
+
+            return position;
+        }
+
+        private Vector2 ClampPositionToContent(Vector2 position)
+        {
+            if (_content == null) return position;
+
+            RectTransform contentRect = _content as RectTransform;
+            Vector2 contentSize = contentRect.rect.size * 0.5f;
+
+            position.x = Mathf.Clamp(position.x, -contentSize.x, contentSize.x);
+            position.y = Mathf.Clamp(position.y, -contentSize.y, contentSize.y);
 
             return position;
         }
