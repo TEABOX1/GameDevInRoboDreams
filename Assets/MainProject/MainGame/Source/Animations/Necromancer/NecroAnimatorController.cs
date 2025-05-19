@@ -70,6 +70,8 @@ namespace MainGame
                     //    _animator.CrossFadeInFixedTime(_meeleAttackId, _crossFadeTime);
                     //else if (_currentAttackMode == IEnemyController.AttackMode.Ranged)
                     //    _animator.CrossFadeInFixedTime(_fireballAttackId, _crossFadeTime);
+                    //Fixed _animator.CrossFadeInFixedTime(_meeleAttackId)
+                    _animator.CrossFadeInFixedTime(_meeleAttackId, _crossFadeTime);
                     break;
             }
         }

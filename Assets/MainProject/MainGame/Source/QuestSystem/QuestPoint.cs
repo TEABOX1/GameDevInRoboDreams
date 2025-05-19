@@ -1,12 +1,15 @@
 using System;
 using System.Collections.Generic;
 using GlobalSource;
+using UnityEditor;
 using UnityEngine;
 
 namespace MainGame
 {
     public class QuestPoint : InteractableBase
     {
+        public event Action OnInteract;
+        
         [Serializable]
         public class QuestDialogueEntry
         {
@@ -15,6 +18,8 @@ namespace MainGame
             public Dialogue startDialogue;
             public Dialogue inProgressDialogue;
             public Dialogue finishDialogue;
+            [Header("Transform")]
+            public Vector3 newNPCPosition;
         }
         
         [SerializeField] private List<QuestDialogueEntry> _questDialogues;
@@ -39,7 +44,7 @@ namespace MainGame
         private InputController _inputController;
         
         public List<QuestDialogueEntry> QuestDialogEntryInfo { get { return _questDialogues; } }
-
+        
         protected override void Awake()
         {
             base.Awake();
@@ -96,6 +101,9 @@ namespace MainGame
                 if (state == QuestState.Finished)
                     continue;
 
+                if(state == QuestState.CanFinish)
+                    transform.position = entry.newNPCPosition;
+                
                 _questIcon.SetState(state, _startPoint, _finishPoint);
                 return;
             }
@@ -135,7 +143,7 @@ namespace MainGame
                 string questId = entry.questInfo.QuestId;
                 if (!_questStates.TryGetValue(questId, out var state))
                     continue;
-            
+                
                 switch (state)
                 {
                     case QuestState.CanFinish when _finishPoint:
@@ -167,8 +175,24 @@ namespace MainGame
                 onComplete?.Invoke();
                 return;
             }
+            OnInteract?.Invoke();
             _dialogueEvents.EnterDialogue(dialogue, onComplete);
             // onComplete?.Invoke();
         }
+
+#if UNITY_EDITOR
+        private void OnValidate()
+        {
+            for (int i = 0; i < _questDialogues.Count; i++)
+            {
+                var entry = _questDialogues[i];
+                if (entry.questInfo != null && entry.newNPCPosition == Vector3.zero)
+                {
+                    entry.newNPCPosition = transform.position;
+                    EditorUtility.SetDirty(this);
+                }
+            }
+        }
+#endif
     }
 }
