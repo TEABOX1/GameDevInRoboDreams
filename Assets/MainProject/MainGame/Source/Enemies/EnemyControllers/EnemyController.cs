@@ -76,7 +76,7 @@ namespace MainGame
         {
             _navMeshAgent.updatePosition = false;
             _navMeshAgent.updateRotation = false;
-            _navMeshAgent.avoidancePriority = Random.Range(0, 100);
+            //_navMeshAgent.avoidancePriority = Random.Range(0, 100);
 
             InitStateMachine();
             _behaviourMachine.OnStateChange += StateChangeHandler;
