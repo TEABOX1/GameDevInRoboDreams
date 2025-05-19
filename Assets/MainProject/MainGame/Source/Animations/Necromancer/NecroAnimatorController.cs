@@ -81,21 +81,21 @@ namespace MainGame
                     _animator.CrossFadeInFixedTime(_movementId, _crossFadeTime);
                     _movementValue = Vector2.up;
                     break;
-                case IEnemyController.AttackState.Attack:
-                    _animator.CrossFadeInFixedTime(_meeleAttackId);
-                    break;
+                //case IEnemyController.AttackState.Attack:
+                //    _animator.CrossFadeInFixedTime(_meeleAttackId, _crossFadeTime);
+                //    break;
             }
         }
         private void BehaviourStateHandler(EnemyBehaviour state)
         {
             Debug.Log("Behaviour received in animation: " + state);
 
-            if (_isMeeleAttack && state != EnemyBehaviour.Death)
-                return;
-            if (_isSpellCast && state != EnemyBehaviour.Death)
-                return;
-            if (_isDeath && state != EnemyBehaviour.Death)
-                return;
+            //if (_isMeeleAttack && state != EnemyBehaviour.Death)
+            //    return;
+            //if (_isSpellCast && state != EnemyBehaviour.Death)
+            //    return;
+            //if (_isDeath && state != EnemyBehaviour.Death)
+            //    return;
 
             switch (state)
             {
@@ -125,29 +125,6 @@ namespace MainGame
                     _movementValue = Vector2.zero;
                     break;
             }
-        }
-
-        private void MeeleHit(Collider collider)
-        {
-            _animator.CrossFadeInFixedTime(_meeleId, _crossFadeTime);
-        }
-
-        public void SetAproachingAnimation()
-        {
-            _animator.CrossFadeInFixedTime(_movementId, _crossFadeTime);
-            _movementValue = Vector2.up;
-        }
-
-        public void SetShootAnimation()
-        {
-            _animator.CrossFadeInFixedTime(_idleId, _crossFadeTime);
-            _movementValue = Vector2.zero;
-        }
-
-        public void SetMeeleAnimation()
-        {
-            _animator.CrossFadeInFixedTime(_idleId, _crossFadeTime);
-            _movementValue = Vector2.zero;
         }
 
         private void Update()
