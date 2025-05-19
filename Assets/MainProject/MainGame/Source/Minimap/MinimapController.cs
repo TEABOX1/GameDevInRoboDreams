@@ -56,13 +56,16 @@ namespace MainGame
 
         public Vector2 GetWorldPositionOnMap(Vector3 worldPos)
         {
-            worldPos -= _playerTransform.position;
-            float normX = Mathf.InverseLerp(_worldMin.x, _worldMax.x, worldPos.x);
-            float normY = Mathf.InverseLerp(_worldMin.y, _worldMax.y, worldPos.z);
+            worldPos = worldPos - _playerTransform.position;
+            Vector2 worldSize = _worldMax - _worldMin;
+
+            float normX = Mathf.InverseLerp(-worldSize.x, worldSize.x, worldPos.x);
+            float normY = Mathf.InverseLerp(-worldSize.y, worldSize.y, worldPos.z);
 
             Vector2 position;
             position.x = Mathf.Lerp(_mapMin.x, _mapMax.x, normX);
             position.y = Mathf.Lerp(_mapMin.y, _mapMax.y, normY);
+
             return position;
         }
     }
