@@ -633,6 +633,22 @@ MonoBehaviour:
   _drag: 4.5
   _jumpSpeed: {x: 1.5, y: 5}
   _rollSpeed: 10
+  _rollCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _bossFightArea: {fileID: 0}
+  _action:
+    m_Name: Action
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 5d96194c-b4d5-47c6-b9dc-3a053990dba0
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
 --- !u!114 &4168815628105228847
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -675,6 +691,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _characterController: {fileID: 475642525079676232}
   _maxComboDelay: 1
+  _attackAnimation: {fileID: 0}
 --- !u!114 &182718987949639626
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1227,6 +1244,7 @@ MonoBehaviour:
   _weapon: {fileID: 6481068967059153209}
   _meleeAttack: {fileID: 3923516189214712724}
   _weaponTrigger: {fileID: 5332991574809056582}
+  _attackAnimation: {fileID: 0}
 --- !u!1001 &135965459041318858
 PrefabInstance:
   m_ObjectHideFlags: 0

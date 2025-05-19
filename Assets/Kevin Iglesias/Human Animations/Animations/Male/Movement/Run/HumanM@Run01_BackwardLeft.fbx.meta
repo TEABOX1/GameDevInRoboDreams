@@ -19,27 +19,7 @@ ModelImporter:
     rigImportErrors: 
     rigImportWarnings: 
     animationImportErrors: 
-    animationImportWarnings: "\nClip 'Untitled' has import animation warnings that
-      might lower retargeting quality:\nNote: Activate translation DOF on avatar
-      to improve retargeting quality.\n\t'B-indexFinger01.R' has scale animation
-      that will be discarded.\n\t'B-middleFinger01.R' has scale animation that will
-      be discarded.\n\t'B-ringFinger01.R' has scale animation that will be discarded.\n\t'B-pinky01.R'
-      has scale animation that will be discarded.\n\t'B-thumb01.R' has scale animation
-      that will be discarded.\n\t'B-thumb03.R' has scale animation that will be discarded.\n\t'B-indexFinger01.L'
-      has translation animation that will be discarded.\n\t'B-indexFinger01.L' has
-      scale animation that will be discarded.\n\t'B-middleFinger01.L' has translation
-      animation that will be discarded.\n\t'B-middleFinger01.L' has scale animation
-      that will be discarded.\n\t'B-middleFinger03.L' has translation animation that
-      will be discarded.\n\t'B-ringFinger01.L' has translation animation that will
-      be discarded.\n\t'B-ringFinger01.L' has scale animation that will be discarded.\n\t'B-ringFinger03.L'
-      has translation animation that will be discarded.\n\t'B-pinky01.L' has translation
-      animation that will be discarded.\n\t'B-pinky01.L' has scale animation that
-      will be discarded.\n\t'B-pinky03.L' has scale animation that will be discarded.\n\t'B-thumb01.L'
-      has translation animation that will be discarded.\n\t'B-thumb01.L' has scale
-      animation that will be discarded.\n\t'B-thumb03.L' has scale animation that
-      will be discarded.\n\t'B-thigh.R' has scale animation that will be discarded.\n\t'B-shin.R'
-      has scale animation that will be discarded.\n\t'B-foot.R' has scale animation
-      that will be discarded.\n\t'B-toe.R' has scale animation that will be discarded.\n"
+    animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
@@ -76,7 +56,21 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0.10902526
+        functionName: RightLeg
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.65487385
+        functionName: LeftLeg
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask:
       - path: 
         weight: 1

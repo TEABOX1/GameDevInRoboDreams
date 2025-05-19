@@ -1337,6 +1337,42 @@ PrefabInstance:
       propertyPath: _questDialogues.Array.data[2].questInfo
       value: 
       objectReference: {fileID: 11400000, guid: 47fdccd56c5628c448b2f1b734bdd7d3, type: 2}
+    - target: {fileID: 5016918019663536822, guid: 44a36e9218a5fdf4c841247f3870dfb6, type: 3}
+      propertyPath: _questDialogues.Array.data[0].newNPCPosition.x
+      value: 58.386887
+      objectReference: {fileID: 0}
+    - target: {fileID: 5016918019663536822, guid: 44a36e9218a5fdf4c841247f3870dfb6, type: 3}
+      propertyPath: _questDialogues.Array.data[0].newNPCPosition.y
+      value: 0.5571518
+      objectReference: {fileID: 0}
+    - target: {fileID: 5016918019663536822, guid: 44a36e9218a5fdf4c841247f3870dfb6, type: 3}
+      propertyPath: _questDialogues.Array.data[0].newNPCPosition.z
+      value: 73.40363
+      objectReference: {fileID: 0}
+    - target: {fileID: 5016918019663536822, guid: 44a36e9218a5fdf4c841247f3870dfb6, type: 3}
+      propertyPath: _questDialogues.Array.data[1].newNPCPosition.x
+      value: 58.386887
+      objectReference: {fileID: 0}
+    - target: {fileID: 5016918019663536822, guid: 44a36e9218a5fdf4c841247f3870dfb6, type: 3}
+      propertyPath: _questDialogues.Array.data[1].newNPCPosition.y
+      value: 0.5571518
+      objectReference: {fileID: 0}
+    - target: {fileID: 5016918019663536822, guid: 44a36e9218a5fdf4c841247f3870dfb6, type: 3}
+      propertyPath: _questDialogues.Array.data[1].newNPCPosition.z
+      value: 73.40363
+      objectReference: {fileID: 0}
+    - target: {fileID: 5016918019663536822, guid: 44a36e9218a5fdf4c841247f3870dfb6, type: 3}
+      propertyPath: _questDialogues.Array.data[2].newNPCPosition.x
+      value: 58.386887
+      objectReference: {fileID: 0}
+    - target: {fileID: 5016918019663536822, guid: 44a36e9218a5fdf4c841247f3870dfb6, type: 3}
+      propertyPath: _questDialogues.Array.data[2].newNPCPosition.y
+      value: 0.5571518
+      objectReference: {fileID: 0}
+    - target: {fileID: 5016918019663536822, guid: 44a36e9218a5fdf4c841247f3870dfb6, type: 3}
+      propertyPath: _questDialogues.Array.data[2].newNPCPosition.z
+      value: 73.40363
+      objectReference: {fileID: 0}
     - target: {fileID: 7092051095425909960, guid: 44a36e9218a5fdf4c841247f3870dfb6, type: 3}
       propertyPath: m_LocalPosition.x
       value: -7.48
