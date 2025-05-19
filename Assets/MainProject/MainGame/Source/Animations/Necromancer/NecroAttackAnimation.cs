@@ -47,12 +47,10 @@ namespace MainGame
 
         private IEnumerator LockRoutine()
         {
-            _animatorController.SetAttackLock(true);
             PlayAttack();
 
             yield return _lockDelay;
             //_animator.CrossFadeInFixedTime(_idleId, _crossFadeTime);
-            _animatorController.SetAttackLock(false);
         }
 
         private void LocomotionStateHandler(EnemyBehaviour state)
@@ -63,8 +61,8 @@ namespace MainGame
 
         private void PlayAttack()
         {
-            _animator.Play(_meeleAttackId, 0);
-            //_animator.CrossFadeInFixedTime(_meeleAttackId, _crossFadeTime);
+            //_animator.Play(_meeleAttackId, 0);
+            _animator.CrossFadeInFixedTime(_meeleAttackId, _crossFadeTime);
         }
     }
 }

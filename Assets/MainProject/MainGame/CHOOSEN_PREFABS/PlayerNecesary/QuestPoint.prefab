@@ -295,14 +295,17 @@ MonoBehaviour:
     startDialogue: {fileID: 11400000, guid: 2c5a5d46c6c67414aa20760fec7eae30, type: 2}
     inProgressDialogue: {fileID: 11400000, guid: b1d40199288319240a993c6a24c9f418, type: 2}
     finishDialogue: {fileID: 11400000, guid: c9021e59b04beae4683a6e0994165fc7, type: 2}
+    newNPCPosition: {x: -15, y: 1, z: 0}
   - questInfo: {fileID: 11400000, guid: 1d55774e7f893e344946ad1468bc18a2, type: 2}
     startDialogue: {fileID: 11400000, guid: 3b22d9d3c0f7dd749812109b3946a6dd, type: 2}
     inProgressDialogue: {fileID: 11400000, guid: 4a8a17352784f1740858f09d7f19eaf6, type: 2}
     finishDialogue: {fileID: 11400000, guid: b6f9f3074465208499d7474b06f1ad87, type: 2}
+    newNPCPosition: {x: -15, y: 1, z: 0}
   - questInfo: {fileID: 11400000, guid: 47fdccd56c5628c448b2f1b734bdd7d3, type: 2}
     startDialogue: {fileID: 0}
     inProgressDialogue: {fileID: 0}
     finishDialogue: {fileID: 0}
+    newNPCPosition: {x: -15, y: 1, z: 0}
   _questIcon: {fileID: 1294822102510563915}
   _startPoint: 1
   _finishPoint: 1

@@ -7,16 +7,9 @@ namespace MainGame
 {
     public class NecroAttackBehaviour : BehaviourStateBase
     {
-        public enum AttackMode
-        {
-            Melee = 0,
-            Ranged = 1,
-
-            NullState = 255
-        }
 
         public event Action<IEnemyController.AttackState> OnAttackStateChange;
-        public event Action<AttackMode> OnAttackModeChange;
+        public event Action<IEnemyController.AttackMode> OnAttackModeChange;
 
         private IEnemyController.AttackState _currentState;
         public IEnemyController.AttackState CurrentState
@@ -30,8 +23,8 @@ namespace MainGame
             }
         }
 
-        private AttackMode _currentMode;
-        public AttackMode CurrentMode
+        private IEnemyController.AttackMode _currentMode;
+        public IEnemyController.AttackMode CurrentMode
         {
             get => _currentMode;
             set
@@ -86,7 +79,7 @@ namespace MainGame
             _enemyService = ServiceLocator.Instance.GetService<EnemyService>();
             _necroSpellCastAnimation.OnFireballAnimationFinished += ProcceedCast;
 
-            _currentMode = AttackMode.Ranged;
+            _currentMode = IEnemyController.AttackMode.Ranged;
             _currentState = IEnemyController.AttackState.Attack;
         }
 
@@ -95,14 +88,14 @@ namespace MainGame
             base.OnUpdate(deltaTime);
 
             _distance = Vector3.Distance(enemyController.PlayerRadar.CurrentTarget.position, _characterTransform.position);
-            if (_currentMode == AttackMode.Ranged && _distance <= _switchToMeleeDistance)
+            if (_currentMode == IEnemyController.AttackMode.Ranged && _distance <= _switchToMeleeDistance)
             {
-                SetAttackMode(AttackMode.Melee);
+                SetAttackMode(IEnemyController.AttackMode.Melee);
                 ChangeState(IEnemyController.AttackState.Approach);
             }
-            else if (_currentMode == AttackMode.Melee && _distance >= _switchToRangedDistance)
+            else if (_currentMode == IEnemyController.AttackMode.Melee && _distance >= _switchToRangedDistance)
             {
-                SetAttackMode(AttackMode.Ranged);
+                SetAttackMode(IEnemyController.AttackMode.Ranged);
                 ChangeState(IEnemyController.AttackState.Attack);
             }
 
@@ -160,7 +153,7 @@ namespace MainGame
         {
             UpdateTimers(deltaTime);
 
-            if (_currentMode == AttackMode.Melee)
+            if (_currentMode == IEnemyController.AttackMode.Melee)
             {
                 if (_attackTimer < _attackController.AttackData.Interval)
                     return;
@@ -223,11 +216,12 @@ namespace MainGame
             enemyController.InvokeAttackState(CurrentState);
         }
 
-        private void SetAttackMode(AttackMode mode)
+        private void SetAttackMode(IEnemyController.AttackMode mode)
         {
             CurrentMode = mode;
             Debug.Log($"Necro Attack Mode Change! Current State = {CurrentMode}");
             OnAttackModeChange?.Invoke(CurrentMode);
+            enemyController.InvokeAttackMode(CurrentMode);
         }
 
         private void UpdateRotation()

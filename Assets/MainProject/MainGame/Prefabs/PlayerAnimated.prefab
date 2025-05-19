@@ -101,6 +101,7 @@ MonoBehaviour:
   _weapon: {fileID: 2464259664051264136}
   _meleeAttack: {fileID: 7228623120946805916}
   _weaponTrigger: {fileID: 3585209916176084727}
+  _attackAnimation: {fileID: 0}
 --- !u!1 &1578099423420765690
 GameObject:
   m_ObjectHideFlags: 0
@@ -944,6 +945,16 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  _bossFightArea: {fileID: 0}
+  _action:
+    m_Name: Action
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: fbb066b2-3607-4a79-a08f-7930ac169050
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
 --- !u!114 &5469833702583775642
 MonoBehaviour:
   m_ObjectHideFlags: 0
