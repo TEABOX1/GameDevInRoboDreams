@@ -21,7 +21,7 @@ MonoBehaviour:
     - answerText: Next
       nextLineId: 2
       triggerComplete: 0
-    image: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+    image: {fileID: 21300000, guid: c45efb10cb089bc42a3a5b6c70d79811, type: 3}
   - lineId: 2
     dialogueLine: If these creatures were your creations, then you are next.
     answerOption:
@@ -36,7 +36,7 @@ MonoBehaviour:
     - answerText: Next
       nextLineId: 4
       triggerComplete: 0
-    image: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+    image: {fileID: 21300000, guid: c45efb10cb089bc42a3a5b6c70d79811, type: 3}
   - lineId: 4
     dialogueLine: Purification? You call this a filth that devours all living things?
     answerOption:
@@ -52,7 +52,7 @@ MonoBehaviour:
     - answerText: Next
       nextLineId: 6
       triggerComplete: 0
-    image: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+    image: {fileID: 21300000, guid: c45efb10cb089bc42a3a5b6c70d79811, type: 3}
   - lineId: 6
     dialogueLine: Nature is too chaotic. We give it order. You are but a fragment
       of a broken sword, a memory of your former power. You will die here, on your
@@ -69,5 +69,5 @@ MonoBehaviour:
     - answerText: Close
       nextLineId: 
       triggerComplete: 0
-    image: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+    image: {fileID: 21300000, guid: c45efb10cb089bc42a3a5b6c70d79811, type: 3}
   _alternativeDialogue: {fileID: 0}

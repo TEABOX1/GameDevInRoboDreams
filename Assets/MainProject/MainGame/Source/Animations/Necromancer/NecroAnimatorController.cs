@@ -82,7 +82,8 @@ namespace MainGame
                     _movementValue = Vector2.up;
                     break;
                 case IEnemyController.AttackState.Attack:
-                    _animator.CrossFadeInFixedTime(_meeleAttackId);
+                    //Fixed _animator.CrossFadeInFixedTime(_meeleAttackId)
+                    _animator.CrossFadeInFixedTime(_meeleAttackId, _crossFadeTime);
                     break;
             }
         }
