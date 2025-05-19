@@ -11,6 +11,7 @@ namespace MainGame
 
         public event Action<EnemyBehaviour> OnBehaviourChanged;
         public event Action<IEnemyController.AttackState> OnAttackStateChanged;
+        public event Action<IEnemyController.AttackMode> OnAttackModeChanged;
 
         [SerializeField] protected EnemyData _data;
         [SerializeField] protected EnemyAttack _attackController;
@@ -64,6 +65,11 @@ namespace MainGame
         public void InvokeAttackState(IEnemyController.AttackState state)
         {
             OnAttackStateChanged?.Invoke(state);
+        }
+
+        public void InvokeAttackMode(IEnemyController.AttackMode mode)
+        {
+            OnAttackModeChanged?.Invoke(mode);
         }
 
         private void Awake()
