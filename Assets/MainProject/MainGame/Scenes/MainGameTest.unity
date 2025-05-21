@@ -5246,21 +5246,13 @@ PrefabInstance:
       propertyPath: _questDialogues.Array.data[2].lockLocationObject
       value: 
       objectReference: {fileID: 769464980}
+    - target: {fileID: 2451207255086356467, guid: 1a8633ee0fcdde54cb747b99a2fd00f4, type: 3}
+      propertyPath: m_Size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2834001905005324698, guid: 1a8633ee0fcdde54cb747b99a2fd00f4, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3320069142017819007, guid: 1a8633ee0fcdde54cb747b99a2fd00f4, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3320069142017819007, guid: 1a8633ee0fcdde54cb747b99a2fd00f4, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3320069142017819007, guid: 1a8633ee0fcdde54cb747b99a2fd00f4, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
+      value: 0.000030517578
       objectReference: {fileID: 0}
     - target: {fileID: 4575877346085437222, guid: 1a8633ee0fcdde54cb747b99a2fd00f4, type: 3}
       propertyPath: m_AnchorMax.y
@@ -5306,10 +5298,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5714216355101888798, guid: 1a8633ee0fcdde54cb747b99a2fd00f4, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5995174734975665959, guid: 1a8633ee0fcdde54cb747b99a2fd00f4, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -5325,14 +5313,6 @@ PrefabInstance:
     - target: {fileID: 7441470219817149482, guid: 1a8633ee0fcdde54cb747b99a2fd00f4, type: 3}
       propertyPath: m_Name
       value: NeedToSave
-      objectReference: {fileID: 0}
-    - target: {fileID: 7766124940119530096, guid: 1a8633ee0fcdde54cb747b99a2fd00f4, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8404417902411386789, guid: 1a8633ee0fcdde54cb747b99a2fd00f4, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8607140716358203264, guid: 1a8633ee0fcdde54cb747b99a2fd00f4, type: 3}
       propertyPath: m_AnchorMax.y
