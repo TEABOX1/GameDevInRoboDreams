@@ -6,6 +6,7 @@ namespace MainGame.Fireball
     {
         [SerializeField] Rigidbody _rigidbody;
         [SerializeField] ParticleSystem particleSystem;
+        [SerializeField] private GameObject _explosionPrefab;
         
         private Vector3 _direction;
         private float _speed;
@@ -35,7 +36,10 @@ namespace MainGame.Fireball
         {
             _damageDealer.DealSpellDamage(transform.position);
             
-            Destroy(gameObject);
+            particleSystem.Stop();
+            _explosionPrefab.SetActive(true);
+            
+            Destroy(gameObject, 1f);
         }
     }
 }
