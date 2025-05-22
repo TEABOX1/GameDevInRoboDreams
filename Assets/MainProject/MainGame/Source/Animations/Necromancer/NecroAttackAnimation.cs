@@ -3,11 +3,14 @@ using System.Collections;
 using UnityEngine;
 using GlobalSource;
 using UnityEngine.InputSystem;
+using System;
 
 namespace MainGame
 {
     public class NecroAttackAnimation : MonoBehaviour
     {
+        public event Action OnAttackStarted;
+
         [SerializeField] private EnemyController _enemyController;
         [SerializeField] private EnemyAttack _attack;
         [SerializeField] private Animator _animator;
@@ -47,6 +50,7 @@ namespace MainGame
 
         private IEnumerator LockRoutine()
         {
+            OnAttackStarted?.Invoke();
             PlayAttack();
 
             yield return _lockDelay;
