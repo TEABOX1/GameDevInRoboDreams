@@ -19,7 +19,9 @@ namespace MainGame
             public Dialogue inProgressDialogue;
             public Dialogue finishDialogue;
             [Header("Transform")]
-            public Vector3 newNPCPosition;
+            public Transform newNPCPosition;
+            [Header("Location lock")]
+            public GameObject lockLocationObject;
         }
         
         [SerializeField] private List<QuestDialogueEntry> _questDialogues;
@@ -53,6 +55,8 @@ namespace MainGame
             {
                 string questId = info.questInfo.QuestId;
                 _questStates[questId] = QuestState.RequirementNotMet;
+                if(info.lockLocationObject)
+                    info.lockLocationObject.SetActive(false);
             }
             
             // UpdateQuestIcon();
@@ -87,10 +91,10 @@ namespace MainGame
                 _questStates[questId] = quest.QuestState;
                 // _questIcon.SetState(quest.QuestState, _startPoint, _finishPoint);
             }
-            UpdateQuestIcon();
+            UpdateQuestNPC();
         }
         
-        private void UpdateQuestIcon()
+        private void UpdateQuestNPC()
         {
             foreach (var entry in _questDialogues)
             {
@@ -99,10 +103,15 @@ namespace MainGame
                     continue;
 
                 if (state == QuestState.Finished)
+                {
+                    if (entry.lockLocationObject)
+                        entry.lockLocationObject.SetActive(true);
                     continue;
+                }
 
                 if(state == QuestState.CanFinish)
-                    transform.position = entry.newNPCPosition;
+                    transform.SetPositionAndRotation(entry.newNPCPosition.position, 
+                        entry.newNPCPosition.rotation);
                 
                 _questIcon.SetState(state, _startPoint, _finishPoint);
                 return;
@@ -179,20 +188,5 @@ namespace MainGame
             _dialogueEvents.EnterDialogue(dialogue, onComplete);
             // onComplete?.Invoke();
         }
-
-#if UNITY_EDITOR
-        private void OnValidate()
-        {
-            for (int i = 0; i < _questDialogues.Count; i++)
-            {
-                var entry = _questDialogues[i];
-                if (entry.questInfo != null && entry.newNPCPosition == Vector3.zero)
-                {
-                    entry.newNPCPosition = transform.position;
-                    EditorUtility.SetDirty(this);
-                }
-            }
-        }
-#endif
     }
 }
