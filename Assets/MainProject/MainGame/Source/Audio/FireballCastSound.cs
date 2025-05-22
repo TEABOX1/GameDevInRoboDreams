@@ -23,7 +23,7 @@ namespace MainGame
 
         public void CastSkillHandler(bool isCasting)
         {
-            if (!isCasting)
+            if (isCasting)
             {
                 audioSource.clip = startCastClip;
                 audioSource.loop = true;
