@@ -28,7 +28,7 @@ MonoBehaviour:
     - answerText: Next
       nextLineId: 3
       triggerComplete: 0
-    image: {fileID: 21300000, guid: 44036bdd3dc83864ca75d54ecd843074, type: 3}
+    image: {fileID: 21300000, guid: 3b263900f7c870a498421a2b6acdaf27, type: 3}
   - lineId: 3
     dialogueLine: But it was strange... I felt a force running through me. When I
       hit one of the nests, it was as if fire had burst from within...

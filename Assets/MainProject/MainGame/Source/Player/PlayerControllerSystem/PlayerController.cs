@@ -24,7 +24,10 @@ namespace MainGame
         [SerializeField] private BossFightArea _bossFightArea;
 
         [SerializeField] private InputAction _action;
-        
+
+        [SerializeField] private float _healCooldown = 10f;
+        [SerializeField] private int _healAmount = 5;
+
         private StateMachine _stateMachine;
         private ISaveService _saveService;
         private CheckpointService _checkpointService;
@@ -38,6 +41,8 @@ namespace MainGame
         public float Speed => _speed;
         // public string CurrentState => _stateMachine == null ? "[NULL]" : _stateMachine.CurrentState.GetType().Name;
         public PlayerControllerState PlayerControllerState => (PlayerControllerState)_stateMachine.CurrentState.StateId;
+
+        private float _lastHealTime;
 
         private void Awake()
         {
@@ -103,7 +108,11 @@ namespace MainGame
         private void FixedUpdate()
         {
             _stateMachine.Update(Time.fixedDeltaTime);
-
+            if (Time.time >= _lastHealTime + _healCooldown)
+            {
+                _health.Heal(_healAmount);
+                _lastHealTime = Time.time;
+            }
         }
 
         private void OnDestroy()

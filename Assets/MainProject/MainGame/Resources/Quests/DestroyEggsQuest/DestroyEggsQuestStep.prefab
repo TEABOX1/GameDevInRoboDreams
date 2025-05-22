@@ -44,4 +44,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d81e43d836f94e34ad1cedd95f6b05a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _eggsToDestroy: 10
+  _eggsToDestroy: 15

@@ -15,7 +15,7 @@ namespace GlobalSource
 
         public static readonly PlayerInfoSaveData Default = new PlayerInfoSaveData()
         {
-            PlayerPosition = new Vector3(65f, 1f, 70f),
+            PlayerPosition = new Vector3(29f, 1f, 65f),
             PlayerRotationY = 0f,
             HealthValue = 100,
             questData = null

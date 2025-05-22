@@ -7,6 +7,7 @@ namespace MainGame
     {
         [SerializeField] BossFightArea _bossFightArea;
         [SerializeField] private Dialogue _startFightDialogue;
+        [SerializeField] private GameObject _blockWall;
 
         private IPlayerService _playerService;
         private QuestEvents _questEvents;
@@ -23,6 +24,7 @@ namespace MainGame
         {
             if (_playerService.IsPlayer(colider))
             {
+                _blockWall.SetActive(true);
                 _playerService.Player.TargetPivot.gameObject.SetActive(true);
                 Debug.Log($"OnTriggerEnter(Player): _playerService.Player.TargetPivot.gameObject = {_playerService.Player.TargetPivot.gameObject.activeInHierarchy}");
                 _bossFightArea.enabled = true;

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Fireball
   m_EditorClassIdentifier: 
   _spellPrefab: {fileID: 3493161079590357793, guid: 23b3ffbf83fcfe74583909b7502eb7f1, type: 3}
-  _speed: 5
-  _damage: 50
+  _speed: 15
+  _damage: 25
   _damageRange: 3
   _cooldownTime: 5

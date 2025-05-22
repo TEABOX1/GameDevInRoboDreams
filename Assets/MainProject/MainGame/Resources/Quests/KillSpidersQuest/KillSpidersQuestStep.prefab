@@ -44,4 +44,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1b69f6213164c429e42e07b6c3d6930, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spidersToKill: 3
+  _spidersToKill: 5

@@ -60,8 +60,8 @@ namespace MainGame
         {
             //_animator.Play(_fireballCastId, 0);
             _animator.CrossFadeInFixedTime(_fireballCastId, _crossFadeTime);
-            OnFireballAnimationFinished?.Invoke();
             yield return _lockDelay;
+            OnFireballAnimationFinished?.Invoke();
             //_animator.CrossFadeInFixedTime(_idleId, _crossFadeTime);
         }
 

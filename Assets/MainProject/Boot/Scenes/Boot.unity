@@ -717,7 +717,7 @@ MonoBehaviour:
   - scene: 1
     sceneName: MainProject/Cutscene/Scenes/Cutscene
   - scene: 2
-    sceneName: MainProject/MainGame/Scenes/MainGameTest
+    sceneName: MainProject/MainGame/Scenes/MainGame
 --- !u!4 &895331045
 Transform:
   m_ObjectHideFlags: 0
