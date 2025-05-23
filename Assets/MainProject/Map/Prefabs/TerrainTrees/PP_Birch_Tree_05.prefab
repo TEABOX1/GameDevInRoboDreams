@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1684121761909085348}
   - component: {fileID: 3289095892837246589}
   - component: {fileID: 3093344638594304194}
+  - component: {fileID: -5525063576980568997}
   m_Layer: 0
   m_Name: PP_Birch_Tree_05
   m_TagString: Untagged
@@ -103,5 +104,21 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 4.991241, y: 8.252353, z: 4.34361}
-  m_Center: {x: -0.080792665, y: 4.1261764, z: -0.4462524}
+  m_Size: {x: 0.6, y: 8.252353, z: 0.6}
+  m_Center: {x: 0, y: 4.1261764, z: 0.05}
+--- !u!208 &-5525063576980568997
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3699544176667718842}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.3, y: 4.1260004, z: 0.3}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 4.1260004, z: 0}
+  m_TimeToStationary: 0.5

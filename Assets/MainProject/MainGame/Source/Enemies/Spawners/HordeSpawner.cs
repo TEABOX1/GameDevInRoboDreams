@@ -14,6 +14,7 @@ namespace MainGame
         [SerializeField] protected Transform _spawnPoint;
         [SerializeField] protected float _spawnRadius;
         [SerializeField] protected Vector3 _offset;
+        [SerializeField] protected MapMarker _mapMarker;
 
         [SerializeField] protected int _spawnCount;
 
@@ -34,6 +35,7 @@ namespace MainGame
         protected virtual void OnEnable()
         {
             _healthService = ServiceLocator.Instance.GetService<IHealthService>();
+            _mapMarker.gameObject.SetActive(true);
             SpawnEnemies(_spawnCount);
         }
 

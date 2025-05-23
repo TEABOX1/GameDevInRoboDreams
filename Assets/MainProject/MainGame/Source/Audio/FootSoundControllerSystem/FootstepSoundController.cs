@@ -36,6 +36,8 @@ namespace MainGame
             // In order to receive AudioClip from footstep system, physics material of a collider, player standing on,
             // Should be received from GroundDetector
             PhysicMaterial key = _groundDetector.Collider.sharedMaterial;
+            if (!key)
+                return;
             audioSource.PlayOneShot(_footstepSoundService.GetFootstepSound(key, transform.position));
         }
     }

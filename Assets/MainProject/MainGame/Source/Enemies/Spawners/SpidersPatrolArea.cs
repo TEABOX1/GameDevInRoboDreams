@@ -1,6 +1,6 @@
 using GlobalSource;
-using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace MainGame
@@ -11,6 +11,7 @@ namespace MainGame
 
         //[SerializeField] private SpidersPool _enemyPool;
         [SerializeField] private SpiderEnemyController _spider;
+        [SerializeField] protected MapMarker _oldMarker;
 
         private SortedDictionary<float, EnemyController> _spidersCollection = new();
 
@@ -44,12 +45,24 @@ namespace MainGame
             };
         }
 
+        protected override void OnEnable()
+        {
+            base.OnEnable();
+            _oldMarker.gameObject.SetActive(false);
+        }
+
         protected override void Update()
         {
             _spidersCollection.Clear();
             for (int i = 0; i < _enemies.Count; i++)
             {
                 float distance = (_enemies[i].NavMeshAgent.nextPosition - _playerService.Player.TargetPivot.position).magnitude;
+                if (_spidersCollection.ContainsKey(distance))
+                {
+                    float similarDistance = _spidersCollection.Keys.FirstOrDefault(k => Mathf.Approximately(k, distance));
+
+                    distance = similarDistance + 0.01f;
+                }
                 _spidersCollection.Add(distance, _enemies[i]);
             }
 

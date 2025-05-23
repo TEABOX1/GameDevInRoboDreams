@@ -52,6 +52,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: pine_tree_2
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b45f7fbf6245f564a87d375ebd191afb, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -59,6 +63,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b45f7fbf6245f564a87d375ebd191afb, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5089125213373676371}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b45f7fbf6245f564a87d375ebd191afb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -7398787848729572088}
   m_SourcePrefab: {fileID: 100100000, guid: b45f7fbf6245f564a87d375ebd191afb, type: 3}
 --- !u!1 &3748468359049293845 stripped
 GameObject:
@@ -84,5 +91,21 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2.605874, y: 7.2772546, z: 2.8983648}
-  m_Center: {x: -0.030638397, y: 3.6354043, z: 0.03188324}
+  m_Size: {x: 0.8, y: 7.2772546, z: 0.8}
+  m_Center: {x: 0, y: 3.6354043, z: 0}
+--- !u!208 &-7398787848729572088
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3748468359049293845}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.4, y: 3.6390002, z: 0.4}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 3.6350002, z: 0}
+  m_TimeToStationary: 0.5

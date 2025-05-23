@@ -1009,11 +1009,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyController: {fileID: 6413521070598903940}
-  _range: 30
-  _angle: 180
+  _range: 50
+  _angle: 350
   _layerMask:
     serializedVersion: 2
-    m_Bits: 9
+    m_Bits: 8
 --- !u!1 &4030295072286374677
 GameObject:
   m_ObjectHideFlags: 0
@@ -1876,8 +1876,8 @@ MonoBehaviour:
   _state: 0
   _spiderSpawnSpell: {fileID: 6687506608772738144}
   _enemySpellCaster: {fileID: 7528238248791826906}
-  _switchToMeleeDistance: 2.2
-  _switchToRangedDistance: 5
+  _switchToMeleeDistance: 3
+  _switchToRangedDistance: 6
   _necroSpellCastAnimation: {fileID: 455231992118544581}
 --- !u!114 &841594265176391530
 MonoBehaviour:

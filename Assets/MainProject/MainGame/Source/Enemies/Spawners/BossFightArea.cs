@@ -1,5 +1,6 @@
 using GlobalSource;
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -12,7 +13,9 @@ namespace MainGame
         public event Action<IHealth> OnBossSpawn;
 
         [SerializeField] private NecroEnemyController _boss;
+        [SerializeField] protected MapMarker _oldMarker;
 
+        private EnemyService _enemyService;
         private QuestEvents _questEvents;
         private DialogueEvents _dialogEvents;
         //private IPlayerService _playerService;
@@ -21,6 +24,7 @@ namespace MainGame
         {
             enabled = false;
 
+            _enemyService = ServiceLocator.Instance.GetService<EnemyService>();
             _questEvents = ServiceLocator.Instance.GetService<QuestEvents>();
             _dialogEvents = ServiceLocator.Instance.GetService<DialogueEvents>();
             //_playerService = ServiceLocator.Instance.GetService<IPlayerService>();
@@ -46,6 +50,12 @@ namespace MainGame
             _dialogEvents.OnExitDialogue += ExitDialogueHandler; // підписка на закінчення діалогу з босом
         }
 
+        protected override void OnEnable()
+        {
+            base.OnEnable();
+            _oldMarker.gameObject.SetActive(false);
+        }
+
         public Vector3 GetExactPoint(Vector3 targetPosition)
         {
             Debug.Log("try to get points");
@@ -61,7 +71,8 @@ namespace MainGame
         {
             Debug.Log("spawn boss");
             Vector3 spawnPoint = GetExactPoint(_spawnPoint.position);
-            var boss = Instantiate(_boss, spawnPoint, _spawnPoint.rotation);
+            Quaternion rotation = Quaternion.Euler(0f, 90f, 0f);
+            var boss = Instantiate(_boss, spawnPoint, rotation);
             boss.Initialize(this);
             boss.enabled = false; // disable контролера боса для блокування атаки
 
@@ -76,6 +87,11 @@ namespace MainGame
         {
             OnBossDeath?.Invoke();
             _enemies.Remove(boss);
+            List<Enemy> enemies = _enemyService.GetEnemies();
+            foreach (var enemy in enemies)
+            {
+                enemy.Health.SetHealth(0);
+            }
             //OnEnemyDeath?.Invoke(_enemies.Count);
             //enabled = false;
         }

@@ -36,6 +36,8 @@ namespace MainGame
 
             for (int i = 0; i < _markers.Length; ++i)
             {
+                if (_markers[i] == null)
+                    return;
                 Image markerImage = _minimapMarkers[i];
                 MapMarker mapMarker = _markers[i];
                 //markerImage.rectTransform.anchoredPosition = GetWorldPositionOnMap(mapMarker.Transform.position);
@@ -77,8 +79,9 @@ namespace MainGame
             RectTransform contentRect = _content as RectTransform;
             Vector2 contentSize = contentRect.rect.size * 0.5f;
 
-            position.x = Mathf.Clamp(position.x, -contentSize.x, contentSize.x);
-            position.y = Mathf.Clamp(position.y, -contentSize.y, contentSize.y);
+            float padding = 2.5f;
+            position.x = Mathf.Clamp(position.x, -contentSize.x + padding, contentSize.x - padding);
+            position.y = Mathf.Clamp(position.y, -contentSize.y + padding, contentSize.y - padding);
 
             return position;
         }

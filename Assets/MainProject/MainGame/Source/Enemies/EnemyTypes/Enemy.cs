@@ -21,6 +21,7 @@ namespace MainGame
             get { return _type; }
             set { _type = value; }
         }
+        public Health Health => _health;
         public Collider Collider => _collider;
         public EnemyController EnemyController => _enemyController;
 
