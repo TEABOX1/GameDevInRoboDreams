@@ -96,22 +96,31 @@ namespace MainGame
         
         private void UpdateQuestNPC()
         {
-            foreach (var entry in _questDialogues)
+            for (int i = 0; i < _questDialogues.Count; i++)
             {
-                string questId = entry.questInfo.QuestId;
+                string questId = _questDialogues[i].questInfo.QuestId;
                 if (!_questStates.TryGetValue(questId, out var state))
                     continue;
 
                 if (state == QuestState.Finished)
                 {
-                    if (entry.lockLocationObject)
-                        entry.lockLocationObject.SetActive(true);
+                    if (_questDialogues[i].lockLocationObject)
+                        _questDialogues[i].lockLocationObject.SetActive(true);
                     continue;
                 }
 
+                if(state == QuestState.CanStart)
+                {
+                    if(i != 0)
+                    {
+                        transform.SetPositionAndRotation(_questDialogues[i-1].newNPCPosition.position,
+                       _questDialogues[i-1].newNPCPosition.rotation);
+                    }
+                }
+
                 if(state == QuestState.CanFinish)
-                    transform.SetPositionAndRotation(entry.newNPCPosition.position, 
-                        entry.newNPCPosition.rotation);
+                    transform.SetPositionAndRotation(_questDialogues[i].newNPCPosition.position,
+                        _questDialogues[i].newNPCPosition.rotation);
                 
                 _questIcon.SetState(state, _startPoint, _finishPoint);
                 return;

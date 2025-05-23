@@ -65,6 +65,8 @@ namespace MainGame
 
             _enemy.OnBehaviourChanged += BehaviourStateHandler;
             _enemy.OnAttackStateChanged += AttaStateHandler;
+
+            _movementValue = Vector2.up;
         }
 
         private void AttaStateHandler(IEnemyController.AttackState state)

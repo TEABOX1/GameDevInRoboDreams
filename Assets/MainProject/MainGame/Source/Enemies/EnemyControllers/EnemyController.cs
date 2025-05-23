@@ -1,3 +1,4 @@
+using Boot;
 using GlobalSource;
 using System;
 using UnityEngine;
@@ -12,6 +13,7 @@ namespace MainGame
         public event Action<EnemyBehaviour> OnBehaviourChanged;
         public event Action<IEnemyController.AttackState> OnAttackStateChanged;
         public event Action<IEnemyController.AttackMode> OnAttackModeChanged;
+        public event Action OnPlayerDeath;
 
         [SerializeField] protected EnemyData _data;
         [SerializeField] protected EnemyAttack _attackController;
@@ -128,6 +130,7 @@ namespace MainGame
         protected void FixedUpdate()
         {
             _behaviourMachine.Update(Time.fixedDeltaTime);
+            IsTargetAlive();
         }
 
         protected void StateChangeHandler(byte stateId)
@@ -191,6 +194,16 @@ namespace MainGame
         protected bool SeesTargetCondition()
         {
             return _playerRadar.SeesTarget;
+        }
+
+        protected void IsTargetAlive()
+        {
+            if (ServiceLocator.Instance.GetService<IPlayerService>().Player.Health.HealthValue <= 0)
+            {
+                _behaviourTree = null;
+                _behaviourMachine.ForceState((byte)EnemyBehaviour.Idle);
+                OnPlayerDeath?.Invoke();
+            }
         }
 
         protected virtual void HealthDeathHandler()

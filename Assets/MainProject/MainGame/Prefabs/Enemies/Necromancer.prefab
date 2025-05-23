@@ -990,7 +990,7 @@ Transform:
   m_GameObject: {fileID: 2807990137830488246}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.5, z: 0.5}
+  m_LocalPosition: {x: 0, y: 0.893, z: 0.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1877,7 +1877,7 @@ MonoBehaviour:
   _spiderSpawnSpell: {fileID: 6687506608772738144}
   _enemySpellCaster: {fileID: 7528238248791826906}
   _switchToMeleeDistance: 3
-  _switchToRangedDistance: 6
+  _switchToRangedDistance: 3.1
   _necroSpellCastAnimation: {fileID: 455231992118544581}
 --- !u!114 &841594265176391530
 MonoBehaviour:
@@ -1919,7 +1919,7 @@ Transform:
   m_GameObject: {fileID: 7066263604419779659}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1, y: -0.15, z: -0.5}
+  m_LocalPosition: {x: -1, y: -0.83, z: -0.392}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2008,7 +2008,7 @@ MonoBehaviour:
   - {fileID: 5036625202043736543}
   - {fileID: 8663027069620019657}
   - {fileID: 252001948062787296}
-  _spawnCooldown: 15
+  _spawnCooldown: 30
   _necroEnemyController: {fileID: 6413521070598903940}
   _enemyController: {fileID: 4992481950980946878, guid: dd4240d66e471f34a80786b606de4736, type: 3}
   necroSpellAnimation: {fileID: 455231992118544581}
@@ -2382,10 +2382,10 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 5.899008
-  MaxDistance: 500
+  MinDistance: 0.1
+  MaxDistance: 5
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 1
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0

@@ -24,7 +24,7 @@ namespace MainGame
             
             _loadButtonGroup.alpha = 0f;
             _loadButtonGroup.interactable = false;
-            
+
             StartCoroutine(FadeIn());
         }
         

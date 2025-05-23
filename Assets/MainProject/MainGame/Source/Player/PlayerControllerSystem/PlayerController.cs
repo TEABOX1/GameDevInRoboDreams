@@ -64,7 +64,7 @@ namespace MainGame
 
         private void Heal(InputAction.CallbackContext context)
         {
-            _health.SetHealth(_health.MaxHealthValue);
+            //_health.SetHealth(_health.MaxHealthValue);
         }
 
         private void OnDisable()

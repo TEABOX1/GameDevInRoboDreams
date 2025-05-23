@@ -74,7 +74,7 @@ namespace MainGame
             base.Enter();
             _attackTimer = 0f;
             _spellTimer = 0f;
-            _spawnTimer = 18f;
+            _spawnTimer = 30f;
 
             _enemyService = ServiceLocator.Instance.GetService<EnemyService>();
             _necroSpellCastAnimation.OnFireballAnimationFinished += ProcceedCast;
@@ -91,7 +91,7 @@ namespace MainGame
             if (_currentMode == IEnemyController.AttackMode.Ranged && _distance <= _switchToMeleeDistance)
             {
                 SetAttackMode(IEnemyController.AttackMode.Melee);
-                ChangeState(IEnemyController.AttackState.Approach);
+                ChangeState(IEnemyController.AttackState.Attack);
             }
             else if (_currentMode == IEnemyController.AttackMode.Melee && _distance >= _switchToRangedDistance)
             {

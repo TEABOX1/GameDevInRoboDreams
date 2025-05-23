@@ -60,19 +60,19 @@ namespace MainGame
         {
             switch (state)
             {
-                case IEnemyController.AttackState.Approach:
-                    _animator.CrossFadeInFixedTime(_movementId, _crossFadeTime);
-                    _movementValue = Vector2.up;
-                    break;
-                case IEnemyController.AttackState.Attack:
-                    _movementValue = Vector2.zero;
-                    //if (_currentAttackMode == IEnemyController.AttackMode.Melee)
-                    //    _animator.CrossFadeInFixedTime(_meeleAttackId, _crossFadeTime);
-                    //else if (_currentAttackMode == IEnemyController.AttackMode.Ranged)
-                    //    _animator.CrossFadeInFixedTime(_fireballAttackId, _crossFadeTime);
-                    //Fixed _animator.CrossFadeInFixedTime(_meeleAttackId)
-                    _animator.CrossFadeInFixedTime(_meeleAttackId, _crossFadeTime);
-                    break;
+                //case IEnemyController.AttackState.Approach:
+                //    _animator.CrossFadeInFixedTime(_movementId, _crossFadeTime);
+                //    _movementValue = Vector2.up;
+                //    break;
+                //case IEnemyController.AttackState.Attack:
+                //    _movementValue = Vector2.zero;
+                //    //if (_currentAttackMode == IEnemyController.AttackMode.Melee)
+                //    //    _animator.CrossFadeInFixedTime(_meeleAttackId, _crossFadeTime);
+                //    //else if (_currentAttackMode == IEnemyController.AttackMode.Ranged)
+                //    //    _animator.CrossFadeInFixedTime(_fireballAttackId, _crossFadeTime);
+                //    //Fixed _animator.CrossFadeInFixedTime(_meeleAttackId)
+                //    //_animator.CrossFadeInFixedTime(_meeleAttackId, _crossFadeTime);
+                //    break;
             }
         }
 

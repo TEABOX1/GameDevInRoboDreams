@@ -20,6 +20,12 @@ namespace MainGame
         {
             _spellCaster.OnBehaviourChanged += BehaviourStateHandler;
             _spellCaster.OnAttackStateChanged += AttaStateHandler;
+            _spellCaster.OnPlayerDeath += OnPlayerDeathHandler;
+            _audioSource.Stop();
+        }
+
+        private void OnPlayerDeathHandler()
+        {
             _audioSource.Stop();
         }
 

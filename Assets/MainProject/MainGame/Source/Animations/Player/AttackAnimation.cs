@@ -16,6 +16,7 @@ namespace MainGame
         [SerializeField] private PlayerController _plaeyrController;
         [SerializeField] private MeleeAttack _attack;
         [SerializeField] private Animator _animator;
+        [SerializeField] private PlayerDeath _playerDeath;
 
         [SerializeField] private Trail _trailScript;
         //[SerializeField] private HandsIK _handsIK;
@@ -44,6 +45,7 @@ namespace MainGame
 
         private InputController _inputController;
         private IHealth _Health;
+        private bool _isDead = false;
 
         private void Start()
         {
@@ -62,10 +64,13 @@ namespace MainGame
             _idleId = Animator.StringToHash(_idleName);
 
             _attack.OnAttack += AttackHandler;
+            _playerDeath.OnPlayerDeath += PlayerDeathHandler;
         }
 
         private void AttackHandler(int numberOfAttacks)
         {
+            if (_isDead)
+                return;
             _attackNumber = numberOfAttacks;
             switch (_attackNumber)
             {
@@ -98,7 +103,7 @@ namespace MainGame
             
             yield return _lockDelay;
             _inputController.DefaultMapUnlock();
-            _animator.CrossFadeInFixedTime(_idleId, _crossFadeTime);
+            //_animator.CrossFadeInFixedTime(_idleId, _crossFadeTime);
             OnAttackAnimationEnd?.Invoke();
             _trailScript.enabled = false;
         }
@@ -127,6 +132,7 @@ namespace MainGame
 
         private void PlayerDeathHandler()
         {
+            _isDead = true;
             StopAllCoroutines();
         }
     }

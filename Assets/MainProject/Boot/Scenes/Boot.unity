@@ -316,8 +316,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _companyCanvasGroup: {fileID: 1181869471}
   _gameNameCanvasGroup: {fileID: 539829448}
-  _fadeDuration: 0.1
-  _displayDuration: 0.5
+  _fadeDuration: 0.3
+  _displayDuration: 0.7
 --- !u!1 &340325390
 GameObject:
   m_ObjectHideFlags: 0

@@ -24,7 +24,10 @@ namespace MainGame
         public void NotifyTrigger(Collider other)
         {
             if (_playerService.IsPlayer(other))
+            {
+                _playerService.Player.Health.Heal(_playerService.Player.Health.MaxHealthValue);
                 OnCheckpointReached?.Invoke();
+            }
         }
     }
 }

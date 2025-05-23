@@ -12,6 +12,7 @@ namespace MainGame
         [SerializeField] private PlayerController _plaeyrController;
         [SerializeField] private SpellCaster _attack;
         [SerializeField] private Animator _animator;
+        [SerializeField] private PlayerDeath _playerDeath;
         [SerializeField] private GameObject _sword;
         [SerializeField] private Trail _leftHand;
         [SerializeField] private Trail _rightHand;
@@ -38,6 +39,8 @@ namespace MainGame
         private InputController _inputController;
         private IHealth _compositeHealth;
 
+        private bool _isDead = false;
+
         private void Start()
         {
             _inputController = ServiceLocator.Instance.GetService<InputController>();
@@ -53,11 +56,14 @@ namespace MainGame
             _magicAttackStopCastingId = Animator.StringToHash(_magicAttackStopCastingName);
             _idleId = Animator.StringToHash(_idleName);
 
+            _playerDeath.OnPlayerDeath += PlayerDeathHandler;
             _attack.OnSpellCast += SpellHandler;
         }
 
         private void SpellHandler(bool isCasting)
         {
+            if (_isDead)
+                return;
             if (isCasting)
             {
                 //_leftHand.enabled = true;
@@ -102,6 +108,7 @@ namespace MainGame
 
         private void PlayerDeathHandler()
         {
+            _isDead = true;
             StopAllCoroutines();
         }
     }

@@ -31,7 +31,7 @@ namespace MainGame
             _menuButtonGroup.alpha = 0f;
             _menuButtonGroup.interactable = false;
         }
-        
+
         private void MenuButtonHandler()
         {
             ServiceLocator.Instance.GetService<IGameStateProvider>().SetGameState(GameState.MainMenu);

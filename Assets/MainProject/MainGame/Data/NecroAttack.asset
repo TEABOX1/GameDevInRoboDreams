@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: NecroAttack
   m_EditorClassIdentifier: 
   _interval: 2
-  _distance: 2
+  _distance: 2.5
   _damage: 10

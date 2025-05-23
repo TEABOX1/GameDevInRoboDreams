@@ -9,6 +9,7 @@ namespace MainGame
         [SerializeField] private Animator _animator;
         [SerializeField] private PlayerController _playerController;
         [SerializeField] private SpellCaster _gunAimer;
+        [SerializeField] private PlayerDeath _playerDeath;
         [SerializeField] private float _crossFadeTime;
         [SerializeField] private float _dampTime;
         [Space, Header("States")]
@@ -17,6 +18,7 @@ namespace MainGame
         [SerializeField] private string _jumpName;
         [SerializeField] private string _fallName;
         [SerializeField] private string _rollName;
+        [SerializeField] private string _deathName;
 
         [Space, Header("Parameters")]
         [SerializeField] private string _horizontalName;
@@ -32,6 +34,7 @@ namespace MainGame
         private int _jumpId;
         private int _fallId;
         private int _rollId;
+        private int _deathId;
 
         private int _horizontalId;
         private int _verticalId;
@@ -46,6 +49,7 @@ namespace MainGame
         private InputController _inputController;
 
         private bool _isGrounded;
+        private bool _isDead = false;
 
         private void Awake()
         {
@@ -54,6 +58,7 @@ namespace MainGame
             _jumpId = Animator.StringToHash(_jumpName);
             _fallId = Animator.StringToHash(_fallName);
             _rollId = Animator.StringToHash(_rollName);
+            _deathId = Animator.StringToHash(_deathName);
 
             _horizontalId = Animator.StringToHash(_horizontalName);
             _verticalId = Animator.StringToHash(_verticalName);
@@ -68,10 +73,13 @@ namespace MainGame
             _inputController = ServiceLocator.Instance.GetService<InputController>();
             _inputController.OnMovementInput += MoveHandler;
             _inputController.OnRollInput += RollHandler;
+            _playerDeath.OnPlayerDeath += PlayerDeathHandler;
         }
 
         private void LocomotionStateHandler(PlayerControllerState state)
         {
+            if(_isDead)
+                return;
             switch (state)
             {
                 case PlayerControllerState.Idle:
@@ -90,6 +98,12 @@ namespace MainGame
                     _animator.CrossFadeInFixedTime(_rollId, _crossFadeTime);
                     break;
             }
+        }
+
+        private void PlayerDeathHandler()
+        {
+            _isDead = true;
+            _animator.CrossFadeInFixedTime(_deathId, _crossFadeTime);
         }
 
         private void Update()
