@@ -38,6 +38,8 @@ namespace MainGame
 
         public void Init(Terrain terrain)
         {
+            if (_footstepResolvers.ContainsKey(_terrainMaterial))
+                return;
             IFootstepResolver terrainResolver = new TerrainFootstepResolver(_terrainSounds, terrain);
             _footstepResolvers.Add(_terrainMaterial, terrainResolver);
 
@@ -45,6 +47,8 @@ namespace MainGame
             {
                 FootstepData footstepData = _footstepData[i];
                 IFootstepResolver resolver = new ColliderFootstepResolver(footstepData.clips);
+                if (_footstepResolvers.ContainsKey(footstepData.material))
+                    return;
                 _footstepResolvers.Add(footstepData.material, resolver);
             }
         }

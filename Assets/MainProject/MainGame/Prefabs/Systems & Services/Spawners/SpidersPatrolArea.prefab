@@ -46,10 +46,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnPoint: {fileID: 8082688269314069735}
-  _spawnRadius: 71.1
+  _spawnRadius: 25
   _offset: {x: 0, y: 0, z: 0}
+  _mapMarker: {fileID: 0}
   _spawnCount: 3
   _spider: {fileID: 4992481950980946878, guid: dd4240d66e471f34a80786b606de4736, type: 3}
+  _oldMarker: {fileID: 0}
 --- !u!1001 &8529425667939616201
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -60,7 +62,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2249038591971543021, guid: 622976d1f56fc3f45888c7af4f9270f1, type: 3}
       propertyPath: m_Radius
-      value: 121.2
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 2632876992173751906, guid: 622976d1f56fc3f45888c7af4f9270f1, type: 3}
       propertyPath: m_LocalPosition.x

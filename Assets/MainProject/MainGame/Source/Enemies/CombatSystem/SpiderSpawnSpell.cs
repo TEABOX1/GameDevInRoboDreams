@@ -55,7 +55,6 @@ namespace MainGame
                 float distance = (_spiders[i].NavMeshAgent.nextPosition - _playerService.Player.TargetPivot.position).magnitude;
                 if (_spidersCollection.ContainsKey(distance))
                 {
-                    // Знаходимо максимальну дистанцію серед всіх записів з таким же ключем
                     float similarDistance = _spidersCollection.Keys.FirstOrDefault(k => Mathf.Approximately(k, distance));
 
                     distance = similarDistance + 0.01f;
