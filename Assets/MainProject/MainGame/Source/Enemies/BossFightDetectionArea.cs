@@ -29,6 +29,7 @@ namespace MainGame
                 Debug.Log($"OnTriggerEnter(Player): _playerService.Player.TargetPivot.gameObject = {_playerService.Player.TargetPivot.gameObject.activeInHierarchy}");
                 _bossFightArea.enabled = true;
                 _dialogEvents.EnterDialogue(_startFightDialogue);
+                gameObject.SetActive(false);
             }
         }
     }
